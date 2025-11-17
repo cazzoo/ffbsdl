@@ -1,0 +1,487 @@
+{
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_start": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_end": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_coeff": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_sat": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "constant_level_zero_len_500",
+      "description": "Constant force, zero level, short duration 500ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": 0,
+        "length_ms": 500
+      }
+    },
+    {
+      "id": "constant_level_low_len_2000",
+      "description": "Constant force, low level, medium duration 2000ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": "low",
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_level_medium_len_2000",
+      "description": "Constant force, medium level, medium duration 2000ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_level_high_len_5000",
+      "description": "Constant force, high level, long duration 5000ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 5000
+      }
+    },
+    {
+      "id": "constant_level_max_dir_180",
+      "description": "Constant force, maximum level, medium duration 2000ms at 180°",
+      "effect_type": "constant",
+      "params": {
+        "level": "max",
+        "direction_deg": 180,
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_level_medium_dir_90",
+      "description": "Constant force, medium level, medium duration 2000ms at 90°",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "direction_deg": 90,
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_level_medium_dir_270",
+      "description": "Constant force, medium level, medium duration 2000ms at 270°",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "direction_deg": 270,
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_env_attack_only",
+      "description": "Constant force with attack envelope only (medium level)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 300,
+        "attack_level": 24000
+      }
+    },
+    {
+      "id": "constant_env_fade_only",
+      "description": "Constant force with fade envelope only (medium level)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "fade_length_ms": 300,
+        "fade_level": 24000
+      }
+    },
+    {
+      "id": "constant_env_attack_fade",
+      "description": "Constant force with both attack and fade envelopes (medium level)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000
+      }
+    },
+    {
+      "id": "sine_mag_zero_period_10_phase_0_dir_0",
+      "description": "Sine wave, zero magnitude, short period 10ms, phase 0°, direction 0°",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": 0,
+        "period_ms": 10,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "sine_mag_low_period_10_phase_90_dir_90",
+      "description": "Sine wave, low magnitude, short period 10ms, phase 90°, direction 90°",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 10,
+        "phase_deg": 90,
+        "direction_deg": 90
+      }
+    },
+    {
+      "id": "triangle_mag_medium_period_100_phase_180_dir_180",
+      "description": "Triangle wave, medium magnitude, medium period 100ms, phase 180°, direction 180°",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 180,
+        "direction_deg": 180
+      }
+    },
+    {
+      "id": "sawup_mag_high_period_100_phase_270_dir_270",
+      "description": "Sawtooth-up wave, high magnitude, medium period 100ms, phase 270°, direction 270°",
+      "effect_type": "sawtoothup",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 270,
+        "direction_deg": 270
+      }
+    },
+    {
+      "id": "sawdown_mag_max_period_1000_phase_0_dir_0_offset_pos",
+      "description": "Sawtooth-down wave, maximum magnitude, long period 1000ms, phase 0°, direction 0°, positive offset",
+      "effect_type": "sawtoothdown",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 1000,
+        "phase_deg": 0,
+        "direction_deg": 0,
+        "offset": 12000
+      }
+    },
+    {
+      "id": "sine_mag_medium_period_100_env_attack_fade",
+      "description": "Sine wave, medium magnitude with attack and fade envelope",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000
+      }
+    },
+
+    {
+      "id": "ramp_up_low_to_high_dir_0",
+      "description": "Ramp effect from low to high along 0° direction, default duration",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_down_high_to_low_dir_180",
+      "description": "Ramp effect from high to low along 180° direction, default duration",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "high",
+        "ramp_end": "low",
+        "direction_deg": 180
+      }
+    },
+    {
+      "id": "ramp_low_to_max_len_1000",
+      "description": "Ramp effect from low to maximum over short 1000ms duration",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "max",
+        "length_ms": 1000
+      }
+    },
+    {
+      "id": "ramp_low_to_max_len_5000_env",
+      "description": "Ramp from low to max over long 5000ms with attack+fade envelope",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "max",
+        "length_ms": 5000,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000
+      }
+    },
+
+    {
+      "id": "spring_coeff_low_sat_high",
+      "description": "Spring condition with low coefficient and high saturation, default center",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high"
+      }
+    },
+    {
+      "id": "spring_coeff_high_sat_low",
+      "description": "Spring condition with high coefficient and low saturation, default center",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low"
+      }
+    },
+    {
+      "id": "spring_deadband_small_center_zero",
+      "description": "Spring condition with small deadband around center=0",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "medium",
+        "cond_left_sat": "medium",
+        "cond_deadband": 500,
+        "cond_center": 0
+      }
+    },
+    {
+      "id": "spring_deadband_large_center_offset",
+      "description": "Spring condition with large deadband and non-zero center offset",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "medium",
+        "cond_left_sat": "medium",
+        "cond_deadband": 5000,
+        "cond_center": 10000
+      }
+    },
+
+    {
+      "id": "damper_coeff_low",
+      "description": "Damper condition with low coefficient",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low"
+      }
+    },
+    {
+      "id": "damper_coeff_high",
+      "description": "Damper condition with high coefficient",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high"
+      }
+    },
+
+    {
+      "id": "inertia_coeff_medium_sat_high",
+      "description": "Inertia condition with medium coefficient and high saturation",
+      "effect_type": "inertia",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high"
+      }
+    },
+
+    {
+      "id": "friction_coeff_medium_deadband_small",
+      "description": "Friction condition with medium coefficient and small deadband",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_deadband": 1000
+      }
+    },
+    {
+      "id": "friction_coeff_medium_deadband_large",
+      "description": "Friction condition with medium coefficient and large deadband",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_deadband": 8000
+      }
+    },
+
+    {
+      "id": "constant_level_max_len_500_dir_0",
+      "description": "Constant force, maximum level, short duration 500ms at 0deg",
+      "effect_type": "constant",
+      "params": {
+        "level": "max",
+        "direction_deg": 0,
+        "length_ms": 500
+      }
+    },
+
+    {
+      "id": "sine_mag_max_period_1000_phase_0_dir_0",
+      "description": "Sine wave, maximum magnitude, long period 1000ms, phase 0deg, direction 0deg",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 1000,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "triangle_mag_low_period_10_phase_0_dir_90",
+      "description": "Triangle wave, low magnitude, short period 10ms, phase 0deg, direction 90deg (right)",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 10,
+        "phase_deg": 0,
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "sawup_mag_low_period_1000_phase_0_dir_270",
+      "description": "Sawtooth-up wave, low magnitude, long period 1000ms, phase 0deg, direction 270deg (left)",
+      "effect_type": "sawtoothup",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 1000,
+        "phase_deg": 0,
+        "direction_deg": 270
+      }
+    },
+
+    {
+      "id": "ramp_high_to_low_len_500_dir_90",
+      "description": "Ramp effect from high to low over short 500ms towards 90deg direction (right)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "high",
+        "ramp_end": "low",
+        "length_ms": 500,
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "ramp_high_to_low_len_500_dir_270",
+      "description": "Ramp effect from high to low over short 500ms towards 270deg direction (left)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "high",
+        "ramp_end": "low",
+        "length_ms": 500,
+        "direction_deg": 270
+      }
+    },
+
+    {
+      "id": "spring_right_high_left_low",
+      "description": "Spring condition with higher coefficient/saturation on right, lower on left",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "high",
+        "cond_left_sat": "low",
+        "cond_center": 0
+      }
+    },
+
+    {
+      "id": "spring_right_low_left_high",
+      "description": "Spring condition with lower coefficient/saturation on right, higher on left",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "high",
+        "cond_right_sat": "low",
+        "cond_left_sat": "high",
+        "cond_center": 0
+      }
+    },
+
+    {
+      "id": "damper_coeff_high_dir_90",
+      "description": "Damper condition with high coefficient and direction 90deg (right)",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "damper_coeff_high_dir_270",
+      "description": "Damper condition with high coefficient and direction 270deg (left)",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "direction_deg": 270
+      }
+    }
+  ]
+}
+

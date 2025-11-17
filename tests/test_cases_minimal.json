@@ -1,0 +1,72 @@
+{
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_start": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_end": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_coeff": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_sat": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "constant_level_medium_len_2000",
+      "description": "Minimal suite: constant force, medium level, 2000ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      }
+    },
+    {
+      "id": "constant_level_max_dir_180",
+      "description": "Minimal suite: constant force, maximum level, 2000ms at 180°",
+      "effect_type": "constant",
+      "params": {
+        "level": "max",
+        "direction_deg": 180,
+        "length_ms": 2000
+      }
+    }
+  ]
+}
+
