@@ -1,0 +1,472 @@
+{
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_start": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_end": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_coeff": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_sat": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "timing_seq_short_rapid",
+      "description": "Three short (200ms) effects back-to-back with no gaps (rapid sequential).",
+      "sequence": [
+        {
+          "id": "step1_constant_short",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 200
+          }
+        },
+        {
+          "id": "step2_sine_short",
+          "effect_type": "sine",
+          "start_ms": 200,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 30,
+            "length_ms": 200
+          }
+        },
+        {
+          "id": "step3_spring_short",
+          "effect_type": "spring",
+          "start_ms": 400,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 200
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_short_gaps",
+      "description": "Short 300ms effects with 100ms conceptual gaps between them (short gaps).",
+      "sequence": [
+        {
+          "id": "step1_sine_short_gap",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 40,
+            "length_ms": 300
+          }
+        },
+        {
+          "id": "step2_constant_short_gap",
+          "effect_type": "constant",
+          "start_ms": 400,
+          "params": {
+            "level": "medium",
+            "length_ms": 300
+          }
+        },
+        {
+          "id": "step3_damper_short_gap",
+          "effect_type": "damper",
+          "start_ms": 800,
+          "params": {
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 300
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_medium_sequential",
+      "description": "Three 1500ms medium-length effects played sequentially (no conceptual overlap).",
+      "sequence": [
+        {
+          "id": "step1_ramp_medium",
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1500
+          }
+        },
+        {
+          "id": "step2_sine_medium",
+          "effect_type": "sine",
+          "start_ms": 1500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 1500
+          }
+        },
+        {
+          "id": "step3_spring_medium",
+          "effect_type": "spring",
+          "start_ms": 3000,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_long_slow",
+      "description": "Long 4000ms effects with 1000ms conceptual gaps (slow sequential).",
+      "sequence": [
+        {
+          "id": "step1_constant_long",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 4000
+          }
+        },
+        {
+          "id": "step2_triangle_long",
+          "effect_type": "triangle",
+          "start_ms": 5000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 80,
+            "length_ms": 4000
+          }
+        },
+        {
+          "id": "step3_friction_long",
+          "effect_type": "friction",
+          "start_ms": 10000,
+          "params": {
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 4000
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_overlap_periodic_short",
+      "description": "Two short 500ms periodic effects where the second starts half-way through the first (overlap).",
+      "sequence": [
+        {
+          "id": "step1_sine_base",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 50,
+            "length_ms": 500
+          }
+        },
+        {
+          "id": "step2_triangle_overlap",
+          "effect_type": "triangle",
+          "start_ms": 250,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 50,
+            "length_ms": 500
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_overlap_periodic_long",
+      "description": "Long 3000ms sine with a 1500ms ramp that joins after 1000ms (extended overlap).",
+      "sequence": [
+        {
+          "id": "step1_sine_long",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 70,
+            "length_ms": 3000
+          }
+        },
+        {
+          "id": "step2_ramp_overlap",
+          "effect_type": "ramp",
+          "start_ms": 1000,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_simultaneous_constant_and_periodic",
+      "description": "Constant and sine both start at t=0 (simultaneous) for 2000ms.",
+      "sequence": [
+        {
+          "id": "step1_constant_simul",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 2000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step1_sine_simul",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "low",
+            "period_ms": 40,
+            "length_ms": 2000,
+            "direction_deg": 90
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_simultaneous_conditions",
+      "description": "Spring, damper, and friction all enabled simultaneously (t=0).",
+      "sequence": [
+        {
+          "id": "step1_spring_simul",
+          "effect_type": "spring",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 3000
+          }
+        },
+        {
+          "id": "step1_damper_simul",
+          "effect_type": "damper",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 3000
+          }
+        },
+        {
+          "id": "step1_friction_simul",
+          "effect_type": "friction",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 3000
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_cond_during_constant",
+      "description": "Constant base force, with spring condition enabled mid-way then disabled before end (via separate timing steps).",
+      "sequence": [
+        {
+          "id": "step1_constant_base",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000
+          }
+        },
+        {
+          "id": "step2_spring_mid",
+          "effect_type": "spring",
+          "start_ms": 1500,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 2000
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_periodic_pulse_train",
+      "description": "Three short 300ms sine pulses separated by 200ms conceptual gaps (periodic pulse train).",
+      "sequence": [
+        {
+          "id": "step1_pulse1",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 40,
+            "length_ms": 300
+          }
+        },
+        {
+          "id": "step2_pulse2",
+          "effect_type": "sine",
+          "start_ms": 500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 40,
+            "length_ms": 300
+          }
+        },
+        {
+          "id": "step3_pulse3",
+          "effect_type": "sine",
+          "start_ms": 1000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 40,
+            "length_ms": 300
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_long_constant_with_short_overlaps",
+      "description": "Long 5000ms constant base with short 500ms periodic and ramp overlays starting at different times.",
+      "sequence": [
+        {
+          "id": "step1_constant_long_base",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 5000
+          }
+        },
+        {
+          "id": "step2_sine_overlay",
+          "effect_type": "sine",
+          "start_ms": 1000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 30,
+            "length_ms": 500
+          }
+        },
+        {
+          "id": "step3_ramp_overlay",
+          "effect_type": "ramp",
+          "start_ms": 3000,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 500
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_mixed_short_medium_long",
+      "description": "Short ramp, medium sine, and long constant arranged with increasing start_ms to span the full timing range.",
+      "sequence": [
+        {
+          "id": "step1_ramp_short",
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 300
+          }
+        },
+        {
+          "id": "step2_sine_medium",
+          "effect_type": "sine",
+          "start_ms": 500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 1500
+          }
+        },
+        {
+          "id": "step3_constant_long",
+          "effect_type": "constant",
+          "start_ms": 2500,
+          "params": {
+            "level": "high",
+            "length_ms": 4000
+          }
+        }
+      ]
+    }
+  ]
+}
+

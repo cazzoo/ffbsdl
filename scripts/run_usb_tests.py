@@ -21,19 +21,27 @@ def resolve_param_value(name, value, key_levels):
     return value
 
 
-def build_cli_args(test, defaults, key_levels, binary):
-    params = dict(defaults)
-    params.update(test.get("params", {}))
+def build_cli_args(effect_type, params, defaults, key_levels, binary):
+    """Build ffbsdl CLI arguments for a single effect.
 
-    # Resolve symbolic levels into concrete integers
+    This helper is used both for legacy single-effect tests and for each
+    step in a multi-effect *sequence* test. The caller is responsible for
+    passing the concrete effect_type and the per-effect params dict.
+    """
+
+    merged = dict(defaults)
+    merged.update(params or {})
+
+    # Resolve symbolic levels into concrete integers using key_levels
     resolved = {}
-    for k, v in params.items():
+    for k, v in merged.items():
         resolved[k] = resolve_param_value(k, v, key_levels)
 
     param_flags = {
         "direction_deg": "--direction-deg",
         "length_ms": "--length-ms",
         "delay_ms": "--delay-ms",
+        "gain": "--gain",
         "level": "--level",
         "magnitude": "--magnitude",
         "period_ms": "--period-ms",
@@ -54,7 +62,7 @@ def build_cli_args(test, defaults, key_levels, binary):
         "cond_center": "--cond-center",
     }
 
-    args = [binary, "--effect-type", test["effect_type"]]
+    args = [binary, "--effect-type", effect_type]
     for name, flag in param_flags.items():
         if name in resolved and resolved[name] is not None:
             args.extend([flag, str(resolved[name])])
@@ -62,30 +70,159 @@ def build_cli_args(test, defaults, key_levels, binary):
     return args, resolved
 
 
-def run_single_test(index, test, defaults, key_levels, cli_args):
-    test_id = test["id"]
-    effect_type = test["effect_type"]
-    base_name = f"{index:04d}_{test_id}_{effect_type}"
+def run_single_effect_capture(base_name, effect_type, params, defaults, key_levels, cli_args):
+    """Capture USB traffic for a *single* effect invocation.
+
+    This is used directly for legacy single-effect tests, and is also
+    called repeatedly for each step in a multi-effect sequence test while
+    tshark is already running.
+    """
+
     os.makedirs(cli_args.output_dir, exist_ok=True)
     pcap_path = os.path.join(cli_args.output_dir, base_name + ".pcapng")
 
-    ff_args, resolved_params = build_cli_args(test, defaults, key_levels, cli_args.ffb_binary)
+    ff_args, resolved_params = build_cli_args(
+        effect_type, params, defaults, key_levels, cli_args.ffb_binary
+    )
+
+    # If a global gain override was provided on the runner CLI, force it
+    # into the resolved params for this invocation so every effect in the
+    # run uses a consistent device gain. This is threaded through as
+    # --gain to ffbsdl's batch-mode CLI.
+    if getattr(cli_args, "global_gain", None) is not None:
+        resolved_params["gain"] = cli_args.global_gain
+        ff_args, _ = build_cli_args(
+            effect_type, resolved_params, {}, key_levels, cli_args.ffb_binary
+        )
+
+    print(f"[RUN] {base_name}: {effect_type} -> {pcap_path}")
+    sys.stdout.flush()
+
+    ff_result = subprocess.run(ff_args)
+
+    return pcap_path, resolved_params, ff_result.returncode
+
+
+def run_single_test(index, test, defaults, key_levels, cli_args):
+    """Run either a legacy single-effect test or a multi-effect sequence.
+
+    Legacy tests have top-level "effect_type" and "params" fields.
+
+    Multi-effect tests instead provide a "sequence" array. Each entry in
+    the sequence must have "effect_type" and "params". Optionally a
+    "start_ms" field can be provided to document intended scheduling of
+    effects within the *conceptual* timeline of the test. The current
+    implementation does not yet align tshark/ffbsdl invocations to these
+    timestamps – each step simply runs to completion in order – but the
+    information is preserved in the manifest for downstream analysis.
+    """
+
+    test_id = test["id"]
+    description = test.get("description", "")
+
+    sequence = test.get("sequence")
+
+    # Case 1: legacy single-effect test (backward compatible path)
+    if not sequence:
+        effect_type = test["effect_type"]
+        base_name = f"{index:04d}_{test_id}_{effect_type}"
+
+        # Start tshark for this one effect
+        os.makedirs(cli_args.output_dir, exist_ok=True)
+        pcap_path = os.path.join(cli_args.output_dir, base_name + ".pcapng")
+
+        tshark_cmd = [cli_args.tshark, "-i", cli_args.iface, "-w", pcap_path]
+        if cli_args.capture_filter:
+            tshark_cmd.extend(["-f", cli_args.capture_filter])
+
+        print(f"[RUN] Test {index}: {test_id} ({effect_type}) -> {pcap_path}")
+        sys.stdout.flush()
+
+        tshark_proc = subprocess.Popen(
+            tshark_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        )
+
+        # Give tshark a moment to start capturing
+        time.sleep(cli_args.pre_delay)
+
+        pcap_path, resolved_params, returncode = run_single_effect_capture(
+            base_name, effect_type, test.get("params", {}), defaults, key_levels, cli_args
+        )
+
+        # Ensure we capture tail of any remaining USB traffic
+        time.sleep(cli_args.post_delay)
+
+        tshark_proc.terminate()
+        try:
+            tshark_proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            tshark_proc.kill()
+
+        return {
+            "id": test_id,
+            "effect_type": effect_type,
+            "description": description,
+            "pcap_file": pcap_path,
+            "params": resolved_params,
+            "cli_returncode": returncode,
+        }
+
+    # Case 2: multi-effect sequence test
+    base_name = f"{index:04d}_{test_id}_sequence"
+    os.makedirs(cli_args.output_dir, exist_ok=True)
+    pcap_path = os.path.join(cli_args.output_dir, base_name + ".pcapng")
 
     tshark_cmd = [cli_args.tshark, "-i", cli_args.iface, "-w", pcap_path]
     if cli_args.capture_filter:
         tshark_cmd.extend(["-f", cli_args.capture_filter])
 
-    print(f"[RUN] Test {index}: {test_id} ({effect_type}) -> {pcap_path}")
+    print(f"[RUN] Test {index}: {test_id} [sequence of {len(sequence)} effects] -> {pcap_path}")
     sys.stdout.flush()
 
     tshark_proc = subprocess.Popen(
         tshark_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
     )
 
-    # Give tshark a moment to start capturing
+    # Give tshark a moment to start capturing before the first step
     time.sleep(cli_args.pre_delay)
 
-    ff_result = subprocess.run(ff_args)
+    step_results = []
+
+    for step_index, step in enumerate(sequence, start=1):
+        step_effect_type = step["effect_type"]
+        step_params = step.get("params", {})
+        step_id = step.get("id") or f"step{step_index}"
+        start_ms = step.get("start_ms")
+
+        step_base = f"{base_name}_{step_index:02d}_{step_id}_{step_effect_type}"
+        print(
+            f"  [STEP {step_index}] {step_id}: {step_effect_type} "
+            f"(start_ms={start_ms!r})"
+        )
+        sys.stdout.flush()
+
+        # NOTE: For now we simply run each step immediately one after the
+        # other. The conceptual start_ms is *not* yet enforced as a
+        # scheduling constraint; it is recorded purely for analysis so
+        # that USB packet patterns can be correlated with intended timing.
+        _step_pcap, resolved_params, returncode = run_single_effect_capture(
+            step_base,
+            step_effect_type,
+            step_params,
+            defaults,
+            key_levels,
+            cli_args,
+        )
+
+        step_results.append(
+            {
+                "id": step_id,
+                "effect_type": step_effect_type,
+                "params": resolved_params,
+                "start_ms": start_ms,
+                "cli_returncode": returncode,
+            }
+        )
 
     # Ensure we capture tail of any remaining USB traffic
     time.sleep(cli_args.post_delay)
@@ -98,11 +235,10 @@ def run_single_test(index, test, defaults, key_levels, cli_args):
 
     return {
         "id": test_id,
-        "effect_type": effect_type,
-        "description": test.get("description", ""),
+        "effect_type": "sequence",
+        "description": description,
         "pcap_file": pcap_path,
-        "params": resolved_params,
-        "cli_returncode": ff_result.returncode,
+        "sequence": step_results,
     }
 
 
@@ -147,6 +283,15 @@ def main():
         type=float,
         default=0.5,
         help="Seconds to wait after ffbsdl exits before stopping tshark.",
+    )
+    parser.add_argument(
+        "--gain",
+        type=int,
+        dest="global_gain",
+        help=(
+            "Optional global force feedback gain (0-100). If set, overrides any per-test "
+            "gain value in the JSON and is passed to ffbsdl as --gain for each effect."
+        ),
     )
 
     args = parser.parse_args()

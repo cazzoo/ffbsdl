@@ -957,6 +957,7 @@ typedef struct {
 	uint32_t length_ms;
 	uint32_t delay_ms;
 	int iterations;
+	int gain;
 	int level;
 	int magnitude;
 	uint32_t period_ms;
@@ -980,6 +981,7 @@ static void init_effect_args(EffectArgs *a){
 	memset(a, 0, sizeof(*a));
 	a->direction_deg = -1;
 	a->iterations = 1;
+	a->gain = -1;
 	a->level = INT_MIN;
 	a->magnitude = INT_MIN;
 	a->ramp_start = INT_MIN;
@@ -1081,6 +1083,9 @@ static void parse_effect_args(int argc, char **argv, EffectArgs *out){
 			out->noninteractive = 1;
 		} else if(strcmp(argv[i], "--cond-center") == 0 && i + 1 < argc){
 			out->cond_center = atoi(argv[++i]);
+			out->noninteractive = 1;
+		} else if(strcmp(argv[i], "--gain") == 0 && i + 1 < argc){
+			out->gain = atoi(argv[++i]);
 			out->noninteractive = 1;
 		}
 	}
@@ -1186,6 +1191,14 @@ static int run_single_effect_from_args(SDL_Haptic *haptic, effect_mask supported
 		return -1;
 	}
 
+	/* Apply optional global gain if provided in batch mode.
+	 * This is analogous to the interactive set_gain() helper but
+	 * controlled entirely via CLI (e.g. --gain 5 for 5%%).
+	 */
+	if(a->gain >= 0 && a->gain <= 100){
+		SDL_HapticSetGain(haptic, a->gain);
+	}
+
 	SDL_HapticEffect effect;
 	if(a->effect_type == SDL_HAPTIC_CONSTANT){
 		setup_constant_from_args(&effect, a);
@@ -1247,6 +1260,7 @@ static void print_batch_usage(const char *progname)
 	puts("  --length-ms <ms>              Effect length in milliseconds");
 	puts("  --delay-ms <ms>               Delay before effect starts (ms)");
 	puts("  --iterations <n>              Number of times to play the effect");
+	puts("  --gain <0-100>                Global force feedback gain percentage");
 	puts("  --attack-length-ms <ms>       Envelope attack length in ms");
 	puts("  --attack-level <val>         Envelope attack level");
 	puts("  --fade-length-ms <ms>         Envelope fade length in ms");

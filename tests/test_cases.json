@@ -482,6 +482,437 @@
         "direction_deg": 270
       }
     }
+,
+
+    {
+      "id": "sine_mag_low_period_10_phase_180_dir_0",
+      "description": "Sine wave, low magnitude, short period 10ms, phase 180deg, direction 0deg (reverse phase)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 10,
+        "phase_deg": 180,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sine_mag_low_period_10_phase_270_dir_0",
+      "description": "Sine wave, low magnitude, short period 10ms, phase 270deg, direction 0deg (quadrature)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 10,
+        "phase_deg": 270,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sine_mag_medium_period_100_phase_90_dir_0",
+      "description": "Sine wave, medium magnitude, medium period 100ms, phase 90deg, direction 0deg",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 90,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sine_mag_medium_period_100_phase_270_dir_0_offset_pos",
+      "description": "Sine wave, medium magnitude, medium period 100ms, phase 270deg, direction 0deg with positive offset",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 270,
+        "direction_deg": 0,
+        "offset": 12000
+      }
+    },
+
+    {
+      "id": "sine_mag_medium_period_100_phase_0_dir_90",
+      "description": "Sine wave, medium magnitude, medium period 100ms, phase 0deg, direction 90deg (right)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "sine_mag_medium_period_100_phase_0_dir_180",
+      "description": "Sine wave, medium magnitude, medium period 100ms, phase 0deg, direction 180deg (reverse)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "sine_mag_medium_period_100_phase_0_dir_270",
+      "description": "Sine wave, medium magnitude, medium period 100ms, phase 0deg, direction 270deg (left)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 270
+      }
+    },
+
+    {
+      "id": "sine_mag_high_period_100_phase_all_dirs",
+      "description": "Sine wave, high magnitude, medium period 100ms, phase 0deg, covering all directions via iterations",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sine_mag_low_period_1000_phase_0_dir_0_env_fade_only",
+      "description": "Sine wave, low magnitude, long period 1000ms, phase 0deg, direction 0deg, fade envelope only",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "low",
+        "period_ms": 1000,
+        "phase_deg": 0,
+        "direction_deg": 0,
+        "fade_length_ms": 300,
+        "fade_level": 24000
+      }
+    },
+
+    {
+      "id": "triangle_mag_high_period_100_phase_0_dir_0",
+      "description": "Triangle wave, high magnitude, medium period 100ms, phase 0deg, direction 0deg",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "triangle_mag_high_period_100_phase_90_dir_0",
+      "description": "Triangle wave, high magnitude, medium period 100ms, phase 90deg, direction 0deg",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 90,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "triangle_mag_high_period_100_phase_180_dir_0",
+      "description": "Triangle wave, high magnitude, medium period 100ms, phase 180deg, direction 0deg",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 180,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "triangle_mag_high_period_100_phase_270_dir_0",
+      "description": "Triangle wave, high magnitude, medium period 100ms, phase 270deg, direction 0deg",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "phase_deg": 270,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "triangle_mag_medium_period_100_phase_0_dir_0_offset_neg",
+      "description": "Triangle wave, medium magnitude, medium period 100ms, phase 0deg, direction 0deg with negative offset",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0,
+        "offset": -12000
+      }
+    },
+
+    {
+      "id": "sawup_mag_medium_period_100_phase_0_dir_0",
+      "description": "Sawtooth-up wave, medium magnitude, medium period 100ms, phase 0deg, direction 0deg",
+      "effect_type": "sawtoothup",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sawup_mag_medium_period_100_phase_180_dir_0",
+      "description": "Sawtooth-up wave, medium magnitude, medium period 100ms, phase 180deg, direction 0deg",
+      "effect_type": "sawtoothup",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 180,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sawdown_mag_medium_period_100_phase_0_dir_0",
+      "description": "Sawtooth-down wave, medium magnitude, medium period 100ms, phase 0deg, direction 0deg",
+      "effect_type": "sawtoothdown",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "sawdown_mag_medium_period_100_phase_180_dir_0",
+      "description": "Sawtooth-down wave, medium magnitude, medium period 100ms, phase 180deg, direction 0deg",
+      "effect_type": "sawtoothdown",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "phase_deg": 180,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "ramp_up_medium_to_high_dir_0",
+      "description": "Ramp effect from medium to high along 0deg direction, default duration",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "medium",
+        "ramp_end": "high",
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "ramp_down_high_to_medium_dir_180",
+      "description": "Ramp effect from high to medium along 180deg direction, default duration",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "high",
+        "ramp_end": "medium",
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "spring_coeff_medium_sat_max_dir_0",
+      "description": "Spring condition with medium coefficient and maximum saturation at direction 0deg",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "spring_coeff_medium_sat_low_dir_90",
+      "description": "Spring condition with medium coefficient and low saturation at direction 90deg (right)",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "spring_coeff_medium_sat_low_dir_180",
+      "description": "Spring condition with medium coefficient and low saturation at direction 180deg (reverse)",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "spring_coeff_medium_sat_low_dir_270",
+      "description": "Spring condition with medium coefficient and low saturation at direction 270deg (left)",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 270
+      }
+    },
+
+    {
+      "id": "damper_coeff_medium_dir_0",
+      "description": "Damper condition with medium coefficient and direction 0deg",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "damper_coeff_medium_dir_180",
+      "description": "Damper condition with medium coefficient and direction 180deg",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "damper_coeff_low_sat_high_deadband_zero",
+      "description": "Damper condition low coeff, high saturation, deadband zero, centered",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high",
+        "cond_deadband": 0,
+        "cond_center": 0
+      }
+    },
+
+    {
+      "id": "inertia_coeff_low_sat_low_dir_0",
+      "description": "Inertia condition with low coefficient, low saturation, direction 0deg",
+      "effect_type": "inertia",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "inertia_coeff_high_sat_max_dir_180",
+      "description": "Inertia condition with high coefficient, max saturation, direction 180deg",
+      "effect_type": "inertia",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "inertia_coeff_medium_sat_low_dir_90",
+      "description": "Inertia condition with medium coefficient, low saturation, direction 90deg",
+      "effect_type": "inertia",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "inertia_coeff_medium_sat_low_dir_270",
+      "description": "Inertia condition with medium coefficient, low saturation, direction 270deg",
+      "effect_type": "inertia",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low",
+        "direction_deg": 270
+      }
+    },
+
+    {
+      "id": "friction_coeff_low_deadband_zero_dir_0",
+      "description": "Friction condition with low coefficient, deadband zero, direction 0deg",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low",
+        "cond_deadband": 0,
+        "direction_deg": 0
+      }
+    },
+
+    {
+      "id": "friction_coeff_high_deadband_small_dir_90",
+      "description": "Friction condition with high coefficient, small deadband, direction 90deg",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_deadband": 1000,
+        "direction_deg": 90
+      }
+    },
+
+    {
+      "id": "friction_coeff_high_deadband_small_dir_180",
+      "description": "Friction condition with high coefficient, small deadband, direction 180deg",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_deadband": 1000,
+        "direction_deg": 180
+      }
+    },
+
+    {
+      "id": "friction_coeff_high_deadband_small_dir_270",
+      "description": "Friction condition with high coefficient, small deadband, direction 270deg",
+      "effect_type": "friction",
+      "params": {
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_deadband": 1000,
+        "direction_deg": 270
+      }
+    }
   ]
 }
 

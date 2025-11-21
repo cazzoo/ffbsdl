@@ -1,0 +1,298 @@
+{
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_start": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_end": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_coeff": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "cond_sat": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "seq_constant_then_sine",
+      "description": "Two-step sequence: constant medium then sine medium, same direction.",
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 1500
+          }
+        },
+        {
+          "id": "step2_sine",
+          "effect_type": "sine",
+          "start_ms": 1800,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 50,
+            "length_ms": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_triangle_overlap",
+      "description": "Sine starts, triangle joins after 1s and overlaps for 2s.",
+      "sequence": [
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 75,
+            "length_ms": 3000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_triangle",
+          "effect_type": "triangle",
+          "start_ms": 1000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 75,
+            "length_ms": 2000,
+            "direction_deg": 90
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_constant_and_sine",
+      "description": "Constant and sine start together in orthogonal directions.",
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 3000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "low",
+            "period_ms": 40,
+            "length_ms": 3000,
+            "direction_deg": 90
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_spring_and_damper",
+      "description": "Spring and damper conditions running simultaneously.",
+      "sequence": [
+        {
+          "id": "step1_spring",
+          "effect_type": "spring",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0
+          }
+        },
+        {
+          "id": "step1_damper",
+          "effect_type": "damper",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "seq_constant_four_directions",
+      "description": "Four constants played one after another in 0/90/180/270 degrees.",
+      "sequence": [
+        {
+          "id": "step1_const_0deg",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 800,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_const_90deg",
+          "effect_type": "constant",
+          "start_ms": 1200,
+          "params": {
+            "level": "medium",
+            "length_ms": 800,
+            "direction_deg": 90
+          }
+        },
+        {
+          "id": "step3_const_180deg",
+          "effect_type": "constant",
+          "start_ms": 2400,
+          "params": {
+            "level": "medium",
+            "length_ms": 800,
+            "direction_deg": 180
+          }
+        },
+        {
+          "id": "step4_const_270deg",
+          "effect_type": "constant",
+          "start_ms": 3600,
+          "params": {
+            "level": "medium",
+            "length_ms": 800,
+            "direction_deg": 270
+          }
+        }
+      ]
+    },
+    {
+      "id": "seq_ramp_then_constant",
+      "description": "Ramp up then hold with constant effect.",
+      "sequence": [
+        {
+          "id": "step1_ramp",
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 2000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_constant",
+          "effect_type": "constant",
+          "start_ms": 2200,
+          "params": {
+            "level": "high",
+            "length_ms": 2000,
+            "direction_deg": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_phase_shift",
+      "description": "Two sines with different phases, back to back.",
+      "sequence": [
+        {
+          "id": "step1_sine_phase0",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "phase_deg": 0,
+            "length_ms": 1500
+          }
+        },
+        {
+          "id": "step2_sine_phase180",
+          "effect_type": "sine",
+          "start_ms": 1800,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "phase_deg": 180,
+            "length_ms": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_inertia_and_friction",
+      "description": "Inertia and friction condition effects running together.",
+      "sequence": [
+        {
+          "id": "step1_inertia",
+          "effect_type": "inertia",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "medium",
+            "cond_left_sat": "medium",
+            "cond_deadband": 0,
+            "cond_center": 0
+          }
+        },
+        {
+          "id": "step1_friction",
+          "effect_type": "friction",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0
+          }
+        }
+      ]
+    }
+  ]
+}
+

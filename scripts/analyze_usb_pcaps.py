@@ -20,9 +20,13 @@ def extract_usb_summary(tshark, pcap_path, display_filter):
     This helper is intentionally defensive:
     - Some tshark builds (e.g. on certain Arch/Manjaro versions) don't
       support fields like "usb.endpoint_number".
-    - In that case we transparently fall back to a simpler field set that
-      only requires "usb.capdata".
+    - Some capture setups expose the payload bytes as "usb.capdata", others
+      (notably USB HID on Windows via USBPcap) use "usbhid.data" instead.
+    - We therefore try a small set of candidate payload fields and fall back
+      to a simpler field set when needed.
     """
+
+    CANDIDATE_PAYLOAD_FIELDS = ["usb.capdata", "usbhid.data"]
 
     def run_tshark(field_names):
         cmd = [
@@ -48,84 +52,107 @@ def extract_usb_summary(tshark, pcap_path, display_filter):
             cmd.extend(["-Y", display_filter])
         return subprocess.run(cmd, capture_output=True, text=True, check=False)
 
-    # First try the full field set (preferred when available).
-    primary_fields = [
-        "frame.number",
-        "frame.time_relative",
-        "usb.endpoint_number",
-        "usb.transfer_type",
-        "usb.capdata",
-    ]
-    proc = run_tshark(primary_fields)
-
-    # If tshark complains about invalid fields, fall back to a minimal set
-    # that should work everywhere.
-    if proc.returncode != 0 and "Some fields aren't valid" in (proc.stderr or ""):
-        fallback_fields = [
+    def extract_for_payload_field(payload_field):
+        # First try the full field set (preferred when available).
+        primary_fields = [
             "frame.number",
             "frame.time_relative",
-            "usb.capdata",
+            "usb.endpoint_number",
+            "usb.transfer_type",
+            payload_field,
         ]
-        proc = run_tshark(fallback_fields)
-        using_fallback = True
-    else:
-        using_fallback = False
+        proc = run_tshark(primary_fields)
 
-    lines = proc.stdout.splitlines()
-
-    payload_counts = Counter()
-    sample_frames = []
-
-    for line in lines:
-        if not line.strip():
-            continue
-        parts = line.split(",")
-        if len(parts) < 3:
-            continue
-
-        # Layout depends on whether we used the full or fallback field set.
-        if using_fallback:
-            frame_no, t_rel, capdata = (parts + ["", ""])[:3]
-            endpoint = ""
-            ttype = ""
+        # If tshark complains about invalid fields, fall back to a minimal set
+        # that should work everywhere.
+        if proc.returncode != 0 and "Some fields aren't valid" in (proc.stderr or ""):
+            fallback_fields = [
+                "frame.number",
+                "frame.time_relative",
+                payload_field,
+            ]
+            proc = run_tshark(fallback_fields)
+            using_fallback = True
         else:
-            if len(parts) < 5:
+            using_fallback = False
+
+        lines = proc.stdout.splitlines()
+
+        payload_counts = Counter()
+        sample_frames = []
+
+        for line in lines:
+            if not line.strip():
                 continue
-            frame_no, t_rel, endpoint, ttype, capdata = parts[:5]
+            parts = line.split(",")
+            if len(parts) < 3:
+                continue
 
-        if not capdata:
-            continue
+            # Layout depends on whether we used the full or fallback field set.
+            if using_fallback:
+                frame_no, t_rel, capdata = (parts + ["", ""])[:3]
+                endpoint = ""
+                ttype = ""
+            else:
+                if len(parts) < 5:
+                    continue
+                frame_no, t_rel, endpoint, ttype, capdata = parts[:5]
 
-        payload_counts[capdata] += 1
-        if len(sample_frames) < 32:
-            try:
-                frame_num = int(frame_no)
-            except ValueError:
-                frame_num = None
-            try:
-                t_rel_val = float(t_rel)
-            except ValueError:
-                t_rel_val = None
-            sample_frames.append(
-                {
-                    "frame": frame_num,
-                    "time_relative": t_rel_val,
-                    "endpoint": endpoint,
-                    "transfer_type": ttype,
-                    "capdata": capdata,
-                }
-            )
+            if not capdata:
+                continue
 
-    top_payloads = [
-        {"capdata": cap, "count": count}
-        for cap, count in payload_counts.most_common()
-    ]
+            payload_counts[capdata] += 1
+            if len(sample_frames) < 32:
+                try:
+                    frame_num = int(frame_no)
+                except ValueError:
+                    frame_num = None
+                try:
+                    t_rel_val = float(t_rel)
+                except ValueError:
+                    t_rel_val = None
+                sample_frames.append(
+                    {
+                        "frame": frame_num,
+                        "time_relative": t_rel_val,
+                        "endpoint": endpoint,
+                        "transfer_type": ttype,
+                        "capdata": capdata,
+                    }
+                )
 
+        top_payloads = [
+            {"capdata": cap, "count": count}
+            for cap, count in payload_counts.most_common()
+        ]
+
+        return {
+            "total_lines": len(lines),
+            "unique_payloads": len(payload_counts),
+            "top_payloads": top_payloads,
+            "sample_frames": sample_frames,
+            "payload_field": payload_field,
+            "using_fallback_fields": using_fallback,
+        }
+
+    last_summary = None
+    for field in CANDIDATE_PAYLOAD_FIELDS:
+        summary = extract_for_payload_field(field)
+        last_summary = summary
+        if summary["unique_payloads"] > 0:
+            return summary
+
+    if last_summary is not None:
+        return last_summary
+
+    # Extremely unlikely: tshark produced no output at all for any field.
     return {
-        "total_lines": len(lines),
-        "unique_payloads": len(payload_counts),
-        "top_payloads": top_payloads,
-        "sample_frames": sample_frames,
+        "total_lines": 0,
+        "unique_payloads": 0,
+        "top_payloads": [],
+        "sample_frames": [],
+        "payload_field": None,
+        "using_fallback_fields": False,
     }
 
 
@@ -148,7 +175,7 @@ def main():
     )
     parser.add_argument(
         "--display-filter",
-        default="usb && usb.capdata",
+        default="usb",
         help="Tshark display filter used when extracting USB records.",
     )
     parser.add_argument(
@@ -171,16 +198,25 @@ def main():
         pcap_path = entry["pcap_file"]
         print(f"[ANALYZE] {entry['id']} -> {pcap_path}")
         summary = extract_usb_summary(args.tshark, pcap_path, args.display_filter)
-        results["tests"].append(
-            {
-                "id": entry.get("id"),
-                "effect_type": entry.get("effect_type"),
-                "description": entry.get("description", ""),
-                "input_params": entry.get("params", {}),
-                "pcap_file": pcap_path,
-                "usb_summary": summary,
-            }
-        )
+
+        # For multi-effect sequence tests, the runner records
+        # entry["effect_type"] == "sequence" and provides detailed
+        # per-step information in entry["sequence"]. We thread this
+        # structure through into the analysis output so downstream
+        # consumers can correlate USB payload patterns with the
+        # individual effects that were intended to be active.
+        results_entry = {
+            "id": entry.get("id"),
+            "effect_type": entry.get("effect_type"),
+            "description": entry.get("description", ""),
+            "input_params": entry.get("params", {}),
+            "pcap_file": pcap_path,
+            "usb_summary": summary,
+        }
+        if "sequence" in entry:
+            results_entry["sequence"] = entry["sequence"]
+
+        results["tests"].append(results_entry)
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
