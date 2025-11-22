@@ -22,7 +22,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from glob import glob
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 import shutil
 
 try:  # Optional nice TUI; falls back to simple input() if missing
@@ -327,10 +327,45 @@ def auto_discover_iface(tshark_path: str) -> Optional[str]:
     return options[0].split(" ", 1)[0]
 
 
-def run_subprocess(cmd: List[str], cwd: Optional[str] = None) -> int:
+def run_subprocess(
+    cmd: List[str],
+    cwd: Optional[str] = None,
+    line_handler: Optional[Callable[[str], None]] = None,
+) -> int:
     print(color("[RUN] ", "cyan") + " ".join(cmd))
     try:
-        proc = subprocess.Popen(cmd, cwd=cwd)
+        # If no custom handler is provided, just stream output through.
+        if line_handler is None:
+            proc = subprocess.Popen(
+                cmd,
+                cwd=cwd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+            )
+            for line in proc.stdout or []:
+                sys.stdout.write(line)
+                sys.stdout.flush()
+            proc.wait()
+            return proc.returncode or 0
+
+        # With a handler, let the caller interpret each line (for progress bars
+        # etc.) while still giving them the full raw output.
+        proc = subprocess.Popen(
+            cmd,
+            cwd=cwd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        for line in proc.stdout or []:
+            try:
+                line_handler(line)
+            except Exception:
+                # Be conservative: fall back to plain streaming so that errors
+                # in the handler never hide important information.
+                sys.stdout.write(line)
+                sys.stdout.flush()
         proc.wait()
         return proc.returncode or 0
     except KeyboardInterrupt:
@@ -348,6 +383,163 @@ def display_current_settings(context: str = "") -> None:
     print(f"ffbsdl binary    : {SETTINGS.get('ffb_binary') or default_ffb_binary()}")
     print(f"capture interface: {SETTINGS.get('iface') or '(not set)'}")
     print(f"default gain     : {SETTINGS.get('gain') or '(none)'}")
+
+
+def make_capture_progress_handler(total_tests: int) -> Callable[[str], None]:
+    """Create a line handler that shows capture progress per test.
+
+    This keeps a single progress bar "anchored" at the bottom of the output by
+    rewriting the last line with a carriage return (similar to tqdm). All
+    original sub-script output is still printed above the bar.
+    """
+
+    state = {
+        "current": 0,
+        "total": max(0, total_tests),
+        "label": "",
+        "bar_active": False,
+        "last_len": 0,
+    }
+    prefix = "[RUN] Test "
+
+    def build_bar() -> str:
+        current = state["current"]
+        total = state["total"]
+        label = state["label"] or "..."
+        if total > 0 and current >= 0:
+            frac = max(0.0, min(1.0, float(current) / float(total)))
+            width = 30
+            filled = int(round(frac * width))
+            bar = "#" * filled + "-" * (width - filled)
+            percent = int(round(frac * 100))
+            text = f"[CAPTURE] [{bar}] {current}/{total} ({percent:3d}%) {label}"
+        else:
+            text = f"[CAPTURE] {label}"
+        return color(text, "cyan")
+
+    def show_bar() -> None:
+        text = build_bar()
+        if state["bar_active"] and state["last_len"]:
+            sys.stdout.write("\r" + " " * state["last_len"] + "\r")
+        sys.stdout.write(text)
+        sys.stdout.flush()
+        state["last_len"] = len(text)
+        state["bar_active"] = True
+
+    def print_log(line: str) -> None:
+        # Clear the bar, print the log line, then re-draw the bar so it stays on
+        # the bottom.
+        if state["bar_active"] and state["last_len"]:
+            sys.stdout.write("\r" + " " * state["last_len"] + "\r")
+        sys.stdout.write(line)
+        if state["bar_active"]:
+            show_bar()
+        else:
+            sys.stdout.flush()
+
+    def handle(line: str) -> None:
+        stripped = line.strip()
+        if stripped.startswith(prefix):
+            rest = stripped[len(prefix) :]
+            try:
+                # "3: some_id (...)"
+                idx_part, rest2 = rest.split(":", 1)
+                idx = int(idx_part.strip())
+                remainder = rest2.strip()
+                test_id = remainder.split(" ", 1)[0]
+                state["current"] = idx
+                state["label"] = test_id
+            except Exception:
+                # If parsing fails, just treat this as a normal log line and
+                # fall back to a generic bar.
+                print_log(line)
+                if not state["bar_active"]:
+                    state["label"] = "Running tests..."
+                    show_bar()
+                return
+
+            print_log(line)
+            show_bar()
+            return
+
+        # Non-progress line: print as-is, but ensure we at least show a generic
+        # "running" bar once.
+        print_log(line)
+        if not state["bar_active"]:
+            state["label"] = "Running tests..."
+            show_bar()
+
+    return handle
+
+
+def make_analysis_progress_handler(total_tests: int) -> Callable[[str], None]:
+    """Create a line handler that shows analysis progress per capture.
+
+    This also keeps a single bar anchored at the bottom while printing all
+    original analysis output above it.
+    """
+
+    state = {
+        "current": 0,
+        "total": max(0, total_tests),
+        "label": "",
+        "bar_active": False,
+        "last_len": 0,
+    }
+    prefix = "[ANALYZE] "
+
+    def build_bar() -> str:
+        current = state["current"]
+        total = state["total"]
+        label = state["label"] or "..."
+        if total > 0 and current >= 0:
+            frac = max(0.0, min(1.0, float(current) / float(total)))
+            width = 30
+            filled = int(round(frac * width))
+            bar = "#" * filled + "-" * (width - filled)
+            percent = int(round(frac * 100))
+            text = f"[ANALYSIS] [{bar}] {current}/{total} ({percent:3d}%) {label}"
+        else:
+            text = f"[ANALYSIS] {label}"
+        return color(text, "cyan")
+
+    def show_bar() -> None:
+        text = build_bar()
+        if state["bar_active"] and state["last_len"]:
+            sys.stdout.write("\r" + " " * state["last_len"] + "\r")
+        sys.stdout.write(text)
+        sys.stdout.flush()
+        state["last_len"] = len(text)
+        state["bar_active"] = True
+
+    def print_log(line: str) -> None:
+        # Clear the bar, print the log line, then re-draw the bar.
+        if state["bar_active"] and state["last_len"]:
+            sys.stdout.write("\r" + " " * state["last_len"] + "\r")
+        sys.stdout.write(line)
+        if state["bar_active"]:
+            show_bar()
+        else:
+            sys.stdout.flush()
+
+    def handle(line: str) -> None:
+        stripped = line.strip()
+        if stripped.startswith(prefix):
+            rest = stripped[len(prefix) :]
+            test_id, _sep, _rest = rest.partition(" -> ")
+            state["current"] += 1
+            state["label"] = test_id
+            print_log(line)
+            show_bar()
+            return
+
+        print_log(line)
+        if not state["bar_active"]:
+            state["label"] = "Running analysis..."
+            show_bar()
+
+    return handle
+
 
 
 def run_captures_for_suite(suite: SuiteInfo) -> Optional[RunInfo]:
@@ -424,7 +616,9 @@ def run_captures_for_suite(suite: SuiteInfo) -> Optional[RunInfo]:
         except ValueError:
             print(color("Ignoring invalid stored gain value; must be integer 0-100.", "yellow"))
 
-    rc = run_subprocess(cmd)
+    # Use a progress-aware handler while still streaming full output.
+    progress_handler = make_capture_progress_handler(suite.num_tests)
+    rc = run_subprocess(cmd, line_handler=progress_handler)
     if rc != 0:
         print(color("run_usb_tests.py failed; see output above.", "red"))
         return None
@@ -538,7 +732,8 @@ def analyze_run(run: RunInfo, tshark_path: Optional[str] = None) -> Optional[Run
         "--output",
         out_path,
     ]
-    rc = run_subprocess(cmd)
+    progress_handler = make_analysis_progress_handler(run.num_manifest_tests)
+    rc = run_subprocess(cmd, line_handler=progress_handler)
     if rc != 0:
         print(color("analyze_usb_pcaps.py failed.", "red"))
         return None
