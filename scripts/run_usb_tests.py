@@ -6,6 +6,23 @@ import subprocess
 import sys
 import time
 
+from typing import Any, Dict
+
+try:
+    from scripts.singlestore_client import (
+        SingleStoreNotConfigured,
+        authenticate_user,
+        ensure_schema,
+        upsert_test_suite,
+        create_or_update_test_result,
+    )
+except Exception:  # pragma: no cover - remote DB is optional
+    SingleStoreNotConfigured = RuntimeError  # type: ignore
+    authenticate_user = None  # type: ignore
+    ensure_schema = None  # type: ignore
+    upsert_test_suite = None  # type: ignore
+    create_or_update_test_result = None  # type: ignore
+
 
 def load_tests(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -279,6 +296,20 @@ def main():
         help="Seconds to wait after starting tshark before running ffbsdl.",
     )
     parser.add_argument(
+        "--remote-owner-api-key",
+        help=(
+            "Optional API key for uploading suite and manifest to SingleStore. "
+            "If omitted, runs only locally."
+        ),
+    )
+    parser.add_argument(
+        "--remote-suite-name",
+        help=(
+            "Logical name for this test suite in the remote DB. "
+            "Defaults to the basename of --tests-file."
+        ),
+    )
+    parser.add_argument(
         "--post-delay",
         type=float,
         default=0.5,
@@ -301,8 +332,14 @@ def main():
     key_levels = tests_doc.get("key_levels", {})
     tests = tests_doc.get("tests", [])
 
+    # Logical suite name used when syncing to SingleStore. This is also stored
+    # in the manifest so that later analysis uploads can re-identify the
+    # suite without needing extra CLI arguments.
+    suite_name = args.remote_suite_name or os.path.basename(args.tests_file)
+
     manifest = {
         "tests_file": os.path.abspath(args.tests_file),
+        "suite_name": suite_name,
         "ffb_binary": os.path.abspath(args.ffb_binary),
         "iface": args.iface,
         "tshark": args.tshark,
@@ -318,6 +355,58 @@ def main():
     with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
     print(f"[DONE] Wrote manifest to {manifest_path}")
+
+    # Optionally upload suite + manifest to SingleStore.
+    api_key = getattr(args, "remote_owner_api_key", None)
+    if api_key and authenticate_user and ensure_schema and upsert_test_suite and create_or_update_test_result:
+        try:
+            user = authenticate_user(api_key)
+        except SingleStoreNotConfigured as exc:  # pragma: no cover - env specific
+            print(f"[REMOTE] SingleStore not configured: {exc}")
+            user = None
+        except Exception as exc:  # pragma: no cover - defensive
+            print(f"[REMOTE] Failed to authenticate user: {exc}")
+            user = None
+
+        if user is None:
+            print("[REMOTE] Invalid API key or SingleStore unavailable; skipping upload.")
+        else:
+            try:
+                ensure_schema()
+            except Exception as exc:  # pragma: no cover
+                print(f"[REMOTE] Failed to ensure schema: {exc}")
+            else:
+                suite_name = manifest.get("suite_name") or os.path.basename(args.tests_file)
+                try:
+                    suite, suite_version = upsert_test_suite(
+                        owner_user_id=user.id,
+                        name=suite_name,
+                        suite_json=tests_doc,
+                        is_shared=True,
+                    )
+                    print(
+                        f"[REMOTE] Uploaded suite '{suite.name}' as id={suite.id} v{suite_version}"
+                    )
+                except Exception as exc:  # pragma: no cover
+                    print(f"[REMOTE] Failed to upload test suite: {exc}")
+                else:
+                    try:
+                        result, res_version = create_or_update_test_result(
+                            owner_user_id=user.id,
+                            suite_id=suite.id,
+                            label=f"manifest:{os.path.abspath(manifest_path)}",
+                            manifest_json=manifest,
+                            analysis_json=None,
+                            is_shared=True,
+                        )
+                        print(
+                            "[REMOTE] Uploaded manifest as result id="
+                            f"{result.id} v{res_version} linked to suite {suite.id}"
+                        )
+                    except Exception as exc:  # pragma: no cover
+                        print(f"[REMOTE] Failed to upload manifest: {exc}")
+    elif api_key:
+        print("[REMOTE] singlestore_client not available; skipping remote upload.")
 
 
 if __name__ == "__main__":

@@ -314,17 +314,16 @@ falls back to plain numbered prompts if `questionary` is not installed.
 experience. Install it into the same Python environment you use for the USB
 harness scripts.
 
-On Linux / macOS / MSYS2:
+With [uv](https://github.com/astral-sh/uv) available in your shell (recommended):
 
 ```bash
-pip install questionary
+uv pip install questionary
 ```
 
-If you have multiple Python installations, you may need one of:
+If you prefer plain `pip`, you can instead run:
 
 ```bash
 python -m pip install questionary
-pip3 install questionary
 ```
 
 After installation, rerun `python scripts/interactive_test_runner.py` – the
@@ -341,6 +340,97 @@ available.
 - `tests/test_cases.json`: comprehensive single-effect test suite.
 - `tests/test_cases_multi_effect.json`: multi-effect sequence test suite.
 - `captures/`: default output root for pcapngs, manifests, and analyses.
+
+## Optional SingleStore integration (remote storage)
+
+The USB harness can optionally sync test suites and results to a remote
+SingleStore database. This is completely optional; if the client library or
+credentials are missing, the scripts fall back to local JSON files only.
+
+### Configuring the database
+
+1. Install the official Python client in the environment you use for the USB
+   harness scripts. With [uv](https://github.com/astral-sh/uv) available
+   (recommended):
+
+   ```bash
+   uv pip install singlestoredb
+   ```
+
+   If you prefer plain `pip`, you can instead run:
+
+   ```bash
+   python -m pip install singlestoredb
+   ```
+
+2. Point the scripts at your database using either:
+
+   - `FFBSD_SINGLESTORE_URI` (recommended), for example `user:pass@host:3306/db`
+   - or granular variables:
+
+     - `FFBSD_SINGLESTORE_HOST`
+     - `FFBSD_SINGLESTORE_PORT` (defaults to `3306`)
+     - `FFBSD_SINGLESTORE_USER`
+     - `FFBSD_SINGLESTORE_PASSWORD`
+     - `FFBSD_SINGLESTORE_DATABASE`
+
+If these variables are not set or the client library is missing, the
+SingleStore integration is disabled and a small `[REMOTE] ...` message is
+printed when you choose remote sync options.
+
+### Users and API keys
+
+SingleStore access is controlled by per-user API keys:
+
+- Each user row has a `display_name` and a 64-character hex `api_key`.
+- Scripts never send database passwords; they only send the API key.
+
+At the moment, users/API keys are created manually by a SingleStore
+administrator, for example:
+
+```sql
+INSERT INTO users (display_name, api_key)
+VALUES ('alice', '<64-hex-character-random-token>');
+```
+
+Use that API key when prompted by the interactive runner (Settings → "Edit
+SingleStore API key") or by passing `--remote-owner-api-key` on the CLI.
+
+### What gets stored
+
+When remote sync is enabled:
+
+- `scripts/run_usb_tests.py` will:
+  - Upsert a logical **test suite** (`test_suites` + `test_suite_versions`)
+    using the JSON file under `tests/`.
+  - Create or update a logical **test result** (`test_results` +
+    `test_result_versions`) containing the `manifest.json` for a specific run.
+
+- `scripts/analyze_usb_pcaps.py` can:
+  - Attach an `analysis.json` document to the same logical result as a new
+    immutable version.
+
+Both suites and results support append-only versioning: each upload creates a
+new version row with a timestamp; older versions remain queryable.
+
+### CLI flags
+
+- `scripts/run_usb_tests.py`:
+  - `--remote-owner-api-key` – API key used to authenticate against SingleStore.
+  - `--remote-suite-name` – optional logical name for the suite; defaults to
+    the basename of `--tests-file`.
+
+- `scripts/analyze_usb_pcaps.py`:
+  - `--remote-owner-api-key` – same API key used for the capture run.
+
+All uploaded suites and results are stored as shared/readable by other users
+by default; owners still retain control for deleting or updating via new
+versions.
+
+The interactive runner (`scripts/interactive_test_runner.py`) wraps these flags
+and, when a remote API key is configured in settings, automatically syncs
+suites and results to SingleStore.
+
 
 ## Troubleshooting
 

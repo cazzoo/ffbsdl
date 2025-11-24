@@ -5,6 +5,25 @@ import os
 import subprocess
 from collections import Counter
 
+from typing import Any, Dict
+
+try:
+    from scripts.singlestore_client import (
+        SingleStoreNotConfigured,
+        authenticate_user,
+        ensure_schema,
+        upsert_test_suite,
+        create_or_update_test_result,
+        list_suites_for_user,
+    )
+except Exception:  # pragma: no cover - remote DB is optional
+    SingleStoreNotConfigured = RuntimeError  # type: ignore
+    authenticate_user = None  # type: ignore
+    ensure_schema = None  # type: ignore
+    upsert_test_suite = None  # type: ignore
+    create_or_update_test_result = None  # type: ignore
+    list_suites_for_user = None  # type: ignore
+
 
 def load_manifest(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -169,6 +188,14 @@ def main():
         help="Path to manifest.json written by run_usb_tests.py.",
     )
     parser.add_argument(
+        "--remote-owner-api-key",
+        help=(
+            "Optional API key for uploading analysis.json to SingleStore. "
+            "If omitted, runs only locally."
+        ),
+    )
+
+    parser.add_argument(
         "--tshark",
         default="tshark",
         help="Path to tshark executable (must match the capture environment).",
@@ -222,6 +249,99 @@ def main():
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
     print(f"[DONE] Wrote analysis to {args.output}")
+
+    # Optionally upload analysis to SingleStore as a new result version attached
+    # to the logical result created from the manifest upload.
+    api_key = getattr(args, "remote_owner_api_key", None)
+    if (
+        api_key
+        and authenticate_user
+        and ensure_schema
+        and create_or_update_test_result
+    ):
+        try:
+            user = authenticate_user(api_key)
+        except SingleStoreNotConfigured as exc:  # pragma: no cover
+            print(f"[REMOTE] SingleStore not configured: {exc}")
+            user = None
+        except Exception as exc:  # pragma: no cover
+            print(f"[REMOTE] Failed to authenticate user: {exc}")
+            user = None
+
+        if user is None:
+            print("[REMOTE] Invalid API key or SingleStore unavailable; skipping upload.")
+        else:
+            try:
+                ensure_schema()
+            except Exception as exc:  # pragma: no cover
+                print(f"[REMOTE] Failed to ensure schema: {exc}")
+            else:
+                from os.path import basename
+
+                suite_name = manifest.get("suite_name")
+                tests_file = manifest.get("tests_file")
+                if not suite_name and tests_file:
+                    suite_name = basename(tests_file)
+
+                suite = None
+                # First try to find an existing suite for this user and name.
+                try:
+                    if list_suites_for_user:
+                        for s in list_suites_for_user(user.id):
+                            if s.name == suite_name:
+                                suite = s
+                                break
+                except Exception as exc:  # pragma: no cover
+                    print(f"[REMOTE] Failed to look up existing suites: {exc}")
+
+                # If no suite exists yet but we know the tests file, create one now.
+                if suite is None and tests_file and upsert_test_suite:
+                    try:
+                        with open(tests_file, "r", encoding="utf-8") as tf:
+                            suite_json = json.load(tf)
+                        suite, suite_version = upsert_test_suite(
+                            owner_user_id=user.id,
+                            name=suite_name or basename(tests_file),
+                            suite_json=suite_json,
+                            is_shared=True,
+                        )
+                        print(
+                            "[REMOTE] Created suite "
+                            f"'{suite.name}' as id={suite.id} v{suite_version} for analysis upload"
+                        )
+                    except FileNotFoundError:  # pragma: no cover
+                        print(
+                            f"[REMOTE] Tests file {tests_file!r} not found; "
+                            "cannot create suite for analysis upload."
+                        )
+                    except Exception as exc:  # pragma: no cover
+                        print(f"[REMOTE] Failed to create suite for analysis upload: {exc}")
+
+                if suite is None:
+                    print(
+                        "[REMOTE] Could not determine or create suite; skipping analysis upload."
+                    )
+                else:
+                    try:
+                        label = f"manifest:{os.path.abspath(args.manifest)}"
+                        _res, v = create_or_update_test_result(
+                            owner_user_id=user.id,
+                            suite_id=suite.id,
+                            label=label,
+                            manifest_json=manifest,
+                            analysis_json=results,
+                            is_shared=True,
+                        )
+                        print(
+                            "[REMOTE] Uploaded analysis for result id="
+                            f"{_res.id} as new version v{v}"
+                        )
+                    except Exception as exc:  # pragma: no cover
+                        print(f"[REMOTE] Failed to upload analysis: {exc}")
+    elif api_key:
+        print(
+            "[REMOTE] singlestore_client not available; skipping remote upload."
+        )
 
 
 if __name__ == "__main__":

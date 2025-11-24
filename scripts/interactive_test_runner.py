@@ -616,6 +616,15 @@ def run_captures_for_suite(suite: SuiteInfo) -> Optional[RunInfo]:
         except ValueError:
             print(color("Ignoring invalid stored gain value; must be integer 0-100.", "yellow"))
 
+    # If a remote API key is configured, always sync this run to SingleStore
+    # without additional prompts.
+    api_key = SETTINGS.get("remote_api_key")
+    if api_key:
+        cmd.extend([
+            "--remote-owner-api-key",
+            api_key,
+        ])
+
     # Use a progress-aware handler while still streaming full output.
     progress_handler = make_capture_progress_handler(suite.num_tests)
     rc = run_subprocess(cmd, line_handler=progress_handler)
@@ -654,6 +663,7 @@ def settings_menu() -> None:
         print(f"ffbsdl binary    : {SETTINGS.get('ffb_binary') or default_ffb_binary()}" )
         print(f"capture interface: {SETTINGS.get('iface') or '(auto / not set)'}")
         print(f"default gain     : {SETTINGS.get('gain') or '(none)'}")
+        print(f"SingleStore API  : {SETTINGS.get('remote_api_key', '(not set)')}")
         choice = ask_select(
             "Settings menu:",
             [
@@ -661,6 +671,7 @@ def settings_menu() -> None:
                 "Edit ffbsdl binary path",
                 "Edit capture interface",
                 "Edit default gain",
+                "Edit SingleStore API key",
                 "Re-run auto-discovery for tshark/interface",
                 "Back to main menu",
             ],
@@ -697,6 +708,14 @@ def settings_menu() -> None:
             else:
                 SETTINGS.pop("gain", None)
             save_settings()
+        elif choice.startswith("Edit SingleStore API key"):
+            current = SETTINGS.get("remote_api_key") or ""
+            new_val = ask_text("SingleStore owner API key (blank to unset)", default=current)
+            if new_val:
+                SETTINGS["remote_api_key"] = new_val
+            else:
+                SETTINGS.pop("remote_api_key", None)
+            save_settings()
         elif choice.startswith("Re-run auto-discovery"):
             tshark = auto_discover_tshark()
             if tshark:
@@ -732,6 +751,18 @@ def analyze_run(run: RunInfo, tshark_path: Optional[str] = None) -> Optional[Run
         "--output",
         out_path,
     ]
+
+    # If a remote API key is configured, always upload analysis.json as a new
+    # version for the corresponding result without additional prompts.
+    api_key = SETTINGS.get("remote_api_key")
+    if api_key:
+        # In a future extension we could remember the concrete result_id; for now
+        # we rely on the server-side helper to locate/create by label.
+        cmd.extend([
+            "--remote-owner-api-key",
+            api_key,
+        ])
+
     progress_handler = make_analysis_progress_handler(run.num_manifest_tests)
     rc = run_subprocess(cmd, line_handler=progress_handler)
     if rc != 0:
