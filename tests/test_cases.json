@@ -912,6 +912,38 @@
         "cond_deadband": 1000,
         "direction_deg": 270
       }
+    },
+
+    {
+      "id": "len_var_constant_medium_3000",
+      "description": "Length variation: constant force, medium level, 3000ms at 0°",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 3000
+      }
+    },
+
+    {
+      "id": "len_var_sine_medium_8000",
+      "description": "Length variation: sine periodic force, medium magnitude, 8000ms at 0°",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 50,
+        "length_ms": 8000
+      }
+    },
+
+    {
+      "id": "len_var_ramp_low_to_high_15000",
+      "description": "Length variation: ramp from low to high, 15000ms at 0°",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "length_ms": 15000
+      }
     }
   ]
 }

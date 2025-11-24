@@ -466,6 +466,55 @@
           }
         }
       ]
+    },
+    {
+      "id": "timing_len_var_two_long_constants",
+      "description": "Timing length variation: two very long constant effects of 10000ms each, played sequentially.",
+      "sequence": [
+        {
+          "id": "step1_constant_10s_a",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 10000
+          }
+        },
+        {
+          "id": "step2_constant_10s_b",
+          "effect_type": "constant",
+          "start_ms": 11000,
+          "params": {
+            "level": "medium",
+            "length_ms": 10000
+          }
+        }
+      ]
+    },
+    {
+      "id": "timing_len_var_long_constant_with_long_sine",
+      "description": "Timing length variation: long 15000ms constant with overlapping 12000ms sine.",
+      "sequence": [
+        {
+          "id": "step1_constant_15s",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 15000
+          }
+        },
+        {
+          "id": "step2_sine_12s_overlap",
+          "effect_type": "sine",
+          "start_ms": 5000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 80,
+            "length_ms": 12000
+          }
+        }
+      ]
     }
   ]
 }

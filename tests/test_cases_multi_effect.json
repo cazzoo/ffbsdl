@@ -292,6 +292,55 @@
           }
         }
       ]
+    },
+    {
+      "id": "len_var_seq_constant_then_sine_long",
+      "description": "Length variation sequence: constant 8000ms then sine 8000ms with a small gap.",
+      "sequence": [
+        {
+          "id": "step1_constant_long",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 8000
+          }
+        },
+        {
+          "id": "step2_sine_long",
+          "effect_type": "sine",
+          "start_ms": 8500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 8000
+          }
+        }
+      ]
+    },
+    {
+      "id": "len_var_seq_two_constants_long",
+      "description": "Length variation sequence: two long constant effects of 10000ms and 5000ms with partial overlap.",
+      "sequence": [
+        {
+          "id": "step1_constant_10s",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 10000
+          }
+        },
+        {
+          "id": "step2_constant_5s_overlap",
+          "effect_type": "constant",
+          "start_ms": 5000,
+          "params": {
+            "level": "high",
+            "length_ms": 5000
+          }
+        }
+      ]
     }
   ]
 }

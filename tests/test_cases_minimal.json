@@ -66,6 +66,24 @@
         "direction_deg": 180,
         "length_ms": 2000
       }
+    },
+    {
+      "id": "len_var_constant_medium_5000",
+      "description": "Minimal suite: constant force, medium level, 5000ms at 0° (length variation)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 5000
+      }
+    },
+    {
+      "id": "len_var_constant_high_10000",
+      "description": "Minimal suite: constant force, high level, 10000ms at 0° (length variation)",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 10000
+      }
     }
   ]
 }
