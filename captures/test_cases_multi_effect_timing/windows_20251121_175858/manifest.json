@@ -1,0 +1,738 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_multi_effect_timing.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_multi_effect_timing/windows_20251121_175858",
+  "tests": [
+    {
+      "id": "timing_seq_short_rapid",
+      "effect_type": "sequence",
+      "description": "Three short (200ms) effects back-to-back with no gaps (rapid sequential).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0001_timing_seq_short_rapid_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant_short",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 200,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_short",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 200,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 30,
+            "gain": 5
+          },
+          "start_ms": 200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_spring_short",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 200,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 400,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_short_gaps",
+      "effect_type": "sequence",
+      "description": "Short 300ms effects with 100ms conceptual gaps between them (short gaps).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0002_timing_seq_short_gaps_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_sine_short_gap",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_constant_short_gap",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_damper_short_gap",
+          "effect_type": "damper",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 800,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_medium_sequential",
+      "effect_type": "sequence",
+      "description": "Three 1500ms medium-length effects played sequentially (no conceptual overlap).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0003_timing_seq_medium_sequential_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_ramp_medium",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_medium",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_spring_medium",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 3000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_seq_long_slow",
+      "effect_type": "sequence",
+      "description": "Long 4000ms effects with 1000ms conceptual gaps (slow sequential).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0004_timing_seq_long_slow_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant_long",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 4000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_triangle_long",
+          "effect_type": "triangle",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 4000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 80,
+            "gain": 5
+          },
+          "start_ms": 5000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_friction_long",
+          "effect_type": "friction",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 4000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 10000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_overlap_periodic_short",
+      "effect_type": "sequence",
+      "description": "Two short 500ms periodic effects where the second starts half-way through the first (overlap).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0005_timing_overlap_periodic_short_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_sine_base",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 50,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_triangle_overlap",
+          "effect_type": "triangle",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 50,
+            "gain": 5
+          },
+          "start_ms": 250,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_overlap_periodic_long",
+      "effect_type": "sequence",
+      "description": "Long 3000ms sine with a 1500ms ramp that joins after 1000ms (extended overlap).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0006_timing_overlap_periodic_long_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_sine_long",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 70,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_ramp_overlap",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_simultaneous_constant_and_periodic",
+      "effect_type": "sequence",
+      "description": "Constant and sine both start at t=0 (simultaneous) for 2000ms.",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0007_timing_simultaneous_constant_and_periodic_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant_simul",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_sine_simul",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 8000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_simultaneous_conditions",
+      "effect_type": "sequence",
+      "description": "Spring, damper, and friction all enabled simultaneously (t=0).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0008_timing_simultaneous_conditions_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_spring_simul",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_damper_simul",
+          "effect_type": "damper",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_friction_simul",
+          "effect_type": "friction",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_cond_during_constant",
+      "effect_type": "sequence",
+      "description": "Constant base force, with spring condition enabled mid-way then disabled before end (via separate timing steps).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0009_timing_cond_during_constant_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant_base",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 4000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_spring_mid",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_periodic_pulse_train",
+      "effect_type": "sequence",
+      "description": "Three short 300ms sine pulses separated by 200ms conceptual gaps (periodic pulse train).",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0010_timing_periodic_pulse_train_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_pulse1",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_pulse2",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_pulse3",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_long_constant_with_short_overlaps",
+      "effect_type": "sequence",
+      "description": "Long 5000ms constant base with short 500ms periodic and ramp overlays starting at different times.",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0011_timing_long_constant_with_short_overlaps_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant_long_base",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 5000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_overlay",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 30,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_ramp_overlay",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 3000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "timing_mixed_short_medium_long",
+      "effect_type": "sequence",
+      "description": "Short ramp, medium sine, and long constant arranged with increasing start_ms to span the full timing range.",
+      "pcap_file": "captures/test_cases_multi_effect_timing/windows_20251121_175858/0012_timing_mixed_short_medium_long_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_ramp_short",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 300,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_medium",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_constant_long",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 4000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 2500,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}

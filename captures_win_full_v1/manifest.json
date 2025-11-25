@@ -1,0 +1,771 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:/Program Files/Wireshark/tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures_win_full",
+  "tests": [
+    {
+      "id": "constant_level_zero_len_500",
+      "effect_type": "constant",
+      "description": "Constant force, zero level, short duration 500ms at 0\u00b0",
+      "pcap_file": "captures_win_full/0001_constant_level_zero_len_500_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_low_len_2000",
+      "effect_type": "constant",
+      "description": "Constant force, low level, medium duration 2000ms at 0\u00b0",
+      "pcap_file": "captures_win_full/0002_constant_level_low_len_2000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 8000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_medium_len_2000",
+      "effect_type": "constant",
+      "description": "Constant force, medium level, medium duration 2000ms at 0\u00b0",
+      "pcap_file": "captures_win_full/0003_constant_level_medium_len_2000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_high_len_5000",
+      "effect_type": "constant",
+      "description": "Constant force, high level, long duration 5000ms at 0\u00b0",
+      "pcap_file": "captures_win_full/0004_constant_level_high_len_5000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 5000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 48000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_max_dir_180",
+      "effect_type": "constant",
+      "description": "Constant force, maximum level, medium duration 2000ms at 180\u00b0",
+      "pcap_file": "captures_win_full/0005_constant_level_max_dir_180_constant.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_medium_dir_90",
+      "effect_type": "constant",
+      "description": "Constant force, medium level, medium duration 2000ms at 90\u00b0",
+      "pcap_file": "captures_win_full/0006_constant_level_medium_dir_90_constant.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_medium_dir_270",
+      "effect_type": "constant",
+      "description": "Constant force, medium level, medium duration 2000ms at 270\u00b0",
+      "pcap_file": "captures_win_full/0007_constant_level_medium_dir_270_constant.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_env_attack_only",
+      "effect_type": "constant",
+      "description": "Constant force with attack envelope only (medium level)",
+      "pcap_file": "captures_win_full/0008_constant_env_attack_only_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_env_fade_only",
+      "effect_type": "constant",
+      "description": "Constant force with fade envelope only (medium level)",
+      "pcap_file": "captures_win_full/0009_constant_env_fade_only_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 300,
+        "fade_level": 24000,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_env_attack_fade",
+      "effect_type": "constant",
+      "description": "Constant force with both attack and fade envelopes (medium level)",
+      "pcap_file": "captures_win_full/0010_constant_env_attack_fade_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000,
+        "iterations": 1,
+        "level": 24000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_mag_zero_period_10_phase_0_dir_0",
+      "effect_type": "sine",
+      "description": "Sine wave, zero magnitude, short period 10ms, phase 0\u00b0, direction 0\u00b0",
+      "pcap_file": "captures_win_full/0011_sine_mag_zero_period_10_phase_0_dir_0_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 0,
+        "period_ms": 10,
+        "phase_deg": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_mag_low_period_10_phase_90_dir_90",
+      "effect_type": "sine",
+      "description": "Sine wave, low magnitude, short period 10ms, phase 90\u00b0, direction 90\u00b0",
+      "pcap_file": "captures_win_full/0012_sine_mag_low_period_10_phase_90_dir_90_sine.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 8000,
+        "period_ms": 10,
+        "phase_deg": 90
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "triangle_mag_medium_period_100_phase_180_dir_180",
+      "effect_type": "triangle",
+      "description": "Triangle wave, medium magnitude, medium period 100ms, phase 180\u00b0, direction 180\u00b0",
+      "pcap_file": "captures_win_full/0013_triangle_mag_medium_period_100_phase_180_dir_180_triangle.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 24000,
+        "period_ms": 100,
+        "phase_deg": 180
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sawup_mag_high_period_100_phase_270_dir_270",
+      "effect_type": "sawtoothup",
+      "description": "Sawtooth-up wave, high magnitude, medium period 100ms, phase 270\u00b0, direction 270\u00b0",
+      "pcap_file": "captures_win_full/0014_sawup_mag_high_period_100_phase_270_dir_270_sawtoothup.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 48000,
+        "period_ms": 100,
+        "phase_deg": 270
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sawdown_mag_max_period_1000_phase_0_dir_0_offset_pos",
+      "effect_type": "sawtoothdown",
+      "description": "Sawtooth-down wave, maximum magnitude, long period 1000ms, phase 0\u00b0, direction 0\u00b0, positive offset",
+      "pcap_file": "captures_win_full/0015_sawdown_mag_max_period_1000_phase_0_dir_0_offset_pos_sawtoothdown.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 65535,
+        "period_ms": 1000,
+        "phase_deg": 0,
+        "offset": 12000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_mag_medium_period_100_env_attack_fade",
+      "effect_type": "sine",
+      "description": "Sine wave, medium magnitude with attack and fade envelope",
+      "pcap_file": "captures_win_full/0016_sine_mag_medium_period_100_env_attack_fade_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000,
+        "iterations": 1,
+        "magnitude": 24000,
+        "period_ms": 100,
+        "phase_deg": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_up_low_to_high_dir_0",
+      "effect_type": "ramp",
+      "description": "Ramp effect from low to high along 0\u00b0 direction, default duration",
+      "pcap_file": "captures_win_full/0017_ramp_up_low_to_high_dir_0_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_down_high_to_low_dir_180",
+      "effect_type": "ramp",
+      "description": "Ramp effect from high to low along 180\u00b0 direction, default duration",
+      "pcap_file": "captures_win_full/0018_ramp_down_high_to_low_dir_180_ramp.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 48000,
+        "ramp_end": 8000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_low_to_max_len_1000",
+      "effect_type": "ramp",
+      "description": "Ramp effect from low to maximum over short 1000ms duration",
+      "pcap_file": "captures_win_full/0019_ramp_low_to_max_len_1000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 65535
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_low_to_max_len_5000_env",
+      "effect_type": "ramp",
+      "description": "Ramp from low to max over long 5000ms with attack+fade envelope",
+      "pcap_file": "captures_win_full/0020_ramp_low_to_max_len_5000_env_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 5000,
+        "delay_ms": 0,
+        "attack_length_ms": 300,
+        "attack_level": 24000,
+        "fade_length_ms": 300,
+        "fade_level": 24000,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 65535
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_low_sat_high",
+      "effect_type": "spring",
+      "description": "Spring condition with low coefficient and high saturation, default center",
+      "pcap_file": "captures_win_full/0021_spring_coeff_low_sat_high_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_high_sat_low",
+      "effect_type": "spring",
+      "description": "Spring condition with high coefficient and low saturation, default center",
+      "pcap_file": "captures_win_full/0022_spring_coeff_high_sat_low_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high",
+        "cond_right_sat": "low",
+        "cond_left_sat": "low"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_deadband_small_center_zero",
+      "effect_type": "spring",
+      "description": "Spring condition with small deadband around center=0",
+      "pcap_file": "captures_win_full/0023_spring_deadband_small_center_zero_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "medium",
+        "cond_left_sat": "medium",
+        "cond_deadband": 500,
+        "cond_center": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_deadband_large_center_offset",
+      "effect_type": "spring",
+      "description": "Spring condition with large deadband and non-zero center offset",
+      "pcap_file": "captures_win_full/0024_spring_deadband_large_center_offset_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "medium",
+        "cond_left_sat": "medium",
+        "cond_deadband": 5000,
+        "cond_center": 10000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_coeff_low",
+      "effect_type": "damper",
+      "description": "Damper condition with low coefficient",
+      "pcap_file": "captures_win_full/0025_damper_coeff_low_damper.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "low"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_coeff_high",
+      "effect_type": "damper",
+      "description": "Damper condition with high coefficient",
+      "pcap_file": "captures_win_full/0026_damper_coeff_high_damper.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "inertia_coeff_medium_sat_high",
+      "effect_type": "inertia",
+      "description": "Inertia condition with medium coefficient and high saturation",
+      "pcap_file": "captures_win_full/0027_inertia_coeff_medium_sat_high_inertia.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "friction_coeff_medium_deadband_small",
+      "effect_type": "friction",
+      "description": "Friction condition with medium coefficient and small deadband",
+      "pcap_file": "captures_win_full/0028_friction_coeff_medium_deadband_small_friction.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_deadband": 1000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "friction_coeff_medium_deadband_large",
+      "effect_type": "friction",
+      "description": "Friction condition with medium coefficient and large deadband",
+      "pcap_file": "captures_win_full/0029_friction_coeff_medium_deadband_large_friction.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_deadband": 8000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_max_len_500_dir_0",
+      "effect_type": "constant",
+      "description": "Constant force, maximum level, short duration 500ms at 0deg",
+      "pcap_file": "captures_win_full/0030_constant_level_max_len_500_dir_0_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_mag_max_period_1000_phase_0_dir_0",
+      "effect_type": "sine",
+      "description": "Sine wave, maximum magnitude, long period 1000ms, phase 0deg, direction 0deg",
+      "pcap_file": "captures_win_full/0031_sine_mag_max_period_1000_phase_0_dir_0_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 65535,
+        "period_ms": 1000,
+        "phase_deg": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "triangle_mag_low_period_10_phase_0_dir_90",
+      "effect_type": "triangle",
+      "description": "Triangle wave, low magnitude, short period 10ms, phase 0deg, direction 90deg (right)",
+      "pcap_file": "captures_win_full/0032_triangle_mag_low_period_10_phase_0_dir_90_triangle.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 8000,
+        "period_ms": 10,
+        "phase_deg": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sawup_mag_low_period_1000_phase_0_dir_270",
+      "effect_type": "sawtoothup",
+      "description": "Sawtooth-up wave, low magnitude, long period 1000ms, phase 0deg, direction 270deg (left)",
+      "pcap_file": "captures_win_full/0033_sawup_mag_low_period_1000_phase_0_dir_270_sawtoothup.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 8000,
+        "period_ms": 1000,
+        "phase_deg": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_high_to_low_len_500_dir_90",
+      "effect_type": "ramp",
+      "description": "Ramp effect from high to low over short 500ms towards 90deg direction (right)",
+      "pcap_file": "captures_win_full/0034_ramp_high_to_low_len_500_dir_90_ramp.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 48000,
+        "ramp_end": 8000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_high_to_low_len_500_dir_270",
+      "effect_type": "ramp",
+      "description": "Ramp effect from high to low over short 500ms towards 270deg direction (left)",
+      "pcap_file": "captures_win_full/0035_ramp_high_to_low_len_500_dir_270_ramp.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 48000,
+        "ramp_end": 8000
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_right_high_left_low",
+      "effect_type": "spring",
+      "description": "Spring condition with higher coefficient/saturation on right, lower on left",
+      "pcap_file": "captures_win_full/0036_spring_right_high_left_low_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "low",
+        "cond_right_sat": "high",
+        "cond_left_sat": "low",
+        "cond_center": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_right_low_left_high",
+      "effect_type": "spring",
+      "description": "Spring condition with lower coefficient/saturation on right, higher on left",
+      "pcap_file": "captures_win_full/0037_spring_right_low_left_high_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "low",
+        "cond_left_coeff": "high",
+        "cond_right_sat": "low",
+        "cond_left_sat": "high",
+        "cond_center": 0
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_coeff_high_dir_90",
+      "effect_type": "damper",
+      "description": "Damper condition with high coefficient and direction 90deg (right)",
+      "pcap_file": "captures_win_full/0038_damper_coeff_high_dir_90_damper.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high"
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_coeff_high_dir_270",
+      "effect_type": "damper",
+      "description": "Damper condition with high coefficient and direction 270deg (left)",
+      "pcap_file": "captures_win_full/0039_damper_coeff_high_dir_270_damper.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "high",
+        "cond_left_coeff": "high"
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

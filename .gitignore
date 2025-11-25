@@ -1,6 +1,4 @@
 # Capture / analysis outputs
-captures/
-captures_*/
 
 # Python bytecode / caches
 __pycache__/

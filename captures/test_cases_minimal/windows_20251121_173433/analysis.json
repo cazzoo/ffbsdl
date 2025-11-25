@@ -1,0 +1,959 @@
+{
+  "manifest": "C:/Users/Caz/ffbsdl/captures/test_cases_minimal/windows_20251121_173433/manifest.json",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "display_filter": "usb",
+  "tests": [
+    {
+      "id": "constant_level_medium_len_2000",
+      "effect_type": "constant",
+      "description": "Minimal suite: constant force, medium level, 2000ms at 0\u00b0",
+      "input_params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "pcap_file": "captures/test_cases_minimal/windows_20251121_173433/0001_constant_level_medium_len_2000_constant.pcapng",
+      "usb_summary": {
+        "total_lines": 334,
+        "unique_payloads": 100,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 48
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 48
+          },
+          {
+            "capdata": "4205",
+            "count": 3
+          },
+          {
+            "capdata": "079b7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07987dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07957dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07927dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "078f7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "078b7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07887dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07857dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "077e7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07787dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07717dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "076e7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07687dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07647dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07617dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "075e7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "4204",
+            "count": 1
+          },
+          {
+            "capdata": "027000000009000009",
+            "count": 1
+          },
+          {
+            "capdata": "03620005",
+            "count": 1
+          },
+          {
+            "capdata": "01000040d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "41004101",
+            "count": 1
+          },
+          {
+            "capdata": "07647eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07577eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07547eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07497eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07457eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07417eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07357eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07327eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07287eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07207eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07177eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07137eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07107eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07067eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07037eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07007eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fd7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f07dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ec7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07df7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07af7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ac7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07827dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07757dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075b7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07797dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077d7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07807dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07837dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078a7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "41000001",
+            "count": 1
+          },
+          {
+            "capdata": "078d7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07907dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07937dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07977dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079a7dff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.102754,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.103594,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.103662,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.104156,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.11464,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.115129,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.125532,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.126162,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.126518,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.127239,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.127305,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.127845,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.138143,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.139092,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.149641,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.151519,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.151743,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.152474,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.15255,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.153419,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.163532,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.164236,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.174536,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.175343,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.17556,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.176167,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.176288,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.177132,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.187557,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.188416,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.199067,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.200163,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      }
+    },
+    {
+      "id": "constant_level_max_dir_180",
+      "effect_type": "constant",
+      "description": "Minimal suite: constant force, maximum level, 2000ms at 180\u00b0",
+      "input_params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535,
+        "gain": 5
+      },
+      "pcap_file": "captures/test_cases_minimal/windows_20251121_173433/0002_constant_level_max_dir_180_constant.pcapng",
+      "usb_summary": {
+        "total_lines": 126,
+        "unique_payloads": 12,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 48
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 48
+          },
+          {
+            "capdata": "4205",
+            "count": 3
+          },
+          {
+            "capdata": "4204",
+            "count": 1
+          },
+          {
+            "capdata": "027000000000000000",
+            "count": 1
+          },
+          {
+            "capdata": "03620000",
+            "count": 1
+          },
+          {
+            "capdata": "01000040d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "41004101",
+            "count": 1
+          },
+          {
+            "capdata": "079d7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a07dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27dff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.005142,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.007795,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.007837,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.008375,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.018567,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.019144,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.029541,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.030274,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.030388,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.031306,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.031347,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.032262,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.042532,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.043158,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.054012,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.055285,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.055706,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.056123,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.056139,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.056997,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.067728,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.068254,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.078538,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.079154,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.079329,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.08014,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.080175,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.080866,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.091073,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.092136,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.102559,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.103737,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      }
+    }
+  ]
+}

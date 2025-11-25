@@ -1,0 +1,426 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_multi_effect.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_multi_effect/windows_20251121_173511",
+  "tests": [
+    {
+      "id": "seq_constant_then_sine",
+      "effect_type": "sequence",
+      "description": "Two-step sequence: constant medium then sine medium, same direction.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0001_seq_constant_then_sine_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 50,
+            "gain": 5
+          },
+          "start_ms": 1800,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_triangle_overlap",
+      "effect_type": "sequence",
+      "description": "Sine starts, triangle joins after 1s and overlaps for 2s.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0002_seq_sine_triangle_overlap_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 75,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_triangle",
+          "effect_type": "triangle",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 75,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_constant_and_sine",
+      "effect_type": "sequence",
+      "description": "Constant and sine start together in orthogonal directions.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0003_sim_constant_and_sine_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 8000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_spring_and_damper",
+      "effect_type": "sequence",
+      "description": "Spring and damper conditions running simultaneously.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0004_sim_spring_and_damper_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_spring",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_damper",
+          "effect_type": "damper",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_constant_four_directions",
+      "effect_type": "sequence",
+      "description": "Four constants played one after another in 0/90/180/270 degrees.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0005_seq_constant_four_directions_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_const_0deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_const_90deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_const_180deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 180,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 2400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4_const_270deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 270,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 3600,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_ramp_then_constant",
+      "effect_type": "sequence",
+      "description": "Ramp up then hold with constant effect.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0006_seq_ramp_then_constant_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_ramp",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 2200,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_phase_shift",
+      "effect_type": "sequence",
+      "description": "Two sines with different phases, back to back.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0007_seq_sine_phase_shift_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_sine_phase0",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "phase_deg": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_phase180",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "phase_deg": 180,
+            "gain": 5
+          },
+          "start_ms": 1800,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_inertia_and_friction",
+      "effect_type": "sequence",
+      "description": "Inertia and friction condition effects running together.",
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251121_173511/0008_sim_inertia_and_friction_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1_inertia",
+          "effect_type": "inertia",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "medium",
+            "cond_left_sat": "medium",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_friction",
+          "effect_type": "friction",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}

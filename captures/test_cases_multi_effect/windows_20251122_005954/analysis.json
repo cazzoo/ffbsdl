@@ -1,0 +1,6094 @@
+{
+  "manifest": "C:/Users/Caz/ffbsdl/captures/test_cases_multi_effect/windows_20251122_005954/manifest.json",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "display_filter": "usb",
+  "tests": [
+    {
+      "id": "seq_constant_then_sine",
+      "effect_type": "sequence",
+      "description": "Two-step sequence: constant medium then sine medium, same direction.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0001_seq_constant_then_sine_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 0,
+        "unique_payloads": 0,
+        "top_payloads": [],
+        "sample_frames": [],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 50,
+            "gain": 5
+          },
+          "start_ms": 1800,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_triangle_overlap",
+      "effect_type": "sequence",
+      "description": "Sine starts, triangle joins after 1s and overlaps for 2s.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0002_seq_sine_triangle_overlap_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 2400,
+        "unique_payloads": 71,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 72
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 72
+          },
+          {
+            "capdata": "07577fff03ff03ff0300000000000f",
+            "count": 55
+          },
+          {
+            "capdata": "07547fff03ff03ff0300000000000f",
+            "count": 51
+          },
+          {
+            "capdata": "074d7fff03ff03ff0300000000000f",
+            "count": 49
+          },
+          {
+            "capdata": "074f7fff03ff03ff0300000000000f",
+            "count": 48
+          },
+          {
+            "capdata": "07517fff03ff03ff0300000000000f",
+            "count": 46
+          },
+          {
+            "capdata": "07557fff03ff03ff0300000000000f",
+            "count": 45
+          },
+          {
+            "capdata": "07527fff03ff03ff0300000000000f",
+            "count": 45
+          },
+          {
+            "capdata": "07597fff03ff03ff0300000000000f",
+            "count": 44
+          },
+          {
+            "capdata": "075e7fff03ff03ff0300000000000f",
+            "count": 43
+          },
+          {
+            "capdata": "075c7fff03ff03ff0300000000000f",
+            "count": 42
+          },
+          {
+            "capdata": "075a7fff03ff03ff0300000000000f",
+            "count": 40
+          },
+          {
+            "capdata": "075f7fff03ff03ff0300000000000f",
+            "count": 39
+          },
+          {
+            "capdata": "074c7fff03ff03ff0300000000000f",
+            "count": 38
+          },
+          {
+            "capdata": "074a7fff03ff03ff0300000000000f",
+            "count": 33
+          },
+          {
+            "capdata": "07617fff03ff03ff0300000000000f",
+            "count": 28
+          },
+          {
+            "capdata": "07497fff03ff03ff0300000000000f",
+            "count": 24
+          },
+          {
+            "capdata": "07477fff03ff03ff0300000000000f",
+            "count": 24
+          },
+          {
+            "capdata": "07257fff03ff03ff0300000000000f",
+            "count": 24
+          },
+          {
+            "capdata": "07287fff03ff03ff0300000000000f",
+            "count": 22
+          },
+          {
+            "capdata": "07447fff03ff03ff0300000000000f",
+            "count": 19
+          },
+          {
+            "capdata": "07237fff03ff03ff0300000000000f",
+            "count": 19
+          },
+          {
+            "capdata": "07627fff03ff03ff0300000000000f",
+            "count": 18
+          },
+          {
+            "capdata": "07457fff03ff03ff0300000000000f",
+            "count": 17
+          },
+          {
+            "capdata": "07277fff03ff03ff0300000000000f",
+            "count": 17
+          },
+          {
+            "capdata": "07227fff03ff03ff0300000000000f",
+            "count": 16
+          },
+          {
+            "capdata": "07337fff03ff03ff0300000000000f",
+            "count": 15
+          },
+          {
+            "capdata": "072d7fff03ff03ff0300000000000f",
+            "count": 15
+          },
+          {
+            "capdata": "072a7fff03ff03ff0300000000000f",
+            "count": 15
+          },
+          {
+            "capdata": "07207fff03ff03ff0300000000000f",
+            "count": 15
+          },
+          {
+            "capdata": "072b7fff03ff03ff0300000000000f",
+            "count": 14
+          },
+          {
+            "capdata": "07427fff03ff03ff0300000000000f",
+            "count": 13
+          },
+          {
+            "capdata": "073f7fff03ff03ff0300000000000f",
+            "count": 13
+          },
+          {
+            "capdata": "07407fff03ff03ff0300000000000f",
+            "count": 13
+          },
+          {
+            "capdata": "073d7fff03ff03ff0300000000000f",
+            "count": 12
+          },
+          {
+            "capdata": "07377fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "07357fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "072f7fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "071e7fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "071d7fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "07307fff03ff03ff0300000000000f",
+            "count": 10
+          },
+          {
+            "capdata": "07327fff03ff03ff0300000000000f",
+            "count": 8
+          },
+          {
+            "capdata": "07667fff03ff03ff0300000000000f",
+            "count": 7
+          },
+          {
+            "capdata": "07647fff03ff03ff0300000000000f",
+            "count": 7
+          },
+          {
+            "capdata": "073c7fff03ff03ff0300000000000f",
+            "count": 7
+          },
+          {
+            "capdata": "073a7fff03ff03ff0300000000000f",
+            "count": 7
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "07387fff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "071b7fff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07697fff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07677fff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "071a7fff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "076f7fff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "027000000009000009",
+            "count": 2
+          },
+          {
+            "capdata": "0462000900004b00",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "076c7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07837fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07807fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "01002240b80b000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "07797fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07767fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "01002140d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "07187fff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.047336,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "07837fff03ff03ff0300000000000f"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.093495,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "07807fff03ff03ff0300000000000f"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.159546,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "077c7fff03ff03ff0300000000000f"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.169296,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.170183,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.170338,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.171337,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.181632,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.183186,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.193627,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.195544,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.196048,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.197307,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.197465,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.198678,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.209131,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.211925,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.222673,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.223764,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.224157,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.227386,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.227616,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.228169,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.238636,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.239805,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.25016,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.251136,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.25148,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.252135,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 39,
+            "time_relative": 0.252177,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 40,
+            "time_relative": 0.253023,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 41,
+            "time_relative": 0.263544,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 75,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_triangle",
+          "effect_type": "triangle",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 75,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_constant_and_sine",
+      "effect_type": "sequence",
+      "description": "Constant and sine start together in orthogonal directions.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0003_sim_constant_and_sine_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 928,
+        "unique_payloads": 284,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 96
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 96
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "07f07dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "071b7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "071e7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07227fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07257fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07287fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "072b7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "072f7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07327fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07357fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07387fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "073c7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "073f7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07427fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07457fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07497fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "074d7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07517fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07547fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07577fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "075a7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "075e7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07617fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07677fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "076b7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "076e7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07717fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07747fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07777fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "077b7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07817fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07847fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07887fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "078b7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "078e7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07937fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07967fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "079d7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07a07fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07a57fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07a87fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07ab7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07af7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b27fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b87fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07bb7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07bf7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07c27fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07c57fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07c87fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07cc7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07cf7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07d27fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07d57fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07d97fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07dc7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07df7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07e27fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07e67fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07e97fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07ec7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07ef7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07f37fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07f67fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07f97fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07fc7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07fe7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070080ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070180ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070480ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070880ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070b80ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "070e80ff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07f37dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07ec7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "027000000006000006",
+            "count": 1
+          },
+          {
+            "capdata": "036200fd",
+            "count": 1
+          },
+          {
+            "capdata": "01000040b80b000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "071a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07207fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07277fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07307fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07337fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07377fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07407fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07447fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07477fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07527fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07557fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07597fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07627fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07767fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07797fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07807fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07837fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07867fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07897fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07907fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07917fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07957fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07987fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07997fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a37fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a67fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07aa7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ad7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b07fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b37fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ba7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bd7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c07fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c47fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ca7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cd7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d17fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d47fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07da7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dd7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e17fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e47fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ea7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ee7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f17fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f47fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fb7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071180ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071080ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070c80ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070980ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070680ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070380ff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07167fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07137fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07107fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07097fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07067fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07037fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07007fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f37eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ef7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ec7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e37eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07df7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cf7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bf7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b87eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07af7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ab7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07987eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07957eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07927eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07887eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07857eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07817eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07787eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07747eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07677eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07647eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07617eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07577eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07547eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07517eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07477eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07447eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07417eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07377eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07347eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07307eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07277eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "027000000003000003",
+            "count": 1
+          },
+          {
+            "capdata": "07207eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "0462000300002800",
+            "count": 1
+          },
+          {
+            "capdata": "071a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "01002240b80b000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "07177eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07137eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07107eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07067eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07037eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07007eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fd7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ee7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07df7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07af7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ac7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079b7dff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.05965,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.062479,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.062562,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.0632,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.073582,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.074116,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.084583,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.086109,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.086312,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.087015,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.087059,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.088079,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.098611,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.099227,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.109556,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.110099,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.110359,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.111082,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.111217,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.111943,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.122055,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.123104,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.133554,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.134543,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.134779,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.135457,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.135577,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.136665,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.147103,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.148114,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.158523,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.159104,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_sine",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 8000,
+            "period_ms": 40,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_spring_and_damper",
+      "effect_type": "sequence",
+      "description": "Spring and damper conditions running simultaneously.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0004_sim_spring_and_damper_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 504,
+        "unique_payloads": 148,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 96
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 96
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "079d7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a07dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a47dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a77dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07aa7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ac7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ad7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07af7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b47dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b77dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ba7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bd7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c27dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c47dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ca7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ce7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cf7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d47dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d77dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07db7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dc7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07de7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07df7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e47dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07eb7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ec7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ee7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f07dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f17dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f37dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f57dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f67dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "0562000000000000005454",
+            "count": 1
+          },
+          {
+            "capdata": "07f87dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f97dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fb7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fd7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "0570000000000000005454",
+            "count": 1
+          },
+          {
+            "capdata": "07fe7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07007eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07017eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "01004040d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "07037eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07057eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07067eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07087eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07107eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07127eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07137eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07157eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07177eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07187eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07207eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07227eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07257eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07277eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07287eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07307eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07327eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07347eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07357eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07377eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07397eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07417eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07427eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07447eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07457eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07477eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07497eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "41000001",
+            "count": 1
+          },
+          {
+            "capdata": "074c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07517eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07527eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07547eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07567eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07577eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07597eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07617eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07637eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07647eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "0562000000000000006464",
+            "count": 1
+          },
+          {
+            "capdata": "0570000000000000006464",
+            "count": 1
+          },
+          {
+            "capdata": "01004140d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "07677eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07707eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07747eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07767eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07787eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07797eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7eff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.116802,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.117423,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.117496,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.118416,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.128646,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.130784,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.141188,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.142604,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.142821,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.143514,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.14379,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.146649,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.157145,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.158321,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.168595,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.169566,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.169828,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.170513,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.170564,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.171416,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.181586,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.182309,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.192516,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.194494,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.194807,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.19538,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.195556,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.196251,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.206624,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.207611,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.218147,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.219532,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_spring",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_damper",
+          "effect_type": "damper",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_constant_four_directions",
+      "effect_type": "sequence",
+      "description": "Four constants played one after another in 0/90/180/270 degrees.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0005_seq_constant_four_directions_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 1648,
+        "unique_payloads": 188,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 192
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 192
+          },
+          {
+            "capdata": "4205",
+            "count": 12
+          },
+          {
+            "capdata": "071a7eff03ff03ff0300000000000f",
+            "count": 7
+          },
+          {
+            "capdata": "07177eff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07137eff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07e87dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07e47dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07e17dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07de7dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07db7dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07d77dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07c67dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07d67dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07ec7dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07f37dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07f67dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07fd7dff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07037eff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "070a7eff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "070d7eff03ff03ff0300000000000f",
+            "count": 6
+          },
+          {
+            "capdata": "07377eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07347eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07307eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "072d7eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "072a7eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07237eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07207eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "070b7eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07087eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07057eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07fe7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07fb7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07f17dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07eb7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07ce7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07ba7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07b77dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07b97dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07bf7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07c97dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07cc7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07cf7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07d37dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07007eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07107eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07067eff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "077b7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "078f7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "079f7dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07f07dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "07f97dff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "4204",
+            "count": 4
+          },
+          {
+            "capdata": "027000000009000009",
+            "count": 4
+          },
+          {
+            "capdata": "03620005",
+            "count": 4
+          },
+          {
+            "capdata": "010000402003000000620070000000",
+            "count": 4
+          },
+          {
+            "capdata": "41004101",
+            "count": 4
+          },
+          {
+            "capdata": "07277eff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "071d7eff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07017eff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07f87dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07f57dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07d47dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07d17dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07c77dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07c17dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07bd7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07c27dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07127eff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07ad7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07a77dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07907dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07867dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "077d7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07827dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "078b7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07957dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07987dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07a27dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07a57dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07af7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07b57dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07df7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07e97dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07717dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "076e7dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07687dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07647dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07617dff03ff03ff0300000000000f",
+            "count": 4
+          },
+          {
+            "capdata": "07677eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07647eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07617eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "075e7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "075b7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07577eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07547eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07517eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "074e7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "074a7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07477eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07447eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07417eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "073d7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "073a7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "070e7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07ee7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07ca7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07c47dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07b47dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07d97dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "41000001",
+            "count": 3
+          },
+          {
+            "capdata": "071b7eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07a47dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "079a7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07977dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07807dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07797dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "077e7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07887dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07927dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07ac7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07157eff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07e67dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07bc7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07b27dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07a87dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "079b7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07857dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "07757dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "076b7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "075e7dff03ff03ff0300000000000f",
+            "count": 3
+          },
+          {
+            "capdata": "071f7eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07227eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07257eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07287eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "072c7eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "072f7eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07357eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07397eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b17dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07aa7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "079d7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07937dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "078a7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07837dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07187eff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07e37dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07dc7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07787dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "075b7dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07577dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07547dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07517dff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07807eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07787eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07747eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07427eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07457eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07497eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07527eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07567eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07597eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07637eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a07dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078d7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07327eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07607dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07767dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074e7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07537dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697dff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076d7dff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.048624,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.0493,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.049361,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.049981,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.060543,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.063507,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.074065,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.075031,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.07521,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.076066,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.076152,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.079418,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.089587,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.090562,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.101075,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.10213,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.102306,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.103048,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.103089,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.104058,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.114601,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.115875,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.126057,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.127674,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.127844,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.128909,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.129012,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.129708,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.140057,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.143711,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.154056,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.15516,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_const_0deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_const_90deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3_const_180deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 180,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 2400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4_const_270deg",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 270,
+            "length_ms": 800,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 3600,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_ramp_then_constant",
+      "effect_type": "sequence",
+      "description": "Ramp up then hold with constant effect.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0006_seq_ramp_then_constant_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 750,
+        "unique_payloads": 263,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 96
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 96
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "027000000006000006",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "07387fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "073a7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "41000001",
+            "count": 2
+          },
+          {
+            "capdata": "07af7fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b27fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b57fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07b87fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "07177eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07187eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "04620006007f401f",
+            "count": 1
+          },
+          {
+            "capdata": "01002140d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "071a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07207eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07227eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07257eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07277eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07287eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07307eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07327eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07347eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07357eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07377eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07397eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07417eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07427eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07447eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07457eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07477eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07497eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07517eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07527eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07547eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07567eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07577eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07597eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07617eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07637eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07647eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07677eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076c7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07707eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07737eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07747eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07767eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07787eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07797eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07807eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07817eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07837eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07857eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07867eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07887eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07897eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078e7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07907eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07927eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07937eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07957eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07967eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07987eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079a7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079b7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079d7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079f7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a07eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a37eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a77eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07aa7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ab7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ad7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07af7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b07eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b47eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b77eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b87eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ba7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bd7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07bf7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c17eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c47eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c57eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c77eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07c97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ca7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cd7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07cf7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d17eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d27eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d47eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d77eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07d97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07da7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07dc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07de7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07df7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e17eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e37eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e47eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e77eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07e97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07eb7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ec7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ee7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ef7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f17eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f37eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f47eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f67eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f87eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07f97eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fb7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fc7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07fe7eff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07007fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07017fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07037fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07057fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07067fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07087fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07097fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "070e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07107fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07117fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07137fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07157fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07167fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07187fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "071e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07207fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07227fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07237fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07257fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07277fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07287fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "072f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07307fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07327fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07337fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07357fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07377fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "036200fd",
+            "count": 1
+          },
+          {
+            "capdata": "01000040d007000000620070000000",
+            "count": 1
+          },
+          {
+            "capdata": "073c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "073f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07407fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07427fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07447fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07457fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07477fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07497fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074a7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "074f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07527fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07547fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07557fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07577fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07597fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "075f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07617fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07627fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07667fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07677fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07697fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "076f7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07717fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07747fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07777fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07797fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077c7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "077e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07807fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07817fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07847fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07867fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07887fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07897fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "078e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07907fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07917fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07937fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07957fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07967fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07987fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07997fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079b7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079d7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "079e7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a07fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a27fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a37fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a57fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a67fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07a87fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07aa7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ab7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ad7fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b07fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b37fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07b77fff03ff03ff0300000000000f",
+            "count": 1
+          },
+          {
+            "capdata": "07ba7fff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.072763,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.073505,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.073696,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.074494,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.085053,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.085706,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.096059,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.097129,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.097432,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.097897,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.097934,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.10148,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.112161,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.112953,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.123561,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.124895,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.125105,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.125678,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.12574,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.12677,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.137064,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.137807,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.148037,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.149085,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.149404,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.150431,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.15059,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.151273,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.161587,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.1653,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.175537,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.176548,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_ramp",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_constant",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 2200,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "seq_sine_phase_shift",
+      "effect_type": "sequence",
+      "description": "Two sines with different phases, back to back.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0007_seq_sine_phase_shift_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 2380,
+        "unique_payloads": 41,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 96
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 96
+          },
+          {
+            "capdata": "078e7fff03ff03ff0300000000000f",
+            "count": 58
+          },
+          {
+            "capdata": "07ab7fff03ff03ff0300000000000f",
+            "count": 57
+          },
+          {
+            "capdata": "07a87fff03ff03ff0300000000000f",
+            "count": 49
+          },
+          {
+            "capdata": "078b7fff03ff03ff0300000000000f",
+            "count": 49
+          },
+          {
+            "capdata": "07af7fff03ff03ff0300000000000f",
+            "count": 48
+          },
+          {
+            "capdata": "07a57fff03ff03ff0300000000000f",
+            "count": 47
+          },
+          {
+            "capdata": "07ad7fff03ff03ff0300000000000f",
+            "count": 47
+          },
+          {
+            "capdata": "078d7fff03ff03ff0300000000000f",
+            "count": 47
+          },
+          {
+            "capdata": "07957fff03ff03ff0300000000000f",
+            "count": 43
+          },
+          {
+            "capdata": "07a27fff03ff03ff0300000000000f",
+            "count": 42
+          },
+          {
+            "capdata": "07987fff03ff03ff0300000000000f",
+            "count": 42
+          },
+          {
+            "capdata": "07917fff03ff03ff0300000000000f",
+            "count": 42
+          },
+          {
+            "capdata": "079e7fff03ff03ff0300000000000f",
+            "count": 41
+          },
+          {
+            "capdata": "079b7fff03ff03ff0300000000000f",
+            "count": 40
+          },
+          {
+            "capdata": "07aa7fff03ff03ff0300000000000f",
+            "count": 39
+          },
+          {
+            "capdata": "07897fff03ff03ff0300000000000f",
+            "count": 39
+          },
+          {
+            "capdata": "07a67fff03ff03ff0300000000000f",
+            "count": 36
+          },
+          {
+            "capdata": "07a07fff03ff03ff0300000000000f",
+            "count": 35
+          },
+          {
+            "capdata": "07b07fff03ff03ff0300000000000f",
+            "count": 35
+          },
+          {
+            "capdata": "07907fff03ff03ff0300000000000f",
+            "count": 33
+          },
+          {
+            "capdata": "07997fff03ff03ff0300000000000f",
+            "count": 32
+          },
+          {
+            "capdata": "079d7fff03ff03ff0300000000000f",
+            "count": 30
+          },
+          {
+            "capdata": "07967fff03ff03ff0300000000000f",
+            "count": 29
+          },
+          {
+            "capdata": "07937fff03ff03ff0300000000000f",
+            "count": 29
+          },
+          {
+            "capdata": "07a37fff03ff03ff0300000000000f",
+            "count": 26
+          },
+          {
+            "capdata": "07887fff03ff03ff0300000000000f",
+            "count": 25
+          },
+          {
+            "capdata": "07b27fff03ff03ff0300000000000f",
+            "count": 15
+          },
+          {
+            "capdata": "07867fff03ff03ff0300000000000f",
+            "count": 11
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "07b37fff03ff03ff0300000000000f",
+            "count": 5
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "027000000009000009",
+            "count": 2
+          },
+          {
+            "capdata": "01002240dc05000000620070000000",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "07847fff03ff03ff0300000000000f",
+            "count": 2
+          },
+          {
+            "capdata": "0462000900003c00",
+            "count": 1
+          },
+          {
+            "capdata": "41000001",
+            "count": 1
+          },
+          {
+            "capdata": "04620009007f3c00",
+            "count": 1
+          },
+          {
+            "capdata": "07b57fff03ff03ff0300000000000f",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.06218,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.062816,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.062905,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.063732,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.074036,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.075086,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.085669,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.086657,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.08687,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.087705,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.087772,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.088585,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.099062,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.100054,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.110554,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.11169,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.111868,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.115086,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.11522,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.11578,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.126058,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.126908,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.137053,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.138193,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.138436,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.139214,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.1393,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.139841,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.150103,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.150905,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.161056,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.163273,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_sine_phase0",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "phase_deg": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2_sine_phase180",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": 24000,
+            "period_ms": 60,
+            "phase_deg": 180,
+            "gain": 5
+          },
+          "start_ms": 1800,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "sim_inertia_and_friction",
+      "effect_type": "sequence",
+      "description": "Inertia and friction condition effects running together.",
+      "input_params": {},
+      "pcap_file": "captures/test_cases_multi_effect/windows_20251122_005954/0008_sim_inertia_and_friction_sequence.pcapng",
+      "usb_summary": {
+        "total_lines": 232,
+        "unique_payloads": 9,
+        "top_payloads": [
+          {
+            "capdata": "49000000001000",
+            "count": 96
+          },
+          {
+            "capdata": "49000000010002000300000002020000",
+            "count": 96
+          },
+          {
+            "capdata": "4205",
+            "count": 6
+          },
+          {
+            "capdata": "4204",
+            "count": 2
+          },
+          {
+            "capdata": "0562000000000000006464",
+            "count": 2
+          },
+          {
+            "capdata": "0570000000000000006464",
+            "count": 2
+          },
+          {
+            "capdata": "01004140d007000000620070000000",
+            "count": 2
+          },
+          {
+            "capdata": "41004101",
+            "count": 2
+          },
+          {
+            "capdata": "41000001",
+            "count": 1
+          }
+        ],
+        "sample_frames": [
+          {
+            "frame": 7,
+            "time_relative": 0.092243,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 8,
+            "time_relative": 0.094911,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 9,
+            "time_relative": 0.095017,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 10,
+            "time_relative": 0.095797,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 11,
+            "time_relative": 0.10611,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 12,
+            "time_relative": 0.106856,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 13,
+            "time_relative": 0.117091,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 14,
+            "time_relative": 0.117818,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 15,
+            "time_relative": 0.118047,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 16,
+            "time_relative": 0.118597,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 17,
+            "time_relative": 0.118675,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 18,
+            "time_relative": 0.119453,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 19,
+            "time_relative": 0.130107,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 20,
+            "time_relative": 0.130811,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 21,
+            "time_relative": 0.141185,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 22,
+            "time_relative": 0.143194,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 23,
+            "time_relative": 0.143392,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 24,
+            "time_relative": 0.144035,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 25,
+            "time_relative": 0.144126,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 26,
+            "time_relative": 0.144762,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 27,
+            "time_relative": 0.155177,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 28,
+            "time_relative": 0.155951,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 29,
+            "time_relative": 0.166084,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 30,
+            "time_relative": 0.167115,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 31,
+            "time_relative": 0.167244,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 32,
+            "time_relative": 0.168124,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 33,
+            "time_relative": 0.168174,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 34,
+            "time_relative": 0.168722,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 35,
+            "time_relative": 0.179055,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 36,
+            "time_relative": 0.180176,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          },
+          {
+            "frame": 37,
+            "time_relative": 0.190564,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000001000"
+          },
+          {
+            "frame": 38,
+            "time_relative": 0.191815,
+            "endpoint": "",
+            "transfer_type": "",
+            "capdata": "49000000010002000300000002020000"
+          }
+        ],
+        "payload_field": "usbhid.data",
+        "using_fallback_fields": true
+      },
+      "sequence": [
+        {
+          "id": "step1_inertia",
+          "effect_type": "inertia",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "medium",
+            "cond_left_sat": "medium",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step1_friction",
+          "effect_type": "friction",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}

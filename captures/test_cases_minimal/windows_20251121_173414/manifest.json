@@ -1,0 +1,47 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_minimal.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_minimal/windows_20251121_173414",
+  "tests": [
+    {
+      "id": "constant_level_medium_len_2000",
+      "effect_type": "constant",
+      "description": "Minimal suite: constant force, medium level, 2000ms at 0\u00b0",
+      "pcap_file": "captures/test_cases_minimal/windows_20251121_173414/0001_constant_level_medium_len_2000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_level_max_dir_180",
+      "effect_type": "constant",
+      "description": "Minimal suite: constant force, maximum level, 2000ms at 180\u00b0",
+      "pcap_file": "captures/test_cases_minimal/windows_20251121_173414/0002_constant_level_max_dir_180_constant.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}
