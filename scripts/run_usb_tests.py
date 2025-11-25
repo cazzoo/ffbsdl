@@ -85,11 +85,10 @@ def run_single_effect_capture(base_name, effect_type, params, defaults, key_leve
         effect_type, params, defaults, key_levels, cli_args.ffb_binary
     )
 
-    # If a global gain override was provided on the runner CLI, force it
-    # into the resolved params for this invocation so every effect in the
-    # run uses a consistent device gain. This is threaded through as
-    # --gain to ffbsdl's batch-mode CLI.
-    if getattr(cli_args, "global_gain", None) is not None:
+    # If a global default gain was provided on the runner CLI and this test
+    # did not specify a gain, use it as a fallback. Per-test gain values
+    # always take precedence.
+    if getattr(cli_args, "global_gain", None) is not None and "gain" not in resolved_params:
         resolved_params["gain"] = cli_args.global_gain
         ff_args, _ = build_cli_args(
             effect_type, resolved_params, {}, key_levels, cli_args.ffb_binary
@@ -216,9 +215,10 @@ def run_single_test(index, test, defaults, key_levels, cli_args):
             step_effect_type, step_params, defaults, key_levels, cli_args.ffb_binary
         )
 
-        # Honour any global gain override in the same way as for single-effect
-        # tests, so every step in the sequence uses a consistent gain.
-        if getattr(cli_args, "global_gain", None) is not None:
+        # If a global default gain was provided on the runner CLI and this step
+        # did not specify a gain, use it as a fallback. Per-step gain values
+        # always take precedence.
+        if getattr(cli_args, "global_gain", None) is not None and "gain" not in resolved_params:
             resolved_params["gain"] = cli_args.global_gain
             ff_args, _ = build_cli_args(
                 step_effect_type, resolved_params, {}, key_levels, cli_args.ffb_binary
@@ -307,8 +307,10 @@ def main():
         type=int,
         dest="global_gain",
         help=(
-            "Optional global force feedback gain (0-100). If set, overrides any per-test "
-            "gain value in the JSON and is passed to ffbsdl as --gain for each effect."
+            "Optional default force feedback gain. If set, it is passed to ffbsdl as "
+            "--gain only for tests/steps that do not specify a gain in JSON. Per-test "
+            "gain values always take precedence. The value is interpreted the same way "
+            "as ffbsdl's --gain (0-100 percentage or 0-65535 16-bit)."
         ),
     )
 

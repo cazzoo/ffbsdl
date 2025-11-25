@@ -197,10 +197,10 @@ Key options:
   POSIX and `bin/win64/ffbsdl.exe` on Windows.
 - `--pre-delay` / `--post-delay`: delays (in seconds) before and after each
   effect to let capture settle (default `0.5`).
-- `--gain` (runner CLI, mapped to `global_gain`): optional **global gain
-  override** for the entire run. When specified, every effect invocation is
-  passed `--gain <value>` to the `ffbsdl` binary, overriding any per-test
-  gain values in JSON.
+- `--gain` (runner CLI, mapped to `global_gain`): optional **default global
+  gain** for the run. When specified, it is passed as `--gain <value>` to the
+  `ffbsdl` binary only for tests/steps that do *not* specify a gain in JSON.
+  Per-test gain values always take precedence.
 
 ### 2. Multi-effect sequence suite
 

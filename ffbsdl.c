@@ -1194,9 +1194,28 @@ static int run_single_effect_from_args(SDL_Haptic *haptic, effect_mask supported
 	/* Apply optional global gain if provided in batch mode.
 	 * This is analogous to the interactive set_gain() helper but
 	 * controlled entirely via CLI (e.g. --gain 5 for 5%%).
+	 *
+	 * The gain value can be specified either as:
+	 *   - a percentage in the range [0, 100], or
+	 *   - a 16-bit value in the range [0, 65535], which is scaled to [0, 100].
 	 */
-	if(a->gain >= 0 && a->gain <= 100){
-		SDL_HapticSetGain(haptic, a->gain);
+	if(a->gain >= 0){
+		int gain_pct;
+		if(a->gain <= 100){
+			gain_pct = a->gain;
+		} else if(a->gain <= 65535){
+			/* Scale 0..65535 into 0..100 with rounding. */
+			gain_pct = (int)((a->gain * 100 + 32767) / 65535);
+		} else {
+			gain_pct = 100;
+		}
+
+		if(gain_pct < 0)
+			gain_pct = 0;
+		else if(gain_pct > 100)
+			gain_pct = 100;
+
+		SDL_HapticSetGain(haptic, gain_pct);
 	}
 
 	SDL_HapticEffect effect;
