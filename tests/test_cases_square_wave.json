@@ -1,0 +1,164 @@
+{
+  "description": "Test cases for square wave periodic effects to verify packet structure and encoding",
+  "key_levels": {
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1,
+    "offset": 0,
+    "phase_deg": 0
+  },
+  "tests": [
+    {
+      "id": "square_low_100ms",
+      "description": "Square wave with low magnitude and 100ms period",
+      "effect_type": "square",
+      "magnitude": "low",
+      "period_ms": 100
+    },
+    {
+      "id": "square_medium_100ms",
+      "description": "Square wave with medium magnitude and 100ms period",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100
+    },
+    {
+      "id": "square_high_100ms",
+      "description": "Square wave with high magnitude and 100ms period",
+      "effect_type": "square",
+      "magnitude": "high",
+      "period_ms": 100
+    },
+    {
+      "id": "square_max_100ms",
+      "description": "Square wave with max magnitude and 100ms period",
+      "effect_type": "square",
+      "magnitude": "max",
+      "period_ms": 100
+    },
+    {
+      "id": "square_medium_10ms",
+      "description": "Square wave with 10ms period (fast)",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 10
+    },
+    {
+      "id": "square_medium_50ms",
+      "description": "Square wave with 50ms period",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 50
+    },
+    {
+      "id": "square_medium_200ms",
+      "description": "Square wave with 200ms period",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 200
+    },
+    {
+      "id": "square_medium_500ms",
+      "description": "Square wave with 500ms period",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 500
+    },
+    {
+      "id": "square_medium_1000ms",
+      "description": "Square wave with 1000ms period (slow)",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 1000
+    },
+    {
+      "id": "square_phase_0",
+      "description": "Square wave with phase 0 degrees",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "phase_deg": 0
+    },
+    {
+      "id": "square_phase_90",
+      "description": "Square wave with phase 90 degrees",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "phase_deg": 90
+    },
+    {
+      "id": "square_phase_180",
+      "description": "Square wave with phase 180 degrees",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "phase_deg": 180
+    },
+    {
+      "id": "square_phase_270",
+      "description": "Square wave with phase 270 degrees",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "phase_deg": 270
+    },
+    {
+      "id": "square_with_offset",
+      "description": "Square wave with positive offset",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "offset": 16000
+    },
+    {
+      "id": "square_with_envelope",
+      "description": "Square wave with attack and fade envelope",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "attack_length_ms": 500,
+      "attack_level": 16000,
+      "fade_length_ms": 500,
+      "fade_level": 16000
+    },
+    {
+      "id": "square_direction_90",
+      "description": "Square wave with 90 degree direction",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "direction_deg": 90
+    },
+    {
+      "id": "square_direction_180",
+      "description": "Square wave with 180 degree direction",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "direction_deg": 180
+    },
+    {
+      "id": "square_direction_270",
+      "description": "Square wave with 270 degree direction",
+      "effect_type": "square",
+      "magnitude": "medium",
+      "period_ms": 100,
+      "direction_deg": 270
+    }
+  ]
+}
+

@@ -1,0 +1,262 @@
+{
+  "description": "Test cases to determine exact parameter scaling formulas for conditional effects",
+  "key_levels": {
+    "cond_coeff": {
+      "zero": 0,
+      "step1": 1000,
+      "step2": 5000,
+      "step3": 10000,
+      "step4": 16383,
+      "step5": 32767,
+      "max": 65535
+    },
+    "cond_sat": {
+      "zero": 0,
+      "step1": 1000,
+      "step2": 5000,
+      "step3": 10000,
+      "step4": 16383,
+      "step5": 32767,
+      "max": 65535
+    },
+    "cond_deadband": {
+      "zero": 0,
+      "small": 100,
+      "medium": 500,
+      "large": 1000,
+      "xlarge": 5000,
+      "max": 10000
+    },
+    "cond_center": {
+      "neg_max": -10000,
+      "neg_medium": -5000,
+      "neg_small": -1000,
+      "zero": 0,
+      "small": 1000,
+      "medium": 5000,
+      "max": 10000
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "spring_coeff_scaling_0",
+      "description": "Spring with coefficient = 0 to determine zero encoding",
+      "effect_type": "spring",
+      "cond_right_coeff": "zero",
+      "cond_left_coeff": "zero",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_1000",
+      "description": "Spring with coefficient = 1000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step1",
+      "cond_left_coeff": "step1",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_5000",
+      "description": "Spring with coefficient = 5000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step2",
+      "cond_left_coeff": "step2",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_10000",
+      "description": "Spring with coefficient = 10000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step3",
+      "cond_left_coeff": "step3",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_16383",
+      "description": "Spring with coefficient = 16383 (half of 32767)",
+      "effect_type": "spring",
+      "cond_right_coeff": "step4",
+      "cond_left_coeff": "step4",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_32767",
+      "description": "Spring with coefficient = 32767 (signed max)",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_coeff_scaling_65535",
+      "description": "Spring with coefficient = 65535 (unsigned max)",
+      "effect_type": "spring",
+      "cond_right_coeff": "max",
+      "cond_left_coeff": "max",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_sat_scaling_0",
+      "description": "Spring with saturation = 0",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "zero",
+      "cond_left_sat": "zero",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_sat_scaling_5000",
+      "description": "Spring with saturation = 5000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "step2",
+      "cond_left_sat": "step2",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_sat_scaling_32767",
+      "description": "Spring with saturation = 32767",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "step5",
+      "cond_left_sat": "step5",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_deadband_100",
+      "description": "Spring with deadband = 100",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "small",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_deadband_500",
+      "description": "Spring with deadband = 500",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "medium",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_deadband_5000",
+      "description": "Spring with deadband = 5000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "xlarge",
+      "cond_center": "zero"
+    },
+    {
+      "id": "spring_center_neg_5000",
+      "description": "Spring with center = -5000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "neg_medium"
+    },
+    {
+      "id": "spring_center_pos_5000",
+      "description": "Spring with center = +5000",
+      "effect_type": "spring",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "medium"
+    },
+    {
+      "id": "damper_coeff_scaling_5000",
+      "description": "Damper with coefficient = 5000 to verify saturation encoding",
+      "effect_type": "damper",
+      "cond_right_coeff": "step2",
+      "cond_left_coeff": "step2",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "damper_sat_scaling_5000",
+      "description": "Damper with saturation = 5000 to compare with spring",
+      "effect_type": "damper",
+      "cond_right_coeff": "step5",
+      "cond_left_coeff": "step5",
+      "cond_right_sat": "step2",
+      "cond_left_sat": "step2",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "inertia_coeff_scaling_5000",
+      "description": "Inertia with coefficient = 5000",
+      "effect_type": "inertia",
+      "cond_right_coeff": "step2",
+      "cond_left_coeff": "step2",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    },
+    {
+      "id": "friction_coeff_scaling_5000",
+      "description": "Friction with coefficient = 5000",
+      "effect_type": "friction",
+      "cond_right_coeff": "step2",
+      "cond_left_coeff": "step2",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "cond_deadband": "zero",
+      "cond_center": "zero"
+    }
+  ]
+}
+

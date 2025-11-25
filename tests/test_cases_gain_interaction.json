@@ -1,0 +1,144 @@
+{
+  "description": "Test cases to understand how device gain and in-game gain interact and multiply together",
+  "note": "These tests should be run with different device gain settings (via sysfs or controller settings) to observe the interaction",
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "gain": {
+      "zero": 0,
+      "quarter": 16383,
+      "half": 32767,
+      "three_quarter": 49151,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "constant_max_gain_zero",
+      "description": "Constant force at max level with zero gain (should produce no force)",
+      "effect_type": "constant",
+      "level": "max",
+      "gain": "zero"
+    },
+    {
+      "id": "constant_max_gain_quarter",
+      "description": "Constant force at max level with 25% gain",
+      "effect_type": "constant",
+      "level": "max",
+      "gain": "quarter"
+    },
+    {
+      "id": "constant_max_gain_half",
+      "description": "Constant force at max level with 50% gain",
+      "effect_type": "constant",
+      "level": "max",
+      "gain": "half"
+    },
+    {
+      "id": "constant_max_gain_three_quarter",
+      "description": "Constant force at max level with 75% gain",
+      "effect_type": "constant",
+      "level": "max",
+      "gain": "three_quarter"
+    },
+    {
+      "id": "constant_max_gain_max",
+      "description": "Constant force at max level with 100% gain",
+      "effect_type": "constant",
+      "level": "max",
+      "gain": "max"
+    },
+    {
+      "id": "constant_half_gain_half",
+      "description": "Constant force at 50% level with 50% gain (should be 25% total)",
+      "effect_type": "constant",
+      "level": "half",
+      "gain": "half"
+    },
+    {
+      "id": "constant_quarter_gain_quarter",
+      "description": "Constant force at 25% level with 25% gain (should be ~6% total)",
+      "effect_type": "constant",
+      "level": "quarter",
+      "gain": "quarter"
+    },
+    {
+      "id": "sine_max_gain_zero",
+      "description": "Sine wave at max magnitude with zero gain",
+      "effect_type": "sine",
+      "magnitude": "max",
+      "period_ms": 100,
+      "gain": "zero"
+    },
+    {
+      "id": "sine_max_gain_half",
+      "description": "Sine wave at max magnitude with 50% gain",
+      "effect_type": "sine",
+      "magnitude": "max",
+      "period_ms": 100,
+      "gain": "half"
+    },
+    {
+      "id": "sine_max_gain_max",
+      "description": "Sine wave at max magnitude with 100% gain",
+      "effect_type": "sine",
+      "magnitude": "max",
+      "period_ms": 100,
+      "gain": "max"
+    },
+    {
+      "id": "spring_max_gain_zero",
+      "description": "Spring effect at max coefficient with zero gain",
+      "effect_type": "spring",
+      "cond_right_coeff": "max",
+      "cond_left_coeff": "max",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "gain": "zero"
+    },
+    {
+      "id": "spring_max_gain_half",
+      "description": "Spring effect at max coefficient with 50% gain",
+      "effect_type": "spring",
+      "cond_right_coeff": "max",
+      "cond_left_coeff": "max",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "gain": "half"
+    },
+    {
+      "id": "spring_max_gain_max",
+      "description": "Spring effect at max coefficient with 100% gain",
+      "effect_type": "spring",
+      "cond_right_coeff": "max",
+      "cond_left_coeff": "max",
+      "cond_right_sat": "max",
+      "cond_left_sat": "max",
+      "gain": "max"
+    },
+    {
+      "id": "gain_change_during_effect",
+      "description": "Test changing gain while effect is running (requires manual gain adjustment)",
+      "effect_type": "constant",
+      "level": "max",
+      "length_ms": 10000,
+      "gain": "max",
+      "note": "Manually change device gain during this 10-second effect to observe behavior"
+    }
+  ]
+}
+
