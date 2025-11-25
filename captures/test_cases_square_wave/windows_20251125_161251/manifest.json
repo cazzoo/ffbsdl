@@ -1,0 +1,369 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_square_wave.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_square_wave/windows_20251125_161251",
+  "tests": [
+    {
+      "id": "square_low_100ms",
+      "effect_type": "square",
+      "description": "Square wave with low magnitude and 100ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0001_square_low_100ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_100ms",
+      "effect_type": "square",
+      "description": "Square wave with medium magnitude and 100ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0002_square_medium_100ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_high_100ms",
+      "effect_type": "square",
+      "description": "Square wave with high magnitude and 100ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0003_square_high_100ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_max_100ms",
+      "effect_type": "square",
+      "description": "Square wave with max magnitude and 100ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0004_square_max_100ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_10ms",
+      "effect_type": "square",
+      "description": "Square wave with 10ms period (fast)",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0005_square_medium_10ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_50ms",
+      "effect_type": "square",
+      "description": "Square wave with 50ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0006_square_medium_50ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_200ms",
+      "effect_type": "square",
+      "description": "Square wave with 200ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0007_square_medium_200ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_500ms",
+      "effect_type": "square",
+      "description": "Square wave with 500ms period",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0008_square_medium_500ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_medium_1000ms",
+      "effect_type": "square",
+      "description": "Square wave with 1000ms period (slow)",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0009_square_medium_1000ms_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_phase_0",
+      "effect_type": "square",
+      "description": "Square wave with phase 0 degrees",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0010_square_phase_0_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_phase_90",
+      "effect_type": "square",
+      "description": "Square wave with phase 90 degrees",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0011_square_phase_90_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_phase_180",
+      "effect_type": "square",
+      "description": "Square wave with phase 180 degrees",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0012_square_phase_180_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_phase_270",
+      "effect_type": "square",
+      "description": "Square wave with phase 270 degrees",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0013_square_phase_270_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_with_offset",
+      "effect_type": "square",
+      "description": "Square wave with positive offset",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0014_square_with_offset_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_with_envelope",
+      "effect_type": "square",
+      "description": "Square wave with attack and fade envelope",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0015_square_with_envelope_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_direction_90",
+      "effect_type": "square",
+      "description": "Square wave with 90 degree direction",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0016_square_direction_90_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_direction_180",
+      "effect_type": "square",
+      "description": "Square wave with 180 degree direction",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0017_square_direction_180_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "square_direction_270",
+      "effect_type": "square",
+      "description": "Square wave with 270 degree direction",
+      "pcap_file": "captures/test_cases_square_wave/windows_20251125_161251/0018_square_direction_270_square.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "offset": 0,
+        "phase_deg": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

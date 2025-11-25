@@ -1,0 +1,261 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_gain_interaction.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_gain_interaction/windows_20251125_160831",
+  "tests": [
+    {
+      "id": "constant_max_gain_zero",
+      "effect_type": "constant",
+      "description": "Constant force at max level with zero gain (should produce no force)",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0001_constant_max_gain_zero_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_max_gain_quarter",
+      "effect_type": "constant",
+      "description": "Constant force at max level with 25% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0002_constant_max_gain_quarter_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_max_gain_half",
+      "effect_type": "constant",
+      "description": "Constant force at max level with 50% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0003_constant_max_gain_half_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_max_gain_three_quarter",
+      "effect_type": "constant",
+      "description": "Constant force at max level with 75% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0004_constant_max_gain_three_quarter_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_max_gain_max",
+      "effect_type": "constant",
+      "description": "Constant force at max level with 100% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0005_constant_max_gain_max_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_half_gain_half",
+      "effect_type": "constant",
+      "description": "Constant force at 50% level with 50% gain (should be 25% total)",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0006_constant_half_gain_half_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "constant_quarter_gain_quarter",
+      "effect_type": "constant",
+      "description": "Constant force at 25% level with 25% gain (should be ~6% total)",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0007_constant_quarter_gain_quarter_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_max_gain_zero",
+      "effect_type": "sine",
+      "description": "Sine wave at max magnitude with zero gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0008_sine_max_gain_zero_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_max_gain_half",
+      "effect_type": "sine",
+      "description": "Sine wave at max magnitude with 50% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0009_sine_max_gain_half_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "sine_max_gain_max",
+      "effect_type": "sine",
+      "description": "Sine wave at max magnitude with 100% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0010_sine_max_gain_max_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_max_gain_zero",
+      "effect_type": "spring",
+      "description": "Spring effect at max coefficient with zero gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0011_spring_max_gain_zero_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_max_gain_half",
+      "effect_type": "spring",
+      "description": "Spring effect at max coefficient with 50% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0012_spring_max_gain_half_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_max_gain_max",
+      "effect_type": "spring",
+      "description": "Spring effect at max coefficient with 100% gain",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0013_spring_max_gain_max_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "gain_change_during_effect",
+      "effect_type": "constant",
+      "description": "Test changing gain while effect is running (requires manual gain adjustment)",
+      "pcap_file": "captures/test_cases_gain_interaction/windows_20251125_160831/0014_gain_change_during_effect_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,865 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_effect_id_range.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_effect_id_range/windows_20251125_160708",
+  "tests": [
+    {
+      "id": "effect_id_sequential_0_to_15",
+      "effect_type": "sequence",
+      "description": "Upload 16 effects with sequential IDs 0-15 to test full range",
+      "pcap_file": "captures/test_cases_effect_id_range/windows_20251125_160708/0001_effect_id_sequential_0_to_15_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 100,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 100,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 300,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 300,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step5",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 400,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step6",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step7",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 600,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 600,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step8",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 700,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 700,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step9",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 800,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 800,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step10",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 900,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 900,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step11",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step12",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1100,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1100,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step13",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step14",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1300,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1300,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step15",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1400,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step16",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "effect_id_overflow_17_effects",
+      "effect_type": "sequence",
+      "description": "Upload 17 effects to test behavior when exceeding 16-slot limit",
+      "pcap_file": "captures/test_cases_effect_id_range/windows_20251125_160708/0002_effect_id_overflow_17_effects_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 100,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 100,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 300,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 300,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step5",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 400,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step6",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step7",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 600,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 600,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step8",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 700,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 700,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step9",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 800,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 800,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step10",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 900,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 900,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step11",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step12",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1100,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1100,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step13",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step14",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1300,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1300,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step15",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1400,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1400,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step16",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step17",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1600,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1600,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "effect_id_reuse_after_stop",
+      "effect_type": "sequence",
+      "description": "Test if effect ID can be reused after stopping an effect",
+      "pcap_file": "captures/test_cases_effect_id_range/windows_20251125_160708/0003_effect_id_reuse_after_stop_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 3000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 3000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "effect_id_mixed_types",
+      "effect_type": "sequence",
+      "description": "Test effect IDs with different effect types running simultaneously",
+      "pcap_file": "captures/test_cases_effect_id_range/windows_20251125_160708/0004_effect_id_mixed_types_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4",
+          "effect_type": "damper",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "effect_id_rapid_upload_stop",
+      "effect_type": "sequence",
+      "description": "Rapidly upload and stop effects to test ID management",
+      "pcap_file": "captures/test_cases_effect_id_range/windows_20251125_160708/0005_effect_id_rapid_upload_stop_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 250,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 250,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 750,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 750,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step5",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step6",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1250,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1250,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step7",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step8",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 3000,
+            "delay_ms": 1750,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 1750,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}

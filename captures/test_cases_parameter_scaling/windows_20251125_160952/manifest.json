@@ -1,0 +1,351 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_parameter_scaling.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_parameter_scaling/windows_20251125_160952",
+  "tests": [
+    {
+      "id": "spring_coeff_scaling_0",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 0 to determine zero encoding",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0001_spring_coeff_scaling_0_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_1000",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 1000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0002_spring_coeff_scaling_1000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_5000",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0003_spring_coeff_scaling_5000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_10000",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 10000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0004_spring_coeff_scaling_10000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_16383",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 16383 (half of 32767)",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0005_spring_coeff_scaling_16383_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_32767",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 32767 (signed max)",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0006_spring_coeff_scaling_32767_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_coeff_scaling_65535",
+      "effect_type": "spring",
+      "description": "Spring with coefficient = 65535 (unsigned max)",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0007_spring_coeff_scaling_65535_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_sat_scaling_0",
+      "effect_type": "spring",
+      "description": "Spring with saturation = 0",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0008_spring_sat_scaling_0_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_sat_scaling_5000",
+      "effect_type": "spring",
+      "description": "Spring with saturation = 5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0009_spring_sat_scaling_5000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_sat_scaling_32767",
+      "effect_type": "spring",
+      "description": "Spring with saturation = 32767",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0010_spring_sat_scaling_32767_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_deadband_100",
+      "effect_type": "spring",
+      "description": "Spring with deadband = 100",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0011_spring_deadband_100_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_deadband_500",
+      "effect_type": "spring",
+      "description": "Spring with deadband = 500",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0012_spring_deadband_500_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_deadband_5000",
+      "effect_type": "spring",
+      "description": "Spring with deadband = 5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0013_spring_deadband_5000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_center_neg_5000",
+      "effect_type": "spring",
+      "description": "Spring with center = -5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0014_spring_center_neg_5000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "spring_center_pos_5000",
+      "effect_type": "spring",
+      "description": "Spring with center = +5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0015_spring_center_pos_5000_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_coeff_scaling_5000",
+      "effect_type": "damper",
+      "description": "Damper with coefficient = 5000 to verify saturation encoding",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0016_damper_coeff_scaling_5000_damper.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "damper_sat_scaling_5000",
+      "effect_type": "damper",
+      "description": "Damper with saturation = 5000 to compare with spring",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0017_damper_sat_scaling_5000_damper.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "inertia_coeff_scaling_5000",
+      "effect_type": "inertia",
+      "description": "Inertia with coefficient = 5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0018_inertia_coeff_scaling_5000_inertia.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "friction_coeff_scaling_5000",
+      "effect_type": "friction",
+      "description": "Friction with coefficient = 5000",
+      "pcap_file": "captures/test_cases_parameter_scaling/windows_20251125_160952/0019_friction_coeff_scaling_5000_friction.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}
