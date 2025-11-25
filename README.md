@@ -122,8 +122,9 @@ Test suites live in `tests/`:
 - `tests/test_cases.json`: **single-effect** tests (each test runs exactly
   one SDL haptic effect).
 - `tests/test_cases_multi_effect.json`: **multi-effect sequence** tests
-  (each test is a sequence of effects run back-to-back while capture is
-  active).
+  focusing on effect combinations and overlap patterns.
+- `tests/test_cases_multi_effect_timing.json`: additional multi-effect
+  sequence tests emphasising varied start times, durations, and timing gaps.
 
 ### Test JSON structure (single-effect)
 
@@ -142,20 +143,24 @@ Each single-effect test suite has the form:
 
 ### Test JSON structure (multi-effect sequences)
 
-`tests/test_cases_multi_effect.json` has the same `key_levels` and
+`tests/test_cases_multi_effect.json` and
+`tests/test_cases_multi_effect_timing.json` have the same `key_levels` and
 `defaults`, but each test provides a `sequence` instead of a single
 `effect_type`:
 
 - `sequence`: array of steps, each with:
   - `id`: step identifier within the test
   - `effect_type`: same set of types as single-effect tests
-  - `start_ms` (optional): intended start time in the *conceptual* test
-    timeline (currently informational; steps actually run sequentially)
+  - `start_ms` (optional): intended start time (in milliseconds) within the
+    test timeline; this is honoured by the runner and mapped onto ffbsdl's
+    device-level delay so that effects can overlap in time
   - `params`: per-step effect parameters
 
 During capture, `run_usb_tests.py` starts `tshark` once for the whole
-sequence and then runs each step in order. The full packet trace ends up in
-one `.pcapng` file per multi-effect test.
+sequence and then launches one `ffbsdl` process per step, each with an
+appropriate `--delay-ms` based on `start_ms`. All steps run under the same
+capture, so the full packet trace ends up in one `.pcapng` file per
+multi-effect test.
 
 ## Running the USB tests
 

@@ -515,6 +515,51 @@
           }
         }
       ]
+    },
+    {
+      "id": "timing_four_layered_overlaps",
+      "description": "Long constant base with three staggered overlays creating intervals of 2, 3, and 4 concurrent forces.",
+      "sequence": [
+        {
+          "id": "step1_constant_base",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 6000
+          }
+        },
+        {
+          "id": "step2_sine_overlay",
+          "effect_type": "sine",
+          "start_ms": 500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 30,
+            "length_ms": 4000
+          }
+        },
+        {
+          "id": "step3_triangle_overlay",
+          "effect_type": "triangle",
+          "start_ms": 1500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 50,
+            "length_ms": 2500
+          }
+        },
+        {
+          "id": "step4_ramp_overlay",
+          "effect_type": "ramp",
+          "start_ms": 2000,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1500
+          }
+        }
+      ]
     }
   ]
 }

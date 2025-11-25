@@ -109,12 +109,11 @@ def run_single_test(index, test, defaults, key_levels, cli_args):
     Legacy tests have top-level "effect_type" and "params" fields.
 
     Multi-effect tests instead provide a "sequence" array. Each entry in
-    the sequence must have "effect_type" and "params". Optionally a
-    "start_ms" field can be provided to document intended scheduling of
-    effects within the *conceptual* timeline of the test. The current
-    implementation does not yet align tshark/ffbsdl invocations to these
-    timestamps – each step simply runs to completion in order – but the
-    information is preserved in the manifest for downstream analysis.
+    the sequence must have "effect_type" and "params". An optional
+    "start_ms" field specifies the intended start time of that effect
+    within the test timeline. For sequence tests we now honour "start_ms"
+    by mapping it onto ffbsdl's --delay-ms parameter and launching one
+    ffbsdl process per step so that their active windows can overlap.
     """
 
     test_id = test["id"]
@@ -187,32 +186,46 @@ def run_single_test(index, test, defaults, key_levels, cli_args):
     time.sleep(cli_args.pre_delay)
 
     step_results = []
+    procs = []
 
     for step_index, step in enumerate(sequence, start=1):
         step_effect_type = step["effect_type"]
-        step_params = step.get("params", {})
+        raw_step_params = step.get("params", {}) or {}
+        step_params = dict(raw_step_params)
         step_id = step.get("id") or f"step{step_index}"
-        start_ms = step.get("start_ms")
+        start_ms = step.get("start_ms") or 0
+
+        # Map the conceptual start_ms for this step onto ffbsdl's device-level
+        # delay parameter so that the effect starts at the intended time within
+        # the overall test timeline.
+        base_delay = defaults.get("delay_ms", 0)
+        if "delay_ms" in step_params and step_params["delay_ms"] is not None:
+            effective_delay = step_params["delay_ms"] + start_ms
+        else:
+            effective_delay = base_delay + start_ms
+        step_params["delay_ms"] = effective_delay
 
         step_base = f"{base_name}_{step_index:02d}_{step_id}_{step_effect_type}"
         print(
             f"  [STEP {step_index}] {step_id}: {step_effect_type} "
-            f"(start_ms={start_ms!r})"
+            f"(start_ms={start_ms!r}, delay_ms={effective_delay})"
         )
         sys.stdout.flush()
 
-        # NOTE: For now we simply run each step immediately one after the
-        # other. The conceptual start_ms is *not* yet enforced as a
-        # scheduling constraint; it is recorded purely for analysis so
-        # that USB packet patterns can be correlated with intended timing.
-        _step_pcap, resolved_params, returncode = run_single_effect_capture(
-            step_base,
-            step_effect_type,
-            step_params,
-            defaults,
-            key_levels,
-            cli_args,
+        ff_args, resolved_params = build_cli_args(
+            step_effect_type, step_params, defaults, key_levels, cli_args.ffb_binary
         )
+
+        # Honour any global gain override in the same way as for single-effect
+        # tests, so every step in the sequence uses a consistent gain.
+        if getattr(cli_args, "global_gain", None) is not None:
+            resolved_params["gain"] = cli_args.global_gain
+            ff_args, _ = build_cli_args(
+                step_effect_type, resolved_params, {}, key_levels, cli_args.ffb_binary
+            )
+
+        proc = subprocess.Popen(ff_args)
+        procs.append(proc)
 
         step_results.append(
             {
@@ -220,11 +233,16 @@ def run_single_test(index, test, defaults, key_levels, cli_args):
                 "effect_type": step_effect_type,
                 "params": resolved_params,
                 "start_ms": start_ms,
-                "cli_returncode": returncode,
+                "cli_returncode": None,
             }
         )
 
-    # Ensure we capture tail of any remaining USB traffic
+    # Wait for all step processes to complete so the capture includes their
+    # full active windows, then capture a small tail of any remaining traffic.
+    for proc, step_result in zip(procs, step_results):
+        returncode = proc.wait()
+        step_result["cli_returncode"] = returncode
+
     time.sleep(cli_args.post_delay)
 
     tshark_proc.terminate()

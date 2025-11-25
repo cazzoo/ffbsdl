@@ -341,6 +341,327 @@
           }
         }
       ]
+    },
+    {
+      "id": "sim_four_periodic_staggered",
+      "description": "Four periodic effects with staggered starts creating a 4-way overlap window.",
+      "sequence": [
+        {
+          "id": "step1_sine_base",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 3000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_triangle_late",
+          "effect_type": "triangle",
+          "start_ms": 500,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 2500,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step3_sine_short",
+          "effect_type": "sine",
+          "start_ms": 1000,
+          "params": {
+            "magnitude": "low",
+            "period_ms": 40,
+            "length_ms": 2000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step4_triangle_short",
+          "effect_type": "triangle",
+          "start_ms": 1500,
+          "params": {
+            "magnitude": "high",
+            "period_ms": 80,
+            "length_ms": 1500,
+            "direction_deg": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_four_constant_cardinal",
+      "description": "Four constant forces in cardinal directions all active simultaneously.",
+      "sequence": [
+        {
+          "id": "step1_const_0",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 3000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_const_90",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 3000,
+            "direction_deg": 90
+          }
+        },
+        {
+          "id": "step3_const_180",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 3000,
+            "direction_deg": 180
+          }
+        },
+        {
+          "id": "step4_const_270",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 3000,
+            "direction_deg": 270
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_periodic_with_conditions",
+      "description": "Sine base force with spring, damper, and friction conditions enabling a 4-way overlap.",
+      "sequence": [
+        {
+          "id": "step1_sine_base",
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 60,
+            "length_ms": 5000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_spring",
+          "effect_type": "spring",
+          "start_ms": 0,
+          "params": {
+            "cond_right_coeff": "medium",
+            "cond_left_coeff": "medium",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 5000
+          }
+        },
+        {
+          "id": "step3_damper",
+          "effect_type": "damper",
+          "start_ms": 1000,
+          "params": {
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "max",
+            "cond_left_sat": "max",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 3000
+          }
+        },
+        {
+          "id": "step4_friction",
+          "effect_type": "friction",
+          "start_ms": 2000,
+          "params": {
+            "cond_right_coeff": "high",
+            "cond_left_coeff": "high",
+            "cond_right_sat": "high",
+            "cond_left_sat": "high",
+            "cond_deadband": 0,
+            "cond_center": 0,
+            "length_ms": 2000
+          }
+        }
+      ]
+    },
+    {
+      "id": "sim_16_constant_forces",
+      "description": "Sixteen constant forces with varied directions and levels all starting at t=0 to exercise the 16-parallel-force limit.",
+      "sequence": [
+        {
+          "id": "step1_const_0_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "id": "step2_const_90_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 90
+          }
+        },
+        {
+          "id": "step3_const_180_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 180
+          }
+        },
+        {
+          "id": "step4_const_270_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 270
+          }
+        },
+        {
+          "id": "step5_const_45_low",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "low",
+            "length_ms": 4000,
+            "direction_deg": 45
+          }
+        },
+        {
+          "id": "step6_const_135_low",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "low",
+            "length_ms": 4000,
+            "direction_deg": 135
+          }
+        },
+        {
+          "id": "step7_const_225_low",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "low",
+            "length_ms": 4000,
+            "direction_deg": 225
+          }
+        },
+        {
+          "id": "step8_const_315_low",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "low",
+            "length_ms": 4000,
+            "direction_deg": 315
+          }
+        },
+        {
+          "id": "step9_const_30_high",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 4000,
+            "direction_deg": 30
+          }
+        },
+        {
+          "id": "step10_const_150_high",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 4000,
+            "direction_deg": 150
+          }
+        },
+        {
+          "id": "step11_const_210_high",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 4000,
+            "direction_deg": 210
+          }
+        },
+        {
+          "id": "step12_const_330_high",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "high",
+            "length_ms": 4000,
+            "direction_deg": 330
+          }
+        },
+        {
+          "id": "step13_const_60_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 60
+          }
+        },
+        {
+          "id": "step14_const_120_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 120
+          }
+        },
+        {
+          "id": "step15_const_240_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 240
+          }
+        },
+        {
+          "id": "step16_const_300_med",
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 4000,
+            "direction_deg": 300
+          }
+        }
+      ]
     }
   ]
 }
