@@ -1,0 +1,243 @@
+{
+  "description": "Test cases to validate envelope parameter limits and firmare bug workarounds",
+  "note": "Based on T500RS_Driver_Analysis_and_Improvements.md - targets envelope validation improvements",
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "attack_level": {
+      "zero": 0,
+      "low": 8000,
+      "medium": 16000,
+      "high": 18000,
+      "danger_high": 19000,
+      "max": 65535
+    },
+    "fade_level": {
+      "zero": 0,
+      "low": 8000,
+      "medium": 16000,
+      "high": 18000,
+      "danger_high": 19000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 3000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "envelope_zero_all",
+      "description": "Constant with all envelope parameters zero (baseline)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0
+      }
+    },
+    {
+      "id": "envelope_attack_only_level_18000",
+      "description": "Constant with attack only at level 18000 (Windows-safe threshold)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 500,
+        "attack_level": "high"
+      }
+    },
+    {
+      "id": "envelope_attack_only_level_19000",
+      "description": "Constant with attack only at level 19000 (potential firmware issue)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 500,
+        "attack_level": "danger_high"
+      }
+    },
+    {
+      "id": "envelope_fade_only_level_18000",
+      "description": "Constant with fade only at level 18000",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "fade_length_ms": 500,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_fade_only_level_19000",
+      "description": "Constant with fade only at level 19000",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "fade_length_ms": 500,
+        "fade_level": "danger_high"
+      }
+    },
+    {
+      "id": "envelope_attack_fade_level_18000",
+      "description": "Constant with both attack and fade at 18000",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 500,
+        "attack_level": "high",
+        "fade_length_ms": 500,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_attack_fade_level_19000",
+      "description": "Constant with both attack and fade at 19000",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 500,
+        "attack_level": "danger_high",
+        "fade_length_ms": 500,
+        "fade_level": "danger_high"
+      }
+    },
+    {
+      "id": "envelope_ramp_full_support",
+      "description": "Ramp with full envelope support (should work per analysis)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "attack_length_ms": 500,
+        "attack_level": "high",
+        "fade_length_ms": 500,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_ramp_max_levels",
+      "description": "Ramp with maximum envelope levels",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "attack_length_ms": 1000,
+        "attack_level": "max",
+        "fade_length_ms": 1000,
+        "fade_level": "max"
+      }
+    },
+    {
+      "id": "envelope_sine_attack_only_18000",
+      "description": "Sine periodic with attack envelope at 18000",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "attack_length_ms": 500,
+        "attack_level": "high"
+      }
+    },
+    {
+      "id": "envelope_sine_fade_only_18000",
+      "description": "Sine periodic with fade envelope at 18000",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "fade_length_ms": 500,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_triangle_attack_fade_18000",
+      "description": "Triangle periodic with full envelope at 18000",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "attack_length_ms": 500,
+        "attack_level": "high",
+        "fade_length_ms": 500,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_length_1000_ms",
+      "description": "Constant with envelope length 1000ms (firmware threshold test)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 1000,
+        "attack_level": "high",
+        "fade_length_ms": 1000,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_length_1100_ms",
+      "description": "Constant with envelope length 1100ms (beyond firmware threshold)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 1100,
+        "attack_level": "high",
+        "fade_length_ms": 1100,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_conditional_validation",
+      "description": "Test conditional envelope validation function",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 500,
+        "attack_level": "medium",
+        "fade_length_ms": 500,
+        "fade_level": "medium"
+      }
+    },
+    {
+      "id": "envelope_zero_length_nonzero_level",
+      "description": "Envelope with zero length but non-zero level (edge case)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 0,
+        "attack_level": "high",
+        "fade_length_ms": 0,
+        "fade_level": "high"
+      }
+    },
+    {
+      "id": "envelope_max_length_zero_level",
+      "description": "Envelope with max length but zero level (edge case)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "attack_length_ms": 1000,
+        "attack_level": 0,
+        "fade_length_ms": 1000,
+        "fade_level": 0
+      }
+    }
+  ]
+}

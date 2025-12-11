@@ -1,0 +1,277 @@
+{
+  "description": "Test cases to capture and analyze device initialization sequences",
+  "note": "Based on T500RS_Driver_Analysis_and_Improvements.md - targets missing Windows-style init sequences",
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 1000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "init_cold_device_connect",
+      "description": "Immediate effect after device connection - captures full 07xx initialization sequence",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 1000
+      },
+      "note": "CRITICAL: Run immediately after device connection - captures Windows-style init"
+    },
+    {
+      "id": "init_post_reset_sequence",
+      "description": "Effect after device reset - captures post-reset initialization",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 1000
+      },
+      "note": "Run after device reset - should show 42, 43, 41 basic init packets"
+    },
+    {
+      "id": "init_enhanced_configuration",
+      "description": "Test enhanced initialization sequence from analysis recommendations",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 2000
+      },
+      "note": "Should show enhanced packets: 0x42{0x04}, 0x42{0x05}, 0x42{0x00}, 0x40{0x11,0x42,0x7b,0x00}, etc."
+    },
+    {
+      "id": "init_windows_style_42_43_41",
+      "description": "Baseline Windows-style initialization packets (42, 43, 41)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 1500
+      },
+      "note": "Should show the basic 42, 43, 41 packet sequence"
+    },
+    {
+      "id": "init_49_packet_sequence",
+      "description": "Test for 0x49 packet sequences observed in Windows captures",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 2000
+      },
+      "note": "Should show 0x49 packets with varying data patterns"
+    },
+    {
+      "id": "init_07xx_variations",
+      "description": "Test for 0x07xx packet variations in Windows initialization",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "length_ms": 2000
+      },
+      "note": "Should capture various 0x07xx packets with different parameters"
+    },
+    {
+      "id": "init_40_packet_config",
+      "description": "Test for 0x40 configuration packets",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high",
+        "length_ms": 2000
+      },
+      "note": "Should show 0x40 packets with configuration data"
+    },
+    {
+      "id": "init_multi_packet_sequence",
+      "description": "Multi-effect sequence to see all initialization packets",
+      "sequence": [
+        {
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "low",
+            "length_ms": 500
+          }
+        },
+        {
+          "effect_type": "sine",
+          "start_ms": 600,
+          "params": {
+            "magnitude": "low",
+            "period_ms": 100,
+            "length_ms": 500
+          }
+        },
+        {
+          "effect_type": "spring",
+          "start_ms": 1200,
+          "params": {
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "medium",
+            "cond_left_sat": "medium",
+            "length_ms": 500
+          }
+        }
+      ],
+      "note": "Should capture comprehensive initialization followed by multiple effects"
+    },
+    {
+      "id": "init_baseline_linux_only",
+      "description": "Baseline test showing current Linux-only initialization (should be minimal)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      },
+      "note": "Expected to show only basic 42, 43, 41 packets - no 07xx, 49xx, or complex 40xx sequences"
+    },
+    {
+      "id": "init_post_suspend_resume",
+      "description": "Test initialization after suspend/resume cycle",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 1500
+      },
+      "note": "Should show re-initialization sequence after system suspend/resume"
+    },
+    {
+      "id": "init_device_reconnect",
+      "description": "Test initialization after device disconnection/reconnection",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      },
+      "note": "Should show full initialization sequence after physical reconnect"
+    },
+    {
+      "id": "init_vs_effect_upload_comparison",
+      "description": "Compare initialization packets with effect upload packets",
+      "sequence": [
+        {
+          "effect_type": "constant",
+          "start_ms": 0,
+          "params": {
+            "level": "medium",
+            "length_ms": 1000
+          }
+        },
+        {
+          "effect_type": "constant",
+          "start_ms": 1200,
+          "params": {
+            "level": "high",
+            "length_ms": 1000
+          }
+        }
+      ],
+      "note": "Should clearly distinguish init packets from effect upload packets"
+    },
+    {
+      "id": "init_packet_timing_analysis",
+      "description": "Timing analysis of initialization packet sequence",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 3000
+      },
+      "note": "Analyze timing between init packets and effect upload packets"
+    },
+    {
+      "id": "init_with_envelope_effect",
+      "description": "Test initialization followed by effect with envelope",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "attack_length_ms": 500,
+        "attack_level": 16000,
+        "fade_length_ms": 500,
+        "fade_level": 16000,
+        "length_ms": 3000
+      },
+      "note": "Should show initialization + envelope packet sequences"
+    },
+    {
+      "id": "init_ramp_effect_comparison",
+      "description": "Test initialization with ramp effect to compare packet types",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "length_ms": 2000
+      },
+      "note": "Should show init + ramp-specific packet sequences"
+    },
+    {
+      "id": "init_conditional_effects",
+      "description": "Test initialization with conditional effects (spring/damper/friction)",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high",
+        "cond_deadband": 1000,
+        "cond_center": 0,
+        "length_ms": 3000
+      },
+      "note": "Should show init + conditional effect packet sequences"
+    },
+    {
+      "id": "init_packet_code_verification",
+      "description": "Verify packet codes in initialization sequence match Windows analysis",
+      "effect_type": "constant",
+      "params": {
+        "level": "max",
+        "length_ms": 2000
+      },
+      "note": "Should show packet codes: 0x42, 0x43, 0x41, 0x07xx, 0x49xx, 0x40xx patterns"
+    },
+    {
+      "id": "init_error_recovery_sequence",
+      "description": "Test initialization after error condition (if test framework supports)",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      },
+      "note": "Should show error recovery initialization sequence"
+    },
+    {
+      "id": "init_full_windows_compatibility",
+      "description": "Test for full Windows compatibility in initialization",
+      "effect_type": "constant",
+      "params": {
+        "level": "high",
+        "length_ms": 2500
+      },
+      "note": "Should show comprehensive initialization matching Windows implementation"
+    },
+    {
+      "id": "init_comparison_linux_windows",
+      "description": "Direct comparison showing Linux vs Windows initialization differences",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      },
+      "note": "Primary test for identifying missing Windows initialization elements"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "description": "Test cases for enhanced direction and phase interaction handling in periodic effects",
+  "note": "Based on T500RS_Driver_Analysis_and_Improvements.md - targets improved direction handling",
+  "key_levels": {
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 3000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1,
+    "offset": 0
+  },
+  "tests": [
+    {
+      "id": "direction_phase_baseline",
+      "description": "Baseline: direction 0°, phase 0° (no adjustment)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_negative_force",
+      "description": "Test negative force projection: direction causing negative force_direction",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 180
+      }
+    },
+    {
+      "id": "direction_phase_phase_adjustment",
+      "description": "Test phase adjustment for negative force (add 180 degrees)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 180,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_90deg_with_phase",
+      "description": "Direction 90° with phase 0° (orthogonal direction)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 90,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_270deg_with_phase",
+      "description": "Direction 270° with phase 0° (opposite orthogonal)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 270,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_45deg_diagonal",
+      "description": "Direction 45° (diagonal) with standard phase",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 45,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_135deg_diagonal",
+      "description": "Direction 135° (diagonal) with standard phase",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 135,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_225deg_diagonal",
+      "description": "Direction 225° (diagonal) with standard phase",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 225,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "direction_phase_315deg_diagonal",
+      "description": "Direction 315° (diagonal) with standard phase",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 315,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "phase_90deg_direction_0",
+      "description": "Phase 90° with direction 0° (force phase offset)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 90
+      }
+    },
+    {
+      "id": "phase_180deg_direction_0",
+      "description": "Phase 180° with direction 0° (reverse phase)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 180
+      }
+    },
+    {
+      "id": "phase_270deg_direction_0",
+      "description": "Phase 270° with direction 0° (quadrature)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 270
+      }
+    },
+    {
+      "id": "enhanced_magnitude_scaling",
+      "description": "Test enhanced magnitude scaling with different magnitudes",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "enhanced_offset_scaling",
+      "description": "Test enhanced periodic offset scaling with positive offset",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 0,
+        "offset": 12000
+      }
+    },
+    {
+      "id": "enhanced_offset_scaling_negative",
+      "description": "Test enhanced periodic offset scaling with negative offset",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 0,
+        "offset": -12000
+      }
+    },
+    {
+      "id": "enhanced_phase_scaling",
+      "description": "Test enhanced periodic phase scaling",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 0,
+        "phase_deg": 90
+      }
+    },
+    {
+      "id": "triangle_direction_enhanced",
+      "description": "Triangle with enhanced direction handling",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 180,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "sawtooth_direction_enhanced",
+      "description": "Sawtooth with enhanced direction handling",
+      "effect_type": "sawtoothup",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 180,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "periodic_comparison_direction_phase",
+      "description": "Compare different periodic waveforms with same direction/phase",
+      "sequence": [
+        {
+          "effect_type": "sine",
+          "start_ms": 0,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 100,
+            "direction_deg": 180,
+            "phase_deg": 0,
+            "length_ms": 1000
+          }
+        },
+        {
+          "effect_type": "triangle",
+          "start_ms": 1200,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 100,
+            "direction_deg": 180,
+            "phase_deg": 0,
+            "length_ms": 1000
+          }
+        },
+        {
+          "effect_type": "sawtoothup",
+          "start_ms": 2400,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 100,
+            "direction_deg": 180,
+            "phase_deg": 0,
+            "length_ms": 1000
+          }
+        }
+      ]
+    },
+    {
+      "id": "fixp_sin16_projection_test",
+      "description": "Test fixp_sin16 projection for effective direction calculation",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 50,
+        "direction_deg": 90,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "force_direction_negative_projection",
+      "description": "Test negative force direction projection with magnitude adjustment",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 50,
+        "direction_deg": 270,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "combined_direction_phase_advanced",
+      "description": "Advanced combined direction and phase test",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "high",
+        "period_ms": 75,
+        "direction_deg": 135,
+        "phase_deg": 45
+      }
+    },
+    {
+      "id": "offset_with_direction_phase",
+      "description": "Test offset combined with direction and phase adjustments",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 100,
+        "direction_deg": 180,
+        "phase_deg": 90,
+        "offset": 8000
+      }
+    },
+    {
+      "id": "high_frequency_direction_test",
+      "description": "High frequency periodic with direction (10ms period)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 10,
+        "direction_deg": 180,
+        "phase_deg": 0
+      }
+    },
+    {
+      "id": "low_frequency_direction_test",
+      "description": "Low frequency periodic with direction (1000ms period)",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "medium",
+        "period_ms": 1000,
+        "direction_deg": 180,
+        "phase_deg": 0
+      }
+    }
+  ]
+}

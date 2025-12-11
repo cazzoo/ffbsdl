@@ -1,0 +1,170 @@
+{
+  "description": "Test cases to investigate packet code differences and protocol details between Linux and Windows implementations",
+  "note": "Based on T500RS_Driver_Analysis_and_Improvements.md - targets packet codes 0x2a/0x38 vs 0x0e/0x1c investigation",
+  "key_levels": {
+    "level": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    },
+    "magnitude": {
+      "low": 8000,
+      "medium": 24000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 2000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "init_sequence_cold_start",
+      "description": "Single constant effect immediately after device connection to capture full init sequence",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 1000
+      },
+      "note": "Run immediately after connecting device - captures 07xx init packets"
+    },
+    {
+      "id": "slot_0_constant_baseline",
+      "description": "First effect slot (ID 0) constant force for subtype code baseline",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000
+      },
+      "note": "Check if param_sub=0x002a, env_sub=0x0038 vs 0x000e/0x001c"
+    },
+    {
+      "id": "slot_1_constant_compare",
+      "description": "Second effect slot to verify subtype increment pattern",
+      "effect_type": "constant",
+      "params": {
+        "level": "medium",
+        "length_ms": 2000,
+        "delay_ms": 500
+      },
+      "note": "Should show param_sub incremented by 0x0012 if Windows pattern"
+    },
+    {
+      "id": "effect_type_constant_code_check",
+      "description": "Constant effect to verify 0x04 packet code field",
+      "effect_type": "constant",
+      "params": {
+        "level": "max",
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "effect_type_sine_code_check",
+      "description": "Sine periodic to verify waveform-independent packet codes",
+      "effect_type": "sine",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 100,
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "effect_type_triangle_code_check",
+      "description": "Triangle periodic to compare packet structure with sine",
+      "effect_type": "triangle",
+      "params": {
+        "magnitude": "max",
+        "period_ms": 100,
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "effect_type_spring_code_check",
+      "description": "Spring condition to verify conditional effect packet codes",
+      "effect_type": "spring",
+      "params": {
+        "cond_right_coeff": "max",
+        "cond_left_coeff": "max",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "effect_type_damper_code_check",
+      "description": "Damper condition to compare with spring packet structure",
+      "effect_type": "damper",
+      "params": {
+        "cond_right_coeff": "max",
+        "cond_left_coeff": "max",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "effect_type_ramp_code_check",
+      "description": "Ramp effect to verify 0x04 packet code=0x2a pattern",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "max",
+        "length_ms": 3000
+      }
+    },
+    {
+      "id": "dual_constant_01_02_sequence",
+      "description": "Two constants in rapid succession to verify 0x01/0x02 packet sequence",
+      "sequence": [
+        {
+          "effect_type": "constant",
+          "level": "medium",
+          "start_ms": 0,
+          "length_ms": 1000
+        },
+        {
+          "effect_type": "constant",
+          "level": "high",
+          "start_ms": 50,
+          "length_ms": 1000
+        }
+      ]
+    },
+    {
+      "id": "stop_start_packet_sequence",
+      "description": "Stop then immediately restart same effect type to see packet differences",
+      "sequence": [
+        {
+          "effect_type": "constant",
+          "level": "medium",
+          "start_ms": 0,
+          "length_ms": 500
+        },
+        {
+          "effect_type": "constant",
+          "level": "medium",
+          "start_ms": 600,
+          "length_ms": 500
+        }
+      ]
+    },
+    {
+      "id": "update_while_running",
+      "description": "Long effect with parameter update mid-way to capture update packets",
+      "effect_type": "constant",
+      "params": {
+        "level": "low",
+        "length_ms": 5000
+      },
+      "note": "Manually update level to high during execution if test framework supports"
+    }
+  ]
+}
