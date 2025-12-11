@@ -1,0 +1,337 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_envelope_validation.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_envelope_validation/windows_20251211_110129",
+  "tests": [
+    {
+      "id": "envelope_zero_all",
+      "effect_type": "constant",
+      "description": "Constant with all envelope parameters zero (baseline)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0001_envelope_zero_all_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_attack_only_level_18000",
+      "effect_type": "constant",
+      "description": "Constant with attack only at level 18000 (Windows-safe threshold)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0002_envelope_attack_only_level_18000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 18000,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_attack_only_level_19000",
+      "effect_type": "constant",
+      "description": "Constant with attack only at level 19000 (potential firmware issue)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0003_envelope_attack_only_level_19000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 19000,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_fade_only_level_18000",
+      "effect_type": "constant",
+      "description": "Constant with fade only at level 18000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0004_envelope_fade_only_level_18000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 500,
+        "fade_level": 18000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_fade_only_level_19000",
+      "effect_type": "constant",
+      "description": "Constant with fade only at level 19000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0005_envelope_fade_only_level_19000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 500,
+        "fade_level": 19000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_attack_fade_level_18000",
+      "effect_type": "constant",
+      "description": "Constant with both attack and fade at 18000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0006_envelope_attack_fade_level_18000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 18000,
+        "fade_length_ms": 500,
+        "fade_level": 18000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_attack_fade_level_19000",
+      "effect_type": "constant",
+      "description": "Constant with both attack and fade at 19000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0007_envelope_attack_fade_level_19000_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 19000,
+        "fade_length_ms": 500,
+        "fade_level": 19000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_ramp_full_support",
+      "effect_type": "ramp",
+      "description": "Ramp with full envelope support (should work per analysis)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0008_envelope_ramp_full_support_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 18000,
+        "fade_length_ms": 500,
+        "fade_level": 18000,
+        "iterations": 1,
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_ramp_max_levels",
+      "effect_type": "ramp",
+      "description": "Ramp with maximum envelope levels",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0009_envelope_ramp_max_levels_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 1000,
+        "attack_level": 65535,
+        "fade_length_ms": 1000,
+        "fade_level": 65535,
+        "iterations": 1,
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_sine_attack_only_18000",
+      "effect_type": "sine",
+      "description": "Sine periodic with attack envelope at 18000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0010_envelope_sine_attack_only_18000_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 18000,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 24000,
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_sine_fade_only_18000",
+      "effect_type": "sine",
+      "description": "Sine periodic with fade envelope at 18000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0011_envelope_sine_fade_only_18000_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 500,
+        "fade_level": 18000,
+        "iterations": 1,
+        "magnitude": 24000,
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_triangle_attack_fade_18000",
+      "effect_type": "triangle",
+      "description": "Triangle periodic with full envelope at 18000",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0012_envelope_triangle_attack_fade_18000_triangle.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 18000,
+        "fade_length_ms": 500,
+        "fade_level": 18000,
+        "iterations": 1,
+        "magnitude": 24000,
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_length_1000_ms",
+      "effect_type": "constant",
+      "description": "Constant with envelope length 1000ms (firmware threshold test)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0013_envelope_length_1000_ms_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 1000,
+        "attack_level": 18000,
+        "fade_length_ms": 1000,
+        "fade_level": 18000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_length_1100_ms",
+      "effect_type": "constant",
+      "description": "Constant with envelope length 1100ms (beyond firmware threshold)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0014_envelope_length_1100_ms_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 1100,
+        "attack_level": 18000,
+        "fade_length_ms": 1100,
+        "fade_level": 18000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_conditional_validation",
+      "effect_type": "constant",
+      "description": "Test conditional envelope validation function",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0015_envelope_conditional_validation_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 16000,
+        "fade_length_ms": 500,
+        "fade_level": 16000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_zero_length_nonzero_level",
+      "effect_type": "constant",
+      "description": "Envelope with zero length but non-zero level (edge case)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0016_envelope_zero_length_nonzero_level_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 18000,
+        "fade_length_ms": 0,
+        "fade_level": 18000,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "envelope_max_length_zero_level",
+      "effect_type": "constant",
+      "description": "Envelope with max length but zero level (edge case)",
+      "pcap_file": "captures/test_cases_envelope_validation/windows_20251211_110129/0017_envelope_max_length_zero_level_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 1000,
+        "attack_level": 0,
+        "fade_length_ms": 1000,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_ramp_encoding.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_ramp_encoding/windows_20251211_110739",
+  "tests": [
+    {
+      "id": "ramp_zero_to_zero",
+      "effect_type": "ramp",
+      "description": "Ramp from 0 to 0 (baseline)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0001_ramp_zero_to_zero_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_zero_to_max",
+      "effect_type": "ramp",
+      "description": "Ramp from 0 to max (increasing)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0002_ramp_zero_to_max_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_max_to_zero",
+      "effect_type": "ramp",
+      "description": "Ramp from max to 0 (decreasing)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0003_ramp_max_to_zero_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_8000_to_8000",
+      "effect_type": "ramp",
+      "description": "Ramp from 8000 to 8000 (constant low)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0004_ramp_8000_to_8000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_8000_to_48000",
+      "effect_type": "ramp",
+      "description": "Ramp from 8000 to 48000",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0005_ramp_8000_to_48000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_48000_to_8000",
+      "effect_type": "ramp",
+      "description": "Ramp from 48000 to 8000",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0006_ramp_48000_to_8000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_16000_to_24000",
+      "effect_type": "ramp",
+      "description": "Ramp from 16000 to 24000 (mid-range increase)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0007_ramp_16000_to_24000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_24000_to_16000",
+      "effect_type": "ramp",
+      "description": "Ramp from 24000 to 16000 (mid-range decrease)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0008_ramp_24000_to_16000_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_32767_to_32767",
+      "effect_type": "ramp",
+      "description": "Ramp from 32767 to 32767 (signed max constant)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0009_ramp_32767_to_32767_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_zero_to_32767",
+      "effect_type": "ramp",
+      "description": "Ramp from 0 to 32767 (half range)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0010_ramp_zero_to_32767_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_32767_to_65535",
+      "effect_type": "ramp",
+      "description": "Ramp from 32767 to 65535 (upper half)",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0011_ramp_32767_to_65535_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_short_duration",
+      "effect_type": "ramp",
+      "description": "Ramp with short duration (100ms) to test timing",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0012_ramp_short_duration_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_long_duration",
+      "effect_type": "ramp",
+      "description": "Ramp with long duration (5000ms) to test timing",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0013_ramp_long_duration_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_with_envelope",
+      "effect_type": "ramp",
+      "description": "Ramp with attack and fade envelope",
+      "pcap_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/0014_ramp_with_envelope_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

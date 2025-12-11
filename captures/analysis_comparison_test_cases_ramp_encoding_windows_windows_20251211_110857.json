@@ -1,0 +1,1705 @@
+{
+  "comparison_info": {
+    "datetime": "2025-12-11T10:08:57.379797Z",
+    "baseline_file": "captures/test_cases_ramp_encoding/windows_20251211_110739/analysis.json",
+    "comparison_file": "captures/test_cases_ramp_encoding/windows_20251125_161135/analysis.json",
+    "baseline_tests": [
+      "ramp_zero_to_zero",
+      "ramp_zero_to_max",
+      "ramp_max_to_zero",
+      "ramp_8000_to_8000",
+      "ramp_8000_to_48000",
+      "ramp_48000_to_8000",
+      "ramp_16000_to_24000",
+      "ramp_24000_to_16000",
+      "ramp_32767_to_32767",
+      "ramp_zero_to_32767",
+      "ramp_32767_to_65535",
+      "ramp_short_duration",
+      "ramp_long_duration",
+      "ramp_with_envelope"
+    ],
+    "comparison_tests": [
+      "ramp_zero_to_zero",
+      "ramp_zero_to_max",
+      "ramp_max_to_zero",
+      "ramp_8000_to_8000",
+      "ramp_8000_to_48000",
+      "ramp_48000_to_8000",
+      "ramp_16000_to_24000",
+      "ramp_24000_to_16000",
+      "ramp_32767_to_32767",
+      "ramp_zero_to_32767",
+      "ramp_32767_to_65535",
+      "ramp_short_duration",
+      "ramp_long_duration",
+      "ramp_with_envelope"
+    ],
+    "baseline_platform": "Windows",
+    "comparison_platform": "Windows",
+    "baseline_manifest": "C:/Users/Caz/ffbsdl/captures/test_cases_ramp_encoding/windows_20251211_110739/manifest.json",
+    "comparison_manifest": "C:/Users/Caz/ffbsdl/captures/test_cases_ramp_encoding/windows_20251125_161135/manifest.json",
+    "total_baseline_tests": 14,
+    "total_comparison_tests": 14
+  },
+  "comparison_results": {
+    "summary": {
+      "platform_a": "Windows",
+      "platform_b": "Windows",
+      "baseline_path": "captures/test_cases_ramp_encoding/windows_20251211_110739/analysis.json",
+      "comparison_path": "captures/test_cases_ramp_encoding/windows_20251125_161135/analysis.json",
+      "total_tests_a": 14,
+      "total_tests_b": 14,
+      "matched_ids": [
+        "ramp_16000_to_24000",
+        "ramp_24000_to_16000",
+        "ramp_32767_to_32767",
+        "ramp_32767_to_65535",
+        "ramp_48000_to_8000",
+        "ramp_8000_to_48000",
+        "ramp_8000_to_8000",
+        "ramp_long_duration",
+        "ramp_max_to_zero",
+        "ramp_short_duration",
+        "ramp_with_envelope",
+        "ramp_zero_to_32767",
+        "ramp_zero_to_max",
+        "ramp_zero_to_zero"
+      ],
+      "only_in_a": [],
+      "only_in_b": []
+    },
+    "per_test": {
+      "ramp_16000_to_24000": {
+        "id": "ramp_16000_to_24000",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 16000 to 24000 (mid-range increase)",
+        "description_b": "Ramp from 16000 to 24000 (mid-range increase)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_24000_to_16000": {
+        "id": "ramp_24000_to_16000",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 24000 to 16000 (mid-range decrease)",
+        "description_b": "Ramp from 24000 to 16000 (mid-range decrease)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 184,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 41,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000",
+            "074d80ff03ff03ff0300000000000f",
+            "074e80ff03ff03ff0300000000000f",
+            "075080ff03ff03ff0300000000000f",
+            "075180ff03ff03ff0300000000000f",
+            "075380ff03ff03ff0300000000000f",
+            "075580ff03ff03ff0300000000000f",
+            "075680ff03ff03ff0300000000000f",
+            "075880ff03ff03ff0300000000000f",
+            "075a80ff03ff03ff0300000000000f",
+            "075b80ff03ff03ff0300000000000f",
+            "075d80ff03ff03ff0300000000000f",
+            "075e80ff03ff03ff0300000000000f",
+            "076080ff03ff03ff0300000000000f",
+            "076280ff03ff03ff0300000000000f",
+            "076380ff03ff03ff0300000000000f",
+            "076580ff03ff03ff0300000000000f",
+            "076680ff03ff03ff0300000000000f",
+            "076880ff03ff03ff0300000000000f",
+            "076a80ff03ff03ff0300000000000f",
+            "076b80ff03ff03ff0300000000000f",
+            "076d80ff03ff03ff0300000000000f",
+            "076e80ff03ff03ff0300000000000f",
+            "077080ff03ff03ff0300000000000f",
+            "077280ff03ff03ff0300000000000f",
+            "077380ff03ff03ff0300000000000f",
+            "077580ff03ff03ff0300000000000f",
+            "077680ff03ff03ff0300000000000f",
+            "077880ff03ff03ff0300000000000f",
+            "077a80ff03ff03ff0300000000000f",
+            "077b80ff03ff03ff0300000000000f",
+            "077d80ff03ff03ff0300000000000f",
+            "077e80ff03ff03ff0300000000000f",
+            "078080ff03ff03ff0300000000000f"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_32767_to_32767": {
+        "id": "ramp_32767_to_32767",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 32767 to 32767 (signed max constant)",
+        "description_b": "Ramp from 32767 to 32767 (signed max constant)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 120,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 9,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000",
+            "074980ff03ff03ff0300000000000f"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_32767_to_65535": {
+        "id": "ramp_32767_to_65535",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 32767 to 65535 (upper half)",
+        "description_b": "Ramp from 32767 to 65535 (upper half)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_48000_to_8000": {
+        "id": "ramp_48000_to_8000",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 48000 to 8000",
+        "description_b": "Ramp from 48000 to 8000",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 112
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_8000_to_48000": {
+        "id": "ramp_8000_to_48000",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 8000 to 48000",
+        "description_b": "Ramp from 8000 to 48000",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_8000_to_8000": {
+        "id": "ramp_8000_to_8000",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 8000 to 8000 (constant low)",
+        "description_b": "Ramp from 8000 to 8000 (constant low)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_long_duration": {
+        "id": "ramp_long_duration",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp with long duration (5000ms) to test timing",
+        "description_b": "Ramp with long duration (5000ms) to test timing",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 120,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 9,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000",
+            "41000001"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_max_to_zero": {
+        "id": "ramp_max_to_zero",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from max to 0 (decreasing)",
+        "description_b": "Ramp from max to 0 (decreasing)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 72
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_short_duration": {
+        "id": "ramp_short_duration",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp with short duration (100ms) to test timing",
+        "description_b": "Ramp with short duration (100ms) to test timing",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_with_envelope": {
+        "id": "ramp_with_envelope",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp with attack and fade envelope",
+        "description_b": "Ramp with attack and fade envelope",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_zero_to_32767": {
+        "id": "ramp_zero_to_32767",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 0 to 32767 (half range)",
+        "description_b": "Ramp from 0 to 32767 (half range)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 120,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 9,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000",
+            "41000001"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_zero_to_max": {
+        "id": "ramp_zero_to_max",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 0 to max (increasing)",
+        "description_b": "Ramp from 0 to max (increasing)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 118
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 8
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      },
+      "ramp_zero_to_zero": {
+        "id": "ramp_zero_to_zero",
+        "effect_type_a": "ramp",
+        "effect_type_b": "ramp",
+        "description_a": "Ramp from 0 to 0 (baseline)",
+        "description_b": "Ramp from 0 to 0 (baseline)",
+        "input_params_a": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "input_params_b": {
+          "direction_deg": 0,
+          "length_ms": 2000,
+          "delay_ms": 0,
+          "attack_length_ms": 0,
+          "attack_level": 0,
+          "fade_length_ms": 0,
+          "fade_level": 0,
+          "iterations": 1,
+          "gain": 5
+        },
+        "usb_diff": {
+          "changed": true,
+          "total_lines": {
+            "a": 118,
+            "b": 124
+          },
+          "unique_payloads": {
+            "a": 8,
+            "b": 11
+          },
+          "payloads_only_in_a": [
+            "01002140d0070000009a00a8000000",
+            "02a800000000000000",
+            "049a0000007f0000"
+          ],
+          "payloads_only_in_b": [
+            "01002140d007000000b600c4000000",
+            "02c400000000000000",
+            "04b60000007f0000",
+            "07087bff03ff03ff0300000000000f",
+            "070a7bff03ff03ff0300000000000f",
+            "070c7bff03ff03ff0300000000000f"
+          ],
+          "payloads_in_both": [
+            "41004101",
+            "4204",
+            "4205",
+            "49000000001000",
+            "49000000010002000300000002020000"
+          ],
+          "sequence_comparison": {
+            "sequence_length_a": 32,
+            "sequence_length_b": 32,
+            "sequence_differences": [],
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "total_packets_a": 32,
+            "total_packets_b": 32
+          }
+        }
+      }
+    },
+    "drifting_summary": {
+      "total_tests_compared": 14,
+      "tests_with_differences": 14,
+      "tests_with_payload_differences": 14,
+      "effect_type_differences": {
+        "ramp": 14
+      },
+      "significant_drifting_tests": [
+        {
+          "id": "ramp_16000_to_24000",
+          "effect_type": "ramp",
+          "description": "Ramp from 16000 to 24000 (mid-range increase)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_24000_to_16000",
+          "effect_type": "ramp",
+          "description": "Ramp from 24000 to 16000 (mid-range decrease)",
+          "payloads_only_in_a": 36,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_32767_to_32767",
+          "effect_type": "ramp",
+          "description": "Ramp from 32767 to 32767 (signed max constant)",
+          "payloads_only_in_a": 4,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_32767_to_65535",
+          "effect_type": "ramp",
+          "description": "Ramp from 32767 to 65535 (upper half)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_48000_to_8000",
+          "effect_type": "ramp",
+          "description": "Ramp from 48000 to 8000",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_8000_to_48000",
+          "effect_type": "ramp",
+          "description": "Ramp from 8000 to 48000",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_8000_to_8000",
+          "effect_type": "ramp",
+          "description": "Ramp from 8000 to 8000 (constant low)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_long_duration",
+          "effect_type": "ramp",
+          "description": "Ramp with long duration (5000ms) to test timing",
+          "payloads_only_in_a": 4,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_max_to_zero",
+          "effect_type": "ramp",
+          "description": "Ramp from max to 0 (decreasing)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_short_duration",
+          "effect_type": "ramp",
+          "description": "Ramp with short duration (100ms) to test timing",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_with_envelope",
+          "effect_type": "ramp",
+          "description": "Ramp with attack and fade envelope",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_zero_to_32767",
+          "effect_type": "ramp",
+          "description": "Ramp from 0 to 32767 (half range)",
+          "payloads_only_in_a": 4,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_zero_to_max",
+          "effect_type": "ramp",
+          "description": "Ramp from 0 to max (increasing)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 3
+        },
+        {
+          "id": "ramp_zero_to_zero",
+          "effect_type": "ramp",
+          "description": "Ramp from 0 to 0 (baseline)",
+          "payloads_only_in_a": 3,
+          "payloads_only_in_b": 6
+        }
+      ],
+      "detailed_inconsistencies": [
+        {
+          "test_id": "ramp_16000_to_24000",
+          "test_name": "Ramp from 16000 to 24000 (mid-range increase)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_24000_to_16000",
+          "test_name": "Ramp from 24000 to 16000 (mid-range decrease)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 41,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000",
+              "074d80ff03ff03ff0300000000000f",
+              "074e80ff03ff03ff0300000000000f",
+              "075080ff03ff03ff0300000000000f",
+              "075180ff03ff03ff0300000000000f",
+              "075380ff03ff03ff0300000000000f",
+              "075580ff03ff03ff0300000000000f",
+              "075680ff03ff03ff0300000000000f",
+              "075880ff03ff03ff0300000000000f",
+              "075a80ff03ff03ff0300000000000f",
+              "075b80ff03ff03ff0300000000000f",
+              "075d80ff03ff03ff0300000000000f",
+              "075e80ff03ff03ff0300000000000f",
+              "076080ff03ff03ff0300000000000f",
+              "076280ff03ff03ff0300000000000f",
+              "076380ff03ff03ff0300000000000f",
+              "076580ff03ff03ff0300000000000f",
+              "076680ff03ff03ff0300000000000f",
+              "076880ff03ff03ff0300000000000f",
+              "076a80ff03ff03ff0300000000000f",
+              "076b80ff03ff03ff0300000000000f",
+              "076d80ff03ff03ff0300000000000f",
+              "076e80ff03ff03ff0300000000000f",
+              "077080ff03ff03ff0300000000000f",
+              "077280ff03ff03ff0300000000000f",
+              "077380ff03ff03ff0300000000000f",
+              "077580ff03ff03ff0300000000000f",
+              "077680ff03ff03ff0300000000000f",
+              "077880ff03ff03ff0300000000000f",
+              "077a80ff03ff03ff0300000000000f",
+              "077b80ff03ff03ff0300000000000f",
+              "077d80ff03ff03ff0300000000000f",
+              "077e80ff03ff03ff0300000000000f",
+              "078080ff03ff03ff0300000000000f"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_32767_to_32767",
+          "test_name": "Ramp from 32767 to 32767 (signed max constant)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 9,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000",
+              "074980ff03ff03ff0300000000000f"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_32767_to_65535",
+          "test_name": "Ramp from 32767 to 65535 (upper half)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_48000_to_8000",
+          "test_name": "Ramp from 48000 to 8000",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_8000_to_48000",
+          "test_name": "Ramp from 8000 to 48000",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_8000_to_8000",
+          "test_name": "Ramp from 8000 to 8000 (constant low)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_long_duration",
+          "test_name": "Ramp with long duration (5000ms) to test timing",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 9,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000",
+              "41000001"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_max_to_zero",
+          "test_name": "Ramp from max to 0 (decreasing)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_short_duration",
+          "test_name": "Ramp with short duration (100ms) to test timing",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_with_envelope",
+          "test_name": "Ramp with attack and fade envelope",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_zero_to_32767",
+          "test_name": "Ramp from 0 to 32767 (half range)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 9,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000",
+              "41000001"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_zero_to_max",
+          "test_name": "Ramp from 0 to max (increasing)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 8,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000"
+            ]
+          }
+        },
+        {
+          "test_id": "ramp_zero_to_zero",
+          "test_name": "Ramp from 0 to 0 (baseline)",
+          "effect_type": "ramp",
+          "input_params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "platform_a": "Windows",
+          "platform_b": "Windows",
+          "key_inconsistencies": {
+            "total_packets_a": 32,
+            "total_packets_b": 32,
+            "missing_packets_in_b": 0,
+            "extra_packets_in_b": 0,
+            "sequence_differences": [],
+            "unique_payloads_a": 8,
+            "unique_payloads_b": 11,
+            "payloads_only_in_a": [
+              "01002140d0070000009a00a8000000",
+              "02a800000000000000",
+              "049a0000007f0000"
+            ],
+            "payloads_only_in_b": [
+              "01002140d007000000b600c4000000",
+              "02c400000000000000",
+              "04b60000007f0000",
+              "07087bff03ff03ff0300000000000f",
+              "070a7bff03ff03ff0300000000000f",
+              "070c7bff03ff03ff0300000000000f"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,472 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_device_initialization.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_device_initialization/windows_20251211_105942",
+  "tests": [
+    {
+      "id": "init_cold_device_connect",
+      "effect_type": "constant",
+      "description": "Immediate effect after device connection - captures full 07xx initialization sequence",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0001_init_cold_device_connect_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_post_reset_sequence",
+      "effect_type": "constant",
+      "description": "Effect after device reset - captures post-reset initialization",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0002_init_post_reset_sequence_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_enhanced_configuration",
+      "effect_type": "constant",
+      "description": "Test enhanced initialization sequence from analysis recommendations",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0003_init_enhanced_configuration_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_windows_style_42_43_41",
+      "effect_type": "constant",
+      "description": "Baseline Windows-style initialization packets (42, 43, 41)",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0004_init_windows_style_42_43_41_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_49_packet_sequence",
+      "effect_type": "constant",
+      "description": "Test for 0x49 packet sequences observed in Windows captures",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0005_init_49_packet_sequence_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_07xx_variations",
+      "effect_type": "sine",
+      "description": "Test for 0x07xx packet variations in Windows initialization",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0006_init_07xx_variations_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": "medium",
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_40_packet_config",
+      "effect_type": "spring",
+      "description": "Test for 0x40 configuration packets",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0007_init_40_packet_config_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_multi_packet_sequence",
+      "effect_type": "sequence",
+      "description": "Multi-effect sequence to see all initialization packets",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0008_init_multi_packet_sequence_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 8000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 600,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": "low",
+            "period_ms": 100,
+            "gain": 5
+          },
+          "start_ms": 600,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "spring",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 500,
+            "delay_ms": 1200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "cond_right_coeff": "low",
+            "cond_left_coeff": "low",
+            "cond_right_sat": "medium",
+            "cond_left_sat": "medium",
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "init_baseline_linux_only",
+      "effect_type": "constant",
+      "description": "Baseline test showing current Linux-only initialization (should be minimal)",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0009_init_baseline_linux_only_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_post_suspend_resume",
+      "effect_type": "constant",
+      "description": "Test initialization after suspend/resume cycle",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0010_init_post_suspend_resume_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_device_reconnect",
+      "effect_type": "constant",
+      "description": "Test initialization after device disconnection/reconnection",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0011_init_device_reconnect_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_vs_effect_upload_comparison",
+      "effect_type": "sequence",
+      "description": "Compare initialization packets with effect upload packets",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0012_init_vs_effect_upload_comparison_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 24000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 1200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": 48000,
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "init_packet_timing_analysis",
+      "effect_type": "constant",
+      "description": "Timing analysis of initialization packet sequence",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0013_init_packet_timing_analysis_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_with_envelope_effect",
+      "effect_type": "sine",
+      "description": "Test initialization followed by effect with envelope",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0014_init_with_envelope_effect_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 16000,
+        "fade_length_ms": 500,
+        "fade_level": 16000,
+        "iterations": 1,
+        "magnitude": "medium",
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_ramp_effect_comparison",
+      "effect_type": "ramp",
+      "description": "Test initialization with ramp effect to compare packet types",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0015_init_ramp_effect_comparison_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_conditional_effects",
+      "effect_type": "spring",
+      "description": "Test initialization with conditional effects (spring/damper/friction)",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0016_init_conditional_effects_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "medium",
+        "cond_left_coeff": "medium",
+        "cond_right_sat": "high",
+        "cond_left_sat": "high",
+        "cond_deadband": 1000,
+        "cond_center": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_packet_code_verification",
+      "effect_type": "constant",
+      "description": "Verify packet codes in initialization sequence match Windows analysis",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0017_init_packet_code_verification_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_error_recovery_sequence",
+      "effect_type": "constant",
+      "description": "Test initialization after error condition (if test framework supports)",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0018_init_error_recovery_sequence_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_full_windows_compatibility",
+      "effect_type": "constant",
+      "description": "Test for full Windows compatibility in initialization",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0019_init_full_windows_compatibility_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "init_comparison_linux_windows",
+      "effect_type": "constant",
+      "description": "Direct comparison showing Linux vs Windows initialization differences",
+      "pcap_file": "captures/test_cases_device_initialization/windows_20251211_105942/0020_init_comparison_linux_windows_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_ramp_enhanced_encoding.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517",
+  "tests": [
+    {
+      "id": "ramp_enhanced_zero_to_zero",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp from 0 to 0 (baseline for magnitude calculation)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0001_ramp_enhanced_zero_to_zero_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 0,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_avg_magnitude",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test midpoint/average magnitude calculation",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0002_ramp_enhanced_avg_magnitude_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_directional_offset",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test directional offset for ramp direction",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0003_ramp_enhanced_directional_offset_ramp.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 48000,
+        "ramp_end": 8000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_phase_handling",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test phase parameter for direction (180 degrees)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0004_ramp_enhanced_phase_handling_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "phase_deg": 180,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_signed_max_range",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp across signed max boundary (32767)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0005_ramp_enhanced_signed_max_range_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 32767,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_signed_max_to_max",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp from signed max to unsigned max",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0006_ramp_enhanced_signed_max_to_max_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 32767,
+        "ramp_end": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_magnitude_calculation",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test magnitude = abs(midpoint) * 127 / 32767",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0007_ramp_enhanced_magnitude_calculation_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 24000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_offset_calculation",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test offset = range * 127 / 32767",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0008_ramp_enhanced_offset_calculation_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_direction_offset_positive",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test positive direction offset (ramp up)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0009_ramp_enhanced_direction_offset_positive_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_direction_offset_negative",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test negative direction offset (ramp down with 180deg phase)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0010_ramp_enhanced_direction_offset_negative_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 48000,
+        "ramp_end": 8000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_equal_levels",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test constant level (no ramp)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0011_ramp_enhanced_equal_levels_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 24000,
+        "ramp_end": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_range_calculation",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test range calculation for various start/end pairs",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0012_ramp_enhanced_range_calculation_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 1000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_midpoint_calculation",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test midpoint calculation (start + end) / 2",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0013_ramp_enhanced_midpoint_calculation_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_direction_90deg",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test ramp direction 90 degrees (right)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0014_ramp_enhanced_direction_90deg_ramp.pcapng",
+      "params": {
+        "direction_deg": 90,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_direction_270deg",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test ramp direction 270 degrees (left)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0015_ramp_enhanced_direction_270deg_ramp.pcapng",
+      "params": {
+        "direction_deg": 270,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_phase_90deg",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test ramp with 90 degree phase offset",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0016_ramp_enhanced_phase_90deg_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "phase_deg": 90,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_phase_270deg",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: test ramp with 270 degree phase offset",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0017_ramp_enhanced_phase_270deg_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "phase_deg": 270,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_with_envelope",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp with attack and fade envelope",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0018_ramp_enhanced_with_envelope_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 16000,
+        "fade_length_ms": 500,
+        "fade_level": 16000,
+        "iterations": 1,
+        "ramp_start": 8000,
+        "ramp_end": 48000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_short_duration",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp with short duration (100ms)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0019_ramp_enhanced_short_duration_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 100,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_long_duration",
+      "effect_type": "ramp",
+      "description": "Enhanced mapping: ramp with long duration (5000ms)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0020_ramp_enhanced_long_duration_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 5000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_enhanced_vs_constant_comparison",
+      "effect_type": "sequence",
+      "description": "Compare enhanced ramp encoding with constant force (should show different packet codes)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0021_ramp_enhanced_vs_constant_comparison_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 24000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 1200,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": "medium",
+            "gain": 5
+          },
+          "start_ms": 1200,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "ramp_enhanced_vs_sine_comparison",
+      "effect_type": "sequence",
+      "description": "Compare enhanced ramp with sine periodic (different packet types)",
+      "pcap_file": "captures/test_cases_ramp_enhanced_encoding/windows_20251211_110517/0022_ramp_enhanced_vs_sine_comparison_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 8000,
+            "ramp_end": 48000,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 1700,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": "medium",
+            "period_ms": 100,
+            "gain": 5
+          },
+          "start_ms": 1700,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}

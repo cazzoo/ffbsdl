@@ -1,0 +1,292 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_protocol_investigation.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_protocol_investigation/windows_20251211_110323",
+  "tests": [
+    {
+      "id": "init_sequence_cold_start",
+      "effect_type": "constant",
+      "description": "Single constant effect immediately after device connection to capture full init sequence",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0001_init_sequence_cold_start_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 1000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "slot_0_constant_baseline",
+      "effect_type": "constant",
+      "description": "First effect slot (ID 0) constant force for subtype code baseline",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0002_slot_0_constant_baseline_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "slot_1_constant_compare",
+      "effect_type": "constant",
+      "description": "Second effect slot to verify subtype increment pattern",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0003_slot_1_constant_compare_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 500,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 24000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_constant_code_check",
+      "effect_type": "constant",
+      "description": "Constant effect to verify 0x04 packet code field",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0004_effect_type_constant_code_check_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 65535,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_sine_code_check",
+      "effect_type": "sine",
+      "description": "Sine periodic to verify waveform-independent packet codes",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0005_effect_type_sine_code_check_sine.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 65535,
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_triangle_code_check",
+      "effect_type": "triangle",
+      "description": "Triangle periodic to compare packet structure with sine",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0006_effect_type_triangle_code_check_triangle.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "magnitude": 65535,
+        "period_ms": 100,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_spring_code_check",
+      "effect_type": "spring",
+      "description": "Spring condition to verify conditional effect packet codes",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0007_effect_type_spring_code_check_spring.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "max",
+        "cond_left_coeff": "max",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_damper_code_check",
+      "effect_type": "damper",
+      "description": "Damper condition to compare with spring packet structure",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0008_effect_type_damper_code_check_damper.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "cond_right_coeff": "max",
+        "cond_left_coeff": "max",
+        "cond_right_sat": "max",
+        "cond_left_sat": "max",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "effect_type_ramp_code_check",
+      "effect_type": "ramp",
+      "description": "Ramp effect to verify 0x04 packet code=0x2a pattern",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0009_effect_type_ramp_code_check_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 3000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": "low",
+        "ramp_end": "max",
+        "gain": 5
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "dual_constant_01_02_sequence",
+      "effect_type": "sequence",
+      "description": "Two constants in rapid succession to verify 0x01/0x02 packet sequence",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0010_dual_constant_01_02_sequence_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 50,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 50,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "stop_start_packet_sequence",
+      "effect_type": "sequence",
+      "description": "Stop then immediately restart same effect type to see packet differences",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0011_stop_start_packet_sequence_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 2000,
+            "delay_ms": 600,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "gain": 5
+          },
+          "start_ms": 600,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "update_while_running",
+      "effect_type": "constant",
+      "description": "Long effect with parameter update mid-way to capture update packets",
+      "pcap_file": "captures/test_cases_protocol_investigation/windows_20251211_110323/0012_update_while_running_constant.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 5000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "level": 8000,
+        "gain": 5
+      },
+      "cli_returncode": 0
+    }
+  ]
+}
