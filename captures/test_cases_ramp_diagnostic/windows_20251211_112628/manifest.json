@@ -1,0 +1,324 @@
+{
+  "tests_file": "C:/Users/Caz/ffbsdl/tests/test_cases_ramp_diagnostic.json",
+  "ffb_binary": "C:/Users/Caz/ffbsdl/bin/win64/ffbsdl.exe",
+  "iface": "\\\\.\\USBPcap1",
+  "tshark": "C:\\Program Files\\Wireshark\\tshark.exe",
+  "output_dir": "C:/Users/Caz/ffbsdl/captures/test_cases_ramp_diagnostic/windows_20251211_112628",
+  "tests": [
+    {
+      "id": "ramp_diagnostic_obvious_up",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Obvious ramp from low to max with clear force levels",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0001_ramp_diagnostic_obvious_up_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 16000,
+        "ramp_end": 65535,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_obvious_down",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Obvious ramp from max to low (reverse direction)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0002_ramp_diagnostic_obvious_down_ramp.pcapng",
+      "params": {
+        "direction_deg": 180,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 65535,
+        "ramp_end": 16000,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_zero_to_max",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Zero to maximum (strongest possible ramp)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0003_ramp_diagnostic_zero_to_max_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 65535,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_medium_levels",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Medium to high (substantial force levels)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0004_ramp_diagnostic_medium_levels_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 32000,
+        "ramp_end": 48000,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_vs_constant",
+      "effect_type": "sequence",
+      "description": "DIAGNOSTIC: Compare ramp (low->high) vs constant (medium level)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0005_ramp_diagnostic_vs_constant_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "constant",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 2000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "level": "medium",
+            "gain": 200
+          },
+          "start_ms": 2000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "ramp_diagnostic_sine_comparison",
+      "effect_type": "sequence",
+      "description": "DIAGNOSTIC: Compare ramp vs sine periodic (known working effect)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0006_ramp_diagnostic_sine_comparison_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "sine",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1500,
+            "delay_ms": 2000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "magnitude": "medium",
+            "period_ms": 100,
+            "gain": 200
+          },
+          "start_ms": 2000,
+          "cli_returncode": 0
+        }
+      ]
+    },
+    {
+      "id": "ramp_diagnostic_short_very_strong",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Very short but extremely strong ramp (zero to max in 500ms)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0007_ramp_diagnostic_short_very_strong_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 500,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 0,
+        "ramp_end": 65535,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_long_gentle",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Long gentle ramp (medium to high over 5 seconds)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0008_ramp_diagnostic_long_gentle_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 5000,
+        "delay_ms": 0,
+        "attack_length_ms": 0,
+        "attack_level": 0,
+        "fade_length_ms": 0,
+        "fade_level": 0,
+        "iterations": 1,
+        "ramp_start": 32000,
+        "ramp_end": 48000,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_with_envelope_strong",
+      "effect_type": "ramp",
+      "description": "DIAGNOSTIC: Ramp with strong envelope (should be very noticeable)",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0009_ramp_diagnostic_with_envelope_strong_ramp.pcapng",
+      "params": {
+        "direction_deg": 0,
+        "length_ms": 2000,
+        "delay_ms": 0,
+        "attack_length_ms": 500,
+        "attack_level": 48000,
+        "fade_length_ms": 500,
+        "fade_level": 48000,
+        "iterations": 1,
+        "ramp_start": 16000,
+        "ramp_end": 48000,
+        "gain": 200
+      },
+      "cli_returncode": 0
+    },
+    {
+      "id": "ramp_diagnostic_different_directions",
+      "effect_type": "sequence",
+      "description": "DIAGNOSTIC: Same ramp in different directions to test direction handling",
+      "pcap_file": "captures/test_cases_ramp_diagnostic/windows_20251211_112628/0010_ramp_diagnostic_different_directions_sequence.pcapng",
+      "sequence": [
+        {
+          "id": "step1",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 0,
+            "length_ms": 1000,
+            "delay_ms": 0,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 0,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step2",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 90,
+            "length_ms": 1000,
+            "delay_ms": 1500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 1500,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step3",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 180,
+            "length_ms": 1000,
+            "delay_ms": 3000,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 3000,
+          "cli_returncode": 0
+        },
+        {
+          "id": "step4",
+          "effect_type": "ramp",
+          "params": {
+            "direction_deg": 270,
+            "length_ms": 1000,
+            "delay_ms": 4500,
+            "attack_length_ms": 0,
+            "attack_level": 0,
+            "fade_length_ms": 0,
+            "fade_level": 0,
+            "iterations": 1,
+            "ramp_start": 16000,
+            "ramp_end": 48000,
+            "gain": 200
+          },
+          "start_ms": 4500,
+          "cli_returncode": 0
+        }
+      ]
+    }
+  ]
+}
