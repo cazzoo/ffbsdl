@@ -7,6 +7,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_haptic.h>
 
+/* SDL_HAPTIC_SQUARE may not be defined in older SDL2 versions */
+#ifndef SDL_HAPTIC_SQUARE
+#define SDL_HAPTIC_SQUARE     (1u<<2)  /* Conflicts with SDL_HAPTIC_LEFTRIGHT in some versions */
+#endif
+
 typedef uint32_t effect_mask;
 
 typedef enum {
@@ -31,6 +36,7 @@ typedef enum {
 	CREATE_DAMPER,
 	CREATE_INERTIA,
 	CREATE_FRICTION,
+	CREATE_SQUARE,
 
 	// effect modification choices
 	MODIFY_CONSTANT,
@@ -43,6 +49,7 @@ typedef enum {
 	MODIFY_DAMPER,
 	MODIFY_INERTIA,
 	MODIFY_FRICTION,
+	MODIFY_SQUARE,
 
 	TRY_AGAIN,
 } choice;
@@ -107,6 +114,7 @@ const char *get_haptic_type_name(uint16_t type){
 		CASE(TRIANGLE);
 		CASE(SAWTOOTHUP);
 		CASE(SAWTOOTHDOWN);
+		CASE(SQUARE);
 		CASE(RAMP);
 		CASE(SPRING);
 		CASE(DAMPER);
@@ -565,6 +573,33 @@ int create_sine(SDL_Haptic *haptic, SDL_HapticEffect *effect){
 	effect->periodic.fade_length = 0;
 	effect->periodic.fade_level = 0;
 
+	return SDL_HapticNewEffect(haptic, effect);
+}
+
+void modify_square(SDL_Haptic *haptic, int id, SDL_HapticEffect *effect){
+	get_periodic_effect_input(effect);
+	SDL_HapticUpdateEffect(haptic, id, effect);
+}
+
+int create_square(SDL_Haptic *haptic, SDL_HapticEffect *effect){
+	effect->type = SDL_HAPTIC_SQUARE;
+	effect->periodic.type = SDL_HAPTIC_SQUARE;
+
+	effect->periodic.direction.type = SDL_HAPTIC_CARTESIAN;
+	effect->periodic.direction.dir[0] = 9000;
+	effect->periodic.length = 2000;
+	effect->periodic.delay = 0;
+
+	effect->periodic.period = 2000;
+	effect->periodic.magnitude = 65535;
+	effect->periodic.offset = 0;
+	effect->periodic.phase = 0;
+
+	effect->periodic.attack_length = 0;
+	effect->periodic.attack_level = 0;
+	effect->periodic.fade_length = 0;
+	effect->periodic.fade_level = 0;
+
 	get_periodic_effect_input(effect);
 	return SDL_HapticNewEffect(haptic, effect);
 }
@@ -619,6 +654,7 @@ void show_create_effect_choices(effect_mask supported_effects){
 		OPTION(TRIANGLE, t),
 		OPTION(SAWTOOTHUP, u),
 		OPTION(SAWTOOTHDOWN, d),
+		OPTION(SQUARE, q),
 		OPTION(RAMP, r),
 		OPTION(SPRING, S),
 		OPTION(DAMPER, D),
@@ -646,6 +682,7 @@ choice get_create_effect_choice(effect_mask supported_effects){
 		OPTION(TRIANGLE, 't'),
 		OPTION(SAWTOOTHUP, 'u'),
 		OPTION(SAWTOOTHDOWN, 'd'),
+		OPTION(SQUARE, 'q'),
 		OPTION(RAMP, 'r'),
 		OPTION(SPRING, 'S'),
 		OPTION(DAMPER, 'D'),
@@ -698,6 +735,10 @@ void run_create_effect_choice(SDL_Haptic *haptic, size_t num_elems, haptic_elem 
 
 	case CREATE_SAWTOOTHDOWN:
 		id = create_sawtoothdown(haptic, effect);
+		break;
+
+	case CREATE_SQUARE:
+		id = create_square(haptic, effect);
 		break;
 
 	case CREATE_RAMP:
@@ -770,6 +811,7 @@ choice get_modify_choice(uint16_t t){
 		CHOICE(TRIANGLE);
 		CHOICE(SAWTOOTHUP);
 		CHOICE(SAWTOOTHDOWN);
+		CHOICE(SQUARE);
 		CHOICE(RAMP);
 		CHOICE(SPRING);
 		CHOICE(DAMPER);
@@ -813,6 +855,10 @@ void modify_effect(SDL_Haptic *haptic, size_t num_elems, haptic_elem elems[]){
 
 	case MODIFY_SAWTOOTHDOWN:
 		modify_sawtoothdown(haptic, id, effect);
+		break;
+
+	case MODIFY_SQUARE:
+		modify_square(haptic, id, effect);
 		break;
 
 	case MODIFY_RAMP:
@@ -1001,6 +1047,7 @@ static uint16_t parse_effect_type(const char *s){
 	if(strcmp(s, "triangle") == 0) return SDL_HAPTIC_TRIANGLE;
 	if(strcmp(s, "sawtoothup") == 0) return SDL_HAPTIC_SAWTOOTHUP;
 	if(strcmp(s, "sawtoothdown") == 0) return SDL_HAPTIC_SAWTOOTHDOWN;
+	if(strcmp(s, "square") == 0) return SDL_HAPTIC_SQUARE;
 	if(strcmp(s, "ramp") == 0) return SDL_HAPTIC_RAMP;
 	if(strcmp(s, "spring") == 0) return SDL_HAPTIC_SPRING;
 	if(strcmp(s, "damper") == 0) return SDL_HAPTIC_DAMPER;
@@ -1224,7 +1271,8 @@ static int run_single_effect_from_args(SDL_Haptic *haptic, effect_mask supported
 	} else if(a->effect_type == SDL_HAPTIC_SINE ||
 	          a->effect_type == SDL_HAPTIC_TRIANGLE ||
 	          a->effect_type == SDL_HAPTIC_SAWTOOTHUP ||
-	          a->effect_type == SDL_HAPTIC_SAWTOOTHDOWN){
+	          a->effect_type == SDL_HAPTIC_SAWTOOTHDOWN ||
+	          a->effect_type == SDL_HAPTIC_SQUARE){
 		setup_periodic_from_args(&effect, a->effect_type, a);
 	} else if(a->effect_type == SDL_HAPTIC_RAMP){
 		setup_ramp_from_args(&effect, a);
@@ -1268,6 +1316,7 @@ static void print_batch_usage(const char *progname)
 	puts("  --effect-type triangle        Periodic triangle effect");
 	puts("  --effect-type sawtoothup      Periodic sawtooth-up effect");
 	puts("  --effect-type sawtoothdown    Periodic sawtooth-down effect");
+	puts("  --effect-type square          Periodic square wave effect");
 	puts("  --effect-type ramp            Ramp effect (start -> end)");
 	puts("  --effect-type spring          Condition effect (spring)");
 	puts("  --effect-type damper          Condition effect (damper)");
@@ -1287,7 +1336,7 @@ static void print_batch_usage(const char *progname)
 
 	puts("Constant force parameters:");
 	puts("  --level <val>                 Constant force level (int16)");
-	puts("Periodic parameters (sine/triangle/sawtoothup/sawtoothdown):");
+	puts("Periodic parameters (sine/triangle/sawtoothup/sawtoothdown/square):");
 	puts("  --magnitude <val>             Wave magnitude (int16)");
 	puts("  --period-ms <ms>              Wave period in ms (e.g. 10, 100, 1000)");
 	puts("  --phase-deg <0-360>           Wave phase in degrees");

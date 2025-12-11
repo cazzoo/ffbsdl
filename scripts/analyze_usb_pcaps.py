@@ -26,7 +26,7 @@ def extract_usb_summary(tshark, pcap_path, display_filter):
       to a simpler field set when needed.
     """
 
-    CANDIDATE_PAYLOAD_FIELDS = ["usb.capdata", "usbhid.data"]
+    CANDIDATE_PAYLOAD_FIELDS = ["usb.capdata", "usbhid.data", "usb.data", "data", "usbmon.data"]
 
     def run_tshark(field_names):
         cmd = [
@@ -50,7 +50,8 @@ def extract_usb_summary(tshark, pcap_path, display_filter):
         )
         if display_filter:
             cmd.extend(["-Y", display_filter])
-        return subprocess.run(cmd, capture_output=True, text=True, check=False)
+        proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
+        return proc
 
     def extract_for_payload_field(payload_field):
         # First try the full field set (preferred when available).
@@ -187,10 +188,16 @@ def main():
     args = parser.parse_args()
 
     manifest = load_manifest(args.manifest)
+    iface = manifest.get("iface", "")
+    # For usbmon interfaces, use no display filter as packets are already USB
+    if iface.startswith("usbmon"):
+        display_filter = ""
+    else:
+        display_filter = args.display_filter
     results = {
         "manifest": os.path.abspath(args.manifest),
         "tshark": args.tshark,
-        "display_filter": args.display_filter,
+        "display_filter": display_filter,
         "tests": [],
     }
 

@@ -59,6 +59,7 @@ class RunInfo:
     num_manifest_tests: int
     num_analysis_tests: int
     mtime: float
+    platform: str = "Unknown"
 
 
 def color(text: str, fg: Optional[str] = None) -> str:
@@ -66,6 +67,17 @@ def color(text: str, fg: Optional[str] = None) -> str:
     if not fg or fg not in colors:
         return text
     return f"\033[{colors[fg]}m{text}\033[0m"
+
+
+def detect_platform_from_path(path: str) -> str:
+    """Detect platform (linux/windows) from directory path."""
+    path_lower = path.lower()
+    if "windows" in path_lower:
+        return "Windows"
+    elif "linux" in path_lower:
+        return "Linux"
+    else:
+        return "Unknown"
 
 
 def load_settings() -> None:
@@ -189,6 +201,80 @@ def discover_suites() -> List[SuiteInfo]:
     return suites
 
 
+def normalize_tests_file_path(tests_file: str) -> str:
+    """
+    Normalize tests_file path from manifest to a consistent relative path.
+    
+    This handles cross-platform issues where:
+    - Linux manifests contain: /home/user/project/tests/test_cases.json
+    - Windows manifests contain: C:/Users/User/project/tests/test_cases.json
+    - We need both to normalize to: tests/test_cases.json
+    """
+    if not tests_file:
+        return tests_file
+        
+    # Normalize path separators first
+    tests_file = tests_file.replace("\\", "/")
+    
+    # Try to detect if this looks like an absolute path from another platform
+    # Windows absolute paths typically start with drive letter (C:, D:, etc.)
+    # Unix absolute paths start with /
+    is_cross_platform_absolute = False
+    
+    if platform.system() != "Windows":
+        # We're on Linux/Unix, check for Windows-style absolute paths
+        if len(tests_file) > 1 and tests_file[1] == ":":
+            is_cross_platform_absolute = True
+    else:
+        # We're on Windows, check for Unix-style absolute paths
+        if tests_file.startswith("/"):
+            is_cross_platform_absolute = True
+    
+    # Handle absolute paths (both same-platform and cross-platform)
+    if os.path.isabs(tests_file) or is_cross_platform_absolute:
+        try:
+            # First try normal relative conversion
+            relative_path = os.path.relpath(tests_file, start=".")
+            
+            # If the result doesn't look right, try to extract the meaningful part
+            # For cross-platform paths, look for the "tests/" pattern
+            if "tests/" in relative_path and (relative_path.startswith("..") or 
+                                               not relative_path.startswith("tests/")):
+                # Try to find the tests directory in the path
+                parts = tests_file.split("/")
+                for i, part in enumerate(parts):
+                    if part == "tests" and i < len(parts) - 1:
+                        # Found tests directory, use everything from there
+                        relative_path = "/".join(parts[i:])
+                        break
+                        
+            # Ensure it starts with tests/ for consistency
+            if not relative_path.startswith("tests/"):
+                # If still not right, fall back to extracting just the filename
+                # and looking for test_cases*.json files
+                test_files = glob(os.path.join(TESTS_ROOT, "test_cases*.json"))
+                if test_files:
+                    relative_path = os.path.relpath(test_files[0], start=".").replace("\\", "/")
+                else:
+                    relative_path = "tests/test_cases.json"  # final fallback
+                    
+            return relative_path
+            
+        except Exception:
+            # If relpath fails, try to extract meaningful part
+            if "tests/" in tests_file:
+                parts = tests_file.split("/")
+                for i, part in enumerate(parts):
+                    if part == "tests":
+                        return "/".join(parts[i:])
+            
+            # Final fallback
+            return "tests/test_cases.json"
+    
+    # For relative paths, just normalize separators
+    return tests_file.replace("\\", "/")
+
+
 def discover_runs() -> Dict[str, List[RunInfo]]:
     runs_by_suite: Dict[str, List[RunInfo]] = defaultdict(list)
     if not os.path.isdir(CAPTURES_ROOT):
@@ -204,9 +290,10 @@ def discover_runs() -> Dict[str, List[RunInfo]]:
             print(color(f"[WARN] Failed to read {manifest_path}: {exc}", "yellow"))
             continue
         tests_file = manifest.get("tests_file") or ""
-        if os.path.isabs(tests_file):
-            tests_file = os.path.relpath(tests_file, start=".")
-        tests_file = tests_file.replace("\\", "/")
+        
+        # Use improved cross-platform path normalization
+        tests_file = normalize_tests_file_path(tests_file)
+        
         analysis_path = os.path.join(root, "analysis.json") if "analysis.json" in files else None
         num_manifest = len(manifest.get("tests", []))
         num_analysis = 0
@@ -218,6 +305,9 @@ def discover_runs() -> Dict[str, List[RunInfo]]:
             except Exception:
                 analysis_path = None
         mtime = os.path.getmtime(analysis_path or manifest_path)
+        # Detect platform from the run directory
+        detected_platform = detect_platform_from_path(root)
+
         runs_by_suite[tests_file].append(
             RunInfo(
                 suite_tests_file=tests_file,
@@ -227,6 +317,7 @@ def discover_runs() -> Dict[str, List[RunInfo]]:
                 num_manifest_tests=num_manifest,
                 num_analysis_tests=num_analysis,
                 mtime=mtime,
+                platform=detected_platform,
             )
         )
     return runs_by_suite
@@ -237,6 +328,89 @@ def format_time(ts: float) -> str:
         return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
     except Exception:
         return "?"
+
+
+def cross_platform_comparison_helper(runs_by_suite: Dict[str, List[RunInfo]]) -> None:
+    """Helper function to facilitate cross-platform comparisons."""
+    print(color("\n=== Cross-Platform Comparison Helper ===", "cyan"))
+    
+    # Collect all analyzed runs
+    all_runs: List[RunInfo] = []
+    for runs in runs_by_suite.values():
+        all_runs.extend(runs)
+    
+    analyzed_runs = [r for r in all_runs if r.analysis_path]
+    
+    if not analyzed_runs:
+        print(color("No analyzed runs found for cross-platform comparison.", "yellow"))
+        return
+    
+    # Group by platform
+    platforms: Dict[str, List[RunInfo]] = {}
+    for r in analyzed_runs:
+        platform = r.platform
+        if platform not in platforms:
+            platforms[platform] = []
+        platforms[platform].append(r)
+    
+    # Show available platforms
+    print("Available platforms with analyzed runs:")
+    for platform, runs in platforms.items():
+        if platform != "Unknown":
+            print(f"  {platform}: {len(runs)} analyzed runs")
+    print()
+    
+    if len(platforms) < 2:
+        print(color("Need runs from at least two different platforms for cross-platform comparison.", "yellow"))
+        return
+    
+    # Find pairs of runs from different platforms
+    platform_list = [p for p in platforms.keys() if p != "Unknown"]
+    if len(platform_list) < 2:
+        print(color("Need identifiable runs from at least two different platforms.", "yellow"))
+        return
+    
+    print("Suggested cross-platform comparisons:")
+    comparison_count = 0
+    
+    # Try to find runs from the same test suite across platforms
+    suite_platform_runs: Dict[str, Dict[str, List[RunInfo]]] = {}
+    for runs in runs_by_suite.values():
+        for run in runs:
+            if run.analysis_path and run.platform != "Unknown":
+                suite_key = run.suite_tests_file
+                if suite_key not in suite_platform_runs:
+                    suite_platform_runs[suite_key] = {}
+                if run.platform not in suite_platform_runs[suite_key]:
+                    suite_platform_runs[suite_key][run.platform] = []
+                suite_platform_runs[suite_key][run.platform].append(run)
+    
+    # Find suites with runs from multiple platforms
+    for suite_key, platform_runs in suite_platform_runs.items():
+        if len(platform_runs) >= 2:
+            suite_name = os.path.basename(suite_key)
+            platforms_in_suite = list(platform_runs.keys())
+            print(f"\nSuite: {suite_name}")
+            for i, platform_a in enumerate(platforms_in_suite):
+                for platform_b in platforms_in_suite[i+1:]:
+                    runs_a = sorted(platform_runs[platform_a], key=lambda r: r.mtime, reverse=True)
+                    runs_b = sorted(platform_runs[platform_b], key=lambda r: r.mtime, reverse=True)
+                    if runs_a and runs_b:
+                        run_a = runs_a[0]
+                        run_b = runs_b[0]
+                        rel_dir_a = os.path.relpath(run_a.dir, start=CAPTURES_ROOT)
+                        rel_dir_b = os.path.relpath(run_b.dir, start=CAPTURES_ROOT)
+                        print(f"  {platform_a} vs {platform_b}:")
+                        print(f"    A: {rel_dir_a} ({format_time(run_a.mtime)})")
+                        print(f"    B: {rel_dir_b} ({format_time(run_b.mtime)})")
+                        comparison_count += 1
+    
+    if comparison_count == 0:
+        print("No matching suites found across platforms.")
+        print("You can still manually select any two runs for comparison.")
+    
+    if ask_confirm("\nProceed to run cross-platform comparison?", default=comparison_count > 0):
+        compare_analyses_across_runs(analyzed_runs)
 
 
 def list_tshark_interfaces(tshark_path: str) -> List[str]:
@@ -319,11 +493,22 @@ def auto_discover_tshark() -> Optional[str]:
 def auto_discover_iface(tshark_path: str) -> Optional[str]:
     """Try to pick a sane default capture interface using tshark -D.
 
-    We keep the logic simple: prefer the first interface from tshark -D.
+    Prefer usbmon interfaces on Linux, otherwise the first available.
     """
     options = list_tshark_interfaces(tshark_path)
     if not options:
         return None
+    # Prefer usbmon interfaces
+    usbmon_found = False
+    for opt in options:
+        name = opt.split(" ", 1)[0]
+        if "usbmon" in name:
+            usbmon_found = True
+            return name
+    # If no usbmon and on Linux, warn
+    if not usbmon_found and platform.system() == "Linux":
+        print(color("[WARN] No usbmon interfaces found. Ensure usbmon kernel module is loaded (sudo modprobe usbmon) and USB devices are connected.", "yellow"))
+    # Fallback to first
     return options[0].split(" ", 1)[0]
 
 
@@ -630,6 +815,10 @@ def run_captures_for_suite(suite: SuiteInfo) -> Optional[RunInfo]:
         manifest = json.load(f)
     num_manifest = len(manifest.get("tests", []))
     mtime = os.path.getmtime(manifest_path)
+    
+    # Detect platform from the output directory
+    detected_platform = detect_platform_from_path(out_dir)
+
     return RunInfo(
         suite_tests_file=manifest.get("tests_file", suite.path).replace("\\", "/"),
         dir=out_dir,
@@ -638,6 +827,7 @@ def run_captures_for_suite(suite: SuiteInfo) -> Optional[RunInfo]:
         num_manifest_tests=num_manifest,
         num_analysis_tests=0,
         mtime=mtime,
+        platform=detected_platform,
     )
 
 
@@ -770,17 +960,45 @@ def choose_run_for_suite(suite: SuiteInfo, runs_by_suite: Dict[str, List[RunInfo
     return by_label[sel]
 
 
+def generate_comparison_manifest_path(comparison_type: str, run_a: RunInfo, run_b: Optional[RunInfo] = None) -> str:
+    """Generate a file path for comparison results in the captures/test_cases directory."""
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+
+    # Get the suite name from the run's test file
+    suite_name = os.path.splitext(os.path.basename(run_a.suite_tests_file))[0]
+
+    if comparison_type == "payloads" and run_b is None:
+        # Single run payload comparison
+        rel_dir = os.path.relpath(run_a.dir, start=CAPTURES_ROOT)
+        return os.path.join(CAPTURES_ROOT, f"payload_comparison_{suite_name}_{rel_dir}_{timestamp}.json")
+    elif comparison_type == "analysis" and run_b is not None:
+        # Two-run analysis comparison
+        platform_a = run_a.platform.lower()
+        platform_b = run_b.platform.lower()
+        dir_a = os.path.basename(run_a.dir)
+        dir_b = os.path.basename(run_b.dir)
+        return os.path.join(CAPTURES_ROOT, f"analysis_comparison_{suite_name}_{platform_a}_{platform_b}_{timestamp}.json")
+    else:
+        return os.path.join(CAPTURES_ROOT, f"comparison_{comparison_type}_{timestamp}.json")
+
+
 def compare_payloads_for_run(run: RunInfo) -> None:
     if not run.analysis_path or not os.path.isfile(run.analysis_path):
         print(color("Run has no analysis.json; analyze first.", "red"))
         return
     effect_type = ask_text("Filter by effect type (optional)")
     id_contains = ask_text("Filter by ID substring (optional)")
+    
+    # Generate output manifest path
+    output_path = generate_comparison_manifest_path("payloads", run)
+    
     cmd = [
         sys.executable,
         os.path.join("scripts", "compare_payloads.py"),
         "--analysis",
         run.analysis_path,
+        "--output-json",
+        output_path,
     ]
     if effect_type:
         cmd.extend(["--effect-type", effect_type])
@@ -794,18 +1012,56 @@ def compare_analyses_across_runs(runs: List[RunInfo]) -> None:
     if len(analyzed) < 2:
         print(color("Need at least two analyzed runs to compare.", "yellow"))
         return
+    
+    # Group runs by platform for easier cross-platform comparison
+    platforms: Dict[str, List[RunInfo]] = {}
+    for r in analyzed:
+        platform = r.platform
+        if platform not in platforms:
+            platforms[platform] = []
+        platforms[platform].append(r)
+    
     choices: List[str] = []
     by_label: Dict[str, RunInfo] = {}
-    for r in sorted(analyzed, key=lambda r: r.mtime, reverse=True):
+    
+    # Sort runs by platform, then by time
+    sorted_runs = sorted(analyzed, key=lambda r: (r.platform, -r.mtime))
+    
+    for r in sorted_runs:
         rel_dir = os.path.relpath(r.dir, start=CAPTURES_ROOT)
-        label = f"{rel_dir} ({format_time(r.mtime)})"
+        platform_str = f"[{r.platform}]" if r.platform != "Unknown" else "[Unknown]"
+        label = f"{platform_str} {rel_dir} ({format_time(r.mtime)})"
         choices.append(label)
         by_label[label] = r
+    
     sel = ask_multi_select("Select TWO runs to compare (baseline vs comparison):", choices, max_sel=2)
     if len(sel) != 2:
         print(color("Exactly two runs must be selected.", "yellow"))
         return
+    
     a, b = by_label[sel[0]], by_label[sel[1]]
+    
+    # Show comparison info
+    print(color(f"\nComparing:", "cyan"))
+    print(f"  Baseline: {a.platform} - {os.path.relpath(a.dir, start=CAPTURES_ROOT)}")
+    print(f"  Comparison: {b.platform} - {os.path.relpath(b.dir, start=CAPTURES_ROOT)}")
+    
+    # Check if this is a cross-platform comparison
+    if a.platform != b.platform and a.platform != "Unknown" and b.platform != "Unknown":
+        print(color("*** Cross-platform comparison detected! ***", "yellow"))
+        if ask_confirm("Proceed with cross-platform comparison?", default=True):
+            proceed = True
+        else:
+            return
+    else:
+        proceed = ask_confirm("Proceed with comparison?", default=True)
+    
+    if not proceed:
+        return
+    
+    # Generate output manifest path
+    output_path = generate_comparison_manifest_path("analysis", a, b)
+    
     cmd = [
         sys.executable,
         os.path.join("scripts", "compare_analysis.py"),
@@ -813,6 +1069,8 @@ def compare_analyses_across_runs(runs: List[RunInfo]) -> None:
         a.analysis_path or "",
         "--comparison",
         b.analysis_path or "",
+        "--output-manifest",
+        output_path,
     ]
     run_subprocess(cmd)
 
@@ -857,9 +1115,14 @@ def print_status(suites: List[SuiteInfo], runs_by_suite: Dict[str, List[RunInfo]
             status = color("NOT RUN", "red")
         last_time = max((r.mtime for r in runs), default=0.0)
         last_str = format_time(last_time) if last_time else "-"
+        
+        # Show platforms for runs
+        platforms = set(r.platform for r in runs if r.platform != "Unknown")
+        platform_str = f"Platforms: {', '.join(sorted(platforms))}" if platforms else "Platforms: -"
+        
         print(
             f"- {suite.name}: {status} | tests={suite.num_tests} | runs={len(runs)} "
-            f"| analyzed={len(analyzed)} | last_run={last_str}"
+            f"| analyzed={len(analyzed)} | last_run={last_str} | {platform_str}"
         )
     print()
 
@@ -934,6 +1197,7 @@ def main() -> None:
                 "View status",
                 "Configure settings",
                 "Compare analyses across all runs",
+                "Cross-platform comparison helper",
                 "Exit",
             ],
         )
@@ -959,6 +1223,8 @@ def main() -> None:
             for lst in runs_by_suite.values():
                 all_runs.extend(lst)
             compare_analyses_across_runs(all_runs)
+        elif choice.startswith("Cross-platform comparison helper"):
+            cross_platform_comparison_helper(runs_by_suite)
 
 
 if __name__ == "__main__":
