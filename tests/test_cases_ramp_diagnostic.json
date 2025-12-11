@@ -1,0 +1,210 @@
+{
+  "description": "Diagnostic ramp tests with higher force levels to verify if issue is parameter values or driver implementation",
+  "note": "Designed to test if ramp effects work at all with clearly detectable force levels",
+  "key_levels": {
+    "ramp_start": {
+      "zero": 0,
+      "low": 16000,
+      "medium": 32000,
+      "high": 48000,
+      "max": 65535
+    },
+    "ramp_end": {
+      "zero": 0,
+      "low": 16000,
+      "medium": 32000,
+      "high": 48000,
+      "max": 65535
+    }
+  },
+  "defaults": {
+    "direction_deg": 0,
+    "length_ms": 3000,
+    "delay_ms": 0,
+    "attack_length_ms": 0,
+    "attack_level": 0,
+    "fade_length_ms": 0,
+    "fade_level": 0,
+    "iterations": 1
+  },
+  "tests": [
+    {
+      "id": "ramp_diagnostic_obvious_up",
+      "description": "DIAGNOSTIC: Obvious ramp from low to max with clear force levels",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "max",
+        "length_ms": 2000,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_obvious_down",
+      "description": "DIAGNOSTIC: Obvious ramp from max to low (reverse direction)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "max",
+        "ramp_end": "low",
+        "length_ms": 2000,
+        "direction_deg": 180
+      }
+    },
+    {
+      "id": "ramp_diagnostic_zero_to_max",
+      "description": "DIAGNOSTIC: Zero to maximum (strongest possible ramp)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max",
+        "length_ms": 2000,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_medium_levels",
+      "description": "DIAGNOSTIC: Medium to high (substantial force levels)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "medium",
+        "ramp_end": "high",
+        "length_ms": 2000,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_vs_constant",
+      "description": "DIAGNOSTIC: Compare ramp (low->high) vs constant (medium level)",
+      "sequence": [
+        {
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1500,
+            "direction_deg": 0
+          }
+        },
+        {
+          "effect_type": "constant",
+          "start_ms": 2000,
+          "params": {
+            "level": "medium",
+            "length_ms": 1000,
+            "direction_deg": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "ramp_diagnostic_sine_comparison",
+      "description": "DIAGNOSTIC: Compare ramp vs sine periodic (known working effect)",
+      "sequence": [
+        {
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1500,
+            "direction_deg": 0
+          }
+        },
+        {
+          "effect_type": "sine",
+          "start_ms": 2000,
+          "params": {
+            "magnitude": "medium",
+            "period_ms": 100,
+            "length_ms": 1500,
+            "direction_deg": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "ramp_diagnostic_short_very_strong",
+      "description": "DIAGNOSTIC: Very short but extremely strong ramp (zero to max in 500ms)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max",
+        "length_ms": 500,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_long_gentle",
+      "description": "DIAGNOSTIC: Long gentle ramp (medium to high over 5 seconds)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "medium",
+        "ramp_end": "high",
+        "length_ms": 5000,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_with_envelope_strong",
+      "description": "DIAGNOSTIC: Ramp with strong envelope (should be very noticeable)",
+      "effect_type": "ramp",
+      "params": {
+        "ramp_start": "low",
+        "ramp_end": "high",
+        "length_ms": 2000,
+        "attack_length_ms": 500,
+        "attack_level": 48000,
+        "fade_length_ms": 500,
+        "fade_level": 48000,
+        "direction_deg": 0
+      }
+    },
+    {
+      "id": "ramp_diagnostic_different_directions",
+      "description": "DIAGNOSTIC: Same ramp in different directions to test direction handling",
+      "sequence": [
+        {
+          "effect_type": "ramp",
+          "start_ms": 0,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1000,
+            "direction_deg": 0
+          }
+        },
+        {
+          "effect_type": "ramp",
+          "start_ms": 1500,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1000,
+            "direction_deg": 90
+          }
+        },
+        {
+          "effect_type": "ramp",
+          "start_ms": 3000,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1000,
+            "direction_deg": 180
+          }
+        },
+        {
+          "effect_type": "ramp",
+          "start_ms": 4500,
+          "params": {
+            "ramp_start": "low",
+            "ramp_end": "high",
+            "length_ms": 1000,
+            "direction_deg": 270
+          }
+        }
+      ]
+    }
+  ]
+}

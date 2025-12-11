@@ -35,105 +35,133 @@
       "id": "ramp_zero_to_zero",
       "description": "Ramp from 0 to 0 (baseline)",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "zero"
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "zero"
+      }
     },
     {
       "id": "ramp_zero_to_max",
       "description": "Ramp from 0 to max (increasing)",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "max"
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max"
+      }
     },
     {
       "id": "ramp_max_to_zero",
       "description": "Ramp from max to 0 (decreasing)",
       "effect_type": "ramp",
-      "ramp_start": "max",
-      "ramp_end": "zero"
+      "params": {
+        "ramp_start": "max",
+        "ramp_end": "zero"
+      }
     },
     {
       "id": "ramp_8000_to_8000",
       "description": "Ramp from 8000 to 8000 (constant low)",
       "effect_type": "ramp",
-      "ramp_start": "step1",
-      "ramp_end": "step1"
+      "params": {
+        "ramp_start": "step1",
+        "ramp_end": "step1"
+      }
     },
     {
       "id": "ramp_8000_to_48000",
       "description": "Ramp from 8000 to 48000",
       "effect_type": "ramp",
-      "ramp_start": "step1",
-      "ramp_end": "step5"
+      "params": {
+        "ramp_start": "step1",
+        "ramp_end": "step5"
+      }
     },
     {
       "id": "ramp_48000_to_8000",
       "description": "Ramp from 48000 to 8000",
       "effect_type": "ramp",
-      "ramp_start": "step5",
-      "ramp_end": "step1"
+      "params": {
+        "ramp_start": "step5",
+        "ramp_end": "step1"
+      }
     },
     {
       "id": "ramp_16000_to_24000",
       "description": "Ramp from 16000 to 24000 (mid-range increase)",
       "effect_type": "ramp",
-      "ramp_start": "step2",
-      "ramp_end": "step3"
+      "params": {
+        "ramp_start": "step2",
+        "ramp_end": "step3"
+      }
     },
     {
       "id": "ramp_24000_to_16000",
       "description": "Ramp from 24000 to 16000 (mid-range decrease)",
       "effect_type": "ramp",
-      "ramp_start": "step3",
-      "ramp_end": "step2"
+      "params": {
+        "ramp_start": "step3",
+        "ramp_end": "step2"
+      }
     },
     {
       "id": "ramp_32767_to_32767",
       "description": "Ramp from 32767 to 32767 (signed max constant)",
       "effect_type": "ramp",
-      "ramp_start": "step4",
-      "ramp_end": "step4"
+      "params": {
+        "ramp_start": "step4",
+        "ramp_end": "step4"
+      }
     },
     {
       "id": "ramp_zero_to_32767",
       "description": "Ramp from 0 to 32767 (half range)",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "step4"
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "step4"
+      }
     },
     {
       "id": "ramp_32767_to_65535",
       "description": "Ramp from 32767 to 65535 (upper half)",
       "effect_type": "ramp",
-      "ramp_start": "step4",
-      "ramp_end": "max"
+      "params": {
+        "ramp_start": "step4",
+        "ramp_end": "max"
+      }
     },
     {
       "id": "ramp_short_duration",
       "description": "Ramp with short duration (100ms) to test timing",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "max",
-      "length_ms": 100
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max",
+        "length_ms": 100
+      }
     },
     {
       "id": "ramp_long_duration",
       "description": "Ramp with long duration (5000ms) to test timing",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "max",
-      "length_ms": 5000
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max",
+        "length_ms": 5000
+      }
     },
     {
       "id": "ramp_with_envelope",
       "description": "Ramp with attack and fade envelope",
       "effect_type": "ramp",
-      "ramp_start": "zero",
-      "ramp_end": "max",
-      "attack_length_ms": 500,
-      "attack_level": 16000,
-      "fade_length_ms": 500,
-      "fade_level": 16000
+      "params": {
+        "ramp_start": "zero",
+        "ramp_end": "max",
+        "attack_length_ms": 500,
+        "attack_level": 16000,
+        "fade_length_ms": 500,
+        "fade_level": 16000
+      }
     }
   ]
 }
